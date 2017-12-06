@@ -1931,8 +1931,8 @@ struct char_data {
 	int catalysm_exp;
 	int death;
 	int death_exp;
-	int void;
-	int void_exp;
+	int magic_void;
+	int magic_void_exp;
 	//crafting
 	int mining;
 	int mining_exp;
