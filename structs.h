@@ -1873,26 +1873,26 @@ struct char_data {
 	// Survival skills
 	int dodge;
 	int dodge_exp;
-	int climbing;
-	int climbing_exp;
-	int swimming;
-	int swimming_exp;
+	int climb;
+	int climb_exp;
+	int swim;
+	int swim_exp;
 	int perception;
 	int perception_exp;
-	int tracking;
-	int tracking_exp;
+	int track;
+	int track_exp;
 	int stealth;
 	int stealth_exp;
-	int lockpicking;
-	int lockpicking_exp;
-	int disarming;
-	int disarming_exp;
-	int stealing;
-	int stealing_exp;
-	int skinning;
-	int skinning_exp;
-	int first_aid;
-	int first_aid_exp;
+	int lockpick;
+	int lockpick_exp;
+	int disarm;
+	int disarm_exp;
+	int steal;
+	int steal_exp;
+	int skin;
+	int skin_exp;
+	int firstaid;
+	int firstaid_exp;
 	//Lore
 	int scholarship; //Future implementation
 	int scholarship_exp;
