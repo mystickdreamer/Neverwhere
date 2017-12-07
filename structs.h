@@ -1936,20 +1936,20 @@ struct char_data {
 	//crafting
 	int mining;
 	int mining_exp;
-	int foraging;
-	int foraging_exp;
+	int forage;
+	int forage_exp;
 	int forestry;
 	int forestry_exp;
 	int cooking;
 	int cooking_exp;
 	int blacksmithing;
 	int blacksmithing_exp;
-	int tailoring;
-	int tailoring_exp;
+	int tailor;
+	int tailor_exp;
 	int tanning;
 	int tanning_exp;
-	int jewelcrafting;
-	int jewelcrafting_exp;
+	int jewelcraft;
+	int jewelcraft_exp;
 	int woodworking;
 	int woodworking_exp;
 	int tinkering;
@@ -1958,10 +1958,10 @@ struct char_data {
 	int forging_exp;
 	int alchemy;
 	int alchemy_exp;
-	int enchanting;
-	int enchanting_exp;
-	int runecrafting;
-	int runecrafting_exp;
+	int enchant;
+	int enchant_exp;
+	int runecraft;
+	int runecraft_exp;
 
 
 
