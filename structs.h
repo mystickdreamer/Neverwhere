@@ -1857,8 +1857,8 @@ struct char_data {
 	int light_thrown_exp;
 	int heavy_thrown;
 	int heavy_trown_exp;
-	int backstabbing;
-	int backstabbing_exp;
+	int backstab;
+	int backstab_exp;
 	//Armor Skills
 	int skillshield;
 	int skillshield_exp;
