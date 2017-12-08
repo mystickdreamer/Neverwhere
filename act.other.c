@@ -83,7 +83,8 @@ ACMD(do_quit)
   } else {
     act("$n has left the game.", TRUE, ch, 0, 0, TO_ROOM);
     mudlog(NRM, MAX(ADMLVL_IMMORT, GET_INVIS_LEV(ch)), TRUE, "%s has quit the game.", GET_NAME(ch));
-    send_to_char(ch, "Goodbye, friend.. Come back soon!\r\n");
+    send_to_char(ch, "Your surroundings begin to fade as a mystical swirling vortex of colors\r"
+	    "envelops your body! Please come back and see us again!\r\n");
 
     /*  We used to check here for duping attempts, but we may as well
      *  do it right in extract_char(), since there is no check if a
@@ -95,7 +96,7 @@ ACMD(do_quit)
       Crash_rentsave(ch, 0);
 
     /* If someone is quitting in their house, let them load back here. */
-    if (!PLR_FLAGGED(ch, PLR_LOADROOM) && ROOM_FLAGGED(IN_ROOM(ch), ROOM_HOUSE))
+    //if (!PLR_FLAGGED(ch, PLR_LOADROOM) && ROOM_FLAGGED(IN_ROOM(ch), ROOM_HOUSE))
       GET_LOADROOM(ch) = GET_ROOM_VNUM(IN_ROOM(ch));
 
     extract_char(ch);		/* Char is saved before extracting. */
@@ -163,7 +164,7 @@ ACMD(do_steal)
   two_arguments(argument, obj_name, vict_name);
 
   /* STEALING is not an untrained skill */
-  if (!GET_SKILL_BASE(ch, SKILL_SLEIGHT_OF_HAND)) {
+  if (!GET_SKILL_BASE(ch, SKILL_STEAL)) {
     send_to_char(ch, "You'd be sure to be caught!\r\n");
     return;
   }
@@ -180,10 +181,11 @@ ACMD(do_steal)
     return;
   }
 
-  roll = roll_skill(ch, SKILL_SLEIGHT_OF_HAND);
+  roll = roll_skill(ch, SKILL_STEAL);
 
   /* Can also add +2 synergy bonus for bluff of 5 or more */
-  if (GET_SKILL(ch, SKILL_BLUFF) > 4)
+  // Need a better way to calculate this 
+  if (GET_SKILL(ch, SKILL_STEALTH) > 4)
     roll = roll + 2;
 
   if (HAS_FEAT(ch, FEAT_DEFT_HANDS))
@@ -192,7 +194,7 @@ ACMD(do_steal)
   if (GET_POS(vict) < POS_SLEEPING)
     detect = 0;
   else
-    detect = (roll_skill(vict, SKILL_SPOT) > roll);
+    detect = (roll_skill(vict, SKILL_PERCEPTION) > roll);
 
   if (!CONFIG_PT_ALLOWED && !IS_NPC(vict))
     pcsteal = 1;
@@ -200,7 +202,7 @@ ACMD(do_steal)
   /* NO NO With Imp's and Shopkeepers, and if player thieving is not allowed */
   if (ADM_FLAGGED(vict, ADM_NOSTEAL) || pcsteal ||
       GET_MOB_SPEC(vict) == shop_keeper)
-    roll = -10;		/* Failure */
+    roll = -100;		/* Failure */
 
   if (str_cmp(obj_name, "coins") && str_cmp(obj_name, "gold")) {
     if (!(obj = get_obj_in_list_vis(ch, obj_name, NULL, vict->carrying))) {
@@ -1660,7 +1662,7 @@ ACMD(do_heal)
   if (GET_POS(vict) > POS_DEAD && GET_POS(vict) < POS_STUNNED) {
     send_to_char(ch, "You attempt to lend first aid to %s.\r\n", GET_NAME(vict));
     dc -= GET_HIT(vict);
-    if (roll_skill(ch, SKILL_HEAL) >= dc) {
+    if (roll_skill(ch, SKILL_FIRSTAID) >= dc) {
       send_to_char(ch, "You bandage %s's wounds.\r\n", GET_NAME(vict));
       GET_HIT(vict) = 1;
       update_pos(vict);
@@ -1670,7 +1672,7 @@ ACMD(do_heal)
       send_to_char(ch, "Their wounds are beyond your ability!\r\n");
     }
   } else if (AFF_FLAGGED(vict, AFF_POISON)) {
-    if (roll_skill(ch, SKILL_HEAL) >= dc) {
+    if (roll_skill(ch, SKILL_HEALING) >= dc) {
       affect_from_char(vict, AFF_POISON);
       send_to_char(ch, "You draw the poison out of %s's body!\r\n", GET_NAME(vict));
       act("$N draws the poison out of your body!", FALSE, vict, 0, ch, TO_CHAR);
