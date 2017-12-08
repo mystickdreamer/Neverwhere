@@ -1672,7 +1672,7 @@ ACMD(do_heal)
       send_to_char(ch, "Their wounds are beyond your ability!\r\n");
     }
   } else if (AFF_FLAGGED(vict, AFF_POISON)) {
-    if (roll_skill(ch, SKILL_HEALING) >= dc) {
+    if (roll_skill(ch, SKILL_MAGIC_HEALING) >= dc) {
       affect_from_char(vict, AFF_POISON);
       send_to_char(ch, "You draw the poison out of %s's body!\r\n", GET_NAME(vict));
       act("$N draws the poison out of your body!", FALSE, vict, 0, ch, TO_CHAR);
