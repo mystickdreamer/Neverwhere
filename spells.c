@@ -557,25 +557,25 @@ ASPELL(art_abundant_step)
   return;
 }
 
-
-int roll_skill(const struct char_data *ch, int snum)
+//Keeping this code here for reference
+/*int roll_skill(const struct char_data *ch, int snum)
 {
   int roll, skval, i;
   skval = GET_SKILL(ch, snum);
   if (snum < 0 || snum >= SKILL_TABLE_SIZE)
     return 0;
   if (IS_SET(spell_info[snum].skilltype, SKTYPE_SPELL)) {
-    /*
+  */  /*
      * There's no real roll for a spell to succeed, so instead we will
      * return the spell resistance roll; the defender must have resistance
      * higher than this roll to avoid it. Most spells should also have some
      * kind of save called after roll_skill.
      */
-      for (i = 0, roll = 0; i < NUM_CLASSES; i++)
+/*      for (i = 0, roll = 0; i < NUM_CLASSES; i++)
         if (GET_CLASS_RANKS(ch, i) &&
             (spell_info[snum].min_level[i] < GET_CLASS_RANKS(ch, i)))
-          roll += GET_CLASS_RANKS(ch, i); /* Caster level for eligable classes */
-      return roll + rand_number(1, 20);
+          roll += GET_CLASS_RANKS(ch, i);*/ /* Caster level for eligable classes */
+ /*     return roll + rand_number(1, 20);
   } else if (IS_SET(spell_info[snum].skilltype, SKTYPE_SKILL)) {
       if (!skval && IS_SET(spell_info[snum].flags, SKFLAG_NEEDTRAIN)) {
         return -1;
@@ -603,6 +603,26 @@ int roll_skill(const struct char_data *ch, int snum)
       log("Trying to roll uncategorized skill/spell #%d for %s", snum, GET_NAME(ch));
       return 0;
   }
+}
+*/
+
+int roll_skill(const struct char_data *ch, int snum) {
+	int roll, skval, i;
+	skval = GET_SKILL(ch, snum);
+	if (snum < 0 || snum >= SKILL_TABLE_SIZE) {
+		return 0;
+	}
+	if (IS_SET(spell_info[snum].skilltype, SKTYPE_SKILL)) {
+		for (i = 0, roll = 0; i < skval; i++) {
+			if (rand_number(1, 10) > 6) {
+				roll++;
+			}
+		}
+	} else {
+		log("Trying to roll uncategorized skill/spell #%d for %s", snum, GET_NAME(ch));
+		return 0;
+	}
+	return roll;
 }
 
 int roll_resisted(const struct char_data *actor, int sact, const struct char_data *resistor, int sres)
