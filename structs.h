@@ -1791,10 +1791,10 @@ struct char_data {
 	/* One bitvector array per CFEAT_ type	*/
 	int school_feats[SFEAT_MAX + 1]; /* One bitvector array per CFEAT_ type	*/
 
-	cl_sint8 skills[SKILL_TABLE_SIZE + 1];
-	/* array of skills/spells/arts/etc	*/
-	cl_sint8 skillmods[SKILL_TABLE_SIZE + 1];
-	/* array of skill mods			*/
+	cl_sint8 skills[SKILL_TABLE_SIZE + 1];/* array of skills/spells/arts/etc	*/
+	cl_sint8 skillmods[SKILL_TABLE_SIZE + 1];/* array of skill mods			*/
+	cl_sint8 skillxp[SKILL_TABLE_SIZE + 1]; // Skill xp listing
+	
 	cl_sint8 skillclass[SKILL_TABLE_SIZE + 1]; /* array of class/cross class skills */
 
 	int alignment; /* +-1000 for alignment good vs. evil	*/
