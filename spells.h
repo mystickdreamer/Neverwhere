@@ -290,11 +290,16 @@
 #define TAR_OBJ_EQUIP	(1 << 10)
 
 #define SKTYPE_NONE		0
-#define SKTYPE_SPELL		(1 << 0)
-#define SKTYPE_SKILL		(1 << 1)
-#define SKTYPE_LANG		(1 << 2)
-#define SKTYPE_FEAT		(1 << 3)
-#define SKTYPE_ART		(1 << 4)
+#define SKTYPE_WEAPON		(1 << 0)
+#define SKTYPE_ARMOR		(1 << 1)
+#define SKTYPE_SPELL		(1 << 2)
+#define SKTYPE_SKILL		(1 << 3)
+#define SKTYPE_LORE		(1 << 4)
+#define SKTYPE_MAGIC		(1 << 5)
+#define SKTYPE_CRAFT		(1 << 6)
+#define SKTYPE_LANG		(1 << 7)
+#define SKTYPE_FEAT		(1 << 8)
+#define SKTYPE_ART		(1 << 9)
 
 #define SKFLAG_NEEDTRAIN	(1 << 0) /* Disallow use of 0 skill with only stat mod */
 #define SKFLAG_STRMOD		(1 << 1)
