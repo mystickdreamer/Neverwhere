@@ -1586,7 +1586,7 @@ void mag_assign_spells(void) {
 	skillo(SKILL_CRAFT_MINING, "mining", SKFLAG_STRMOD);
 	skillo(SKILL_CRAFT_FORAGE, "forage", SKFLAG_DEXMOD);
 	skillo(SKILL_CRAFT_FORESTRY, "forestry", SKFLAG_STRMOD);
-	skillo(SKILL_CRAFT_SOOKING, "cooking", SKFLAG_INTMOD);
+	skillo(SKILL_CRAFT_COOKING, "cooking", SKFLAG_INTMOD);
 	skillo(SKILL_CRAFT_BLACKSMITHING, "blacksmithing", SKFLAG_STRMOD);
 	skillo(SKILL_CRAFT_TAILOR, "tailor", SKFLAG_INTMOD);
 	skillo(SKILL_CRAFT_TANNING, "tanning", SKFLAG_WISMOD);
