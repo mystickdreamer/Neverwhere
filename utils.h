@@ -573,12 +573,15 @@ int wield_type(int chsize, const struct obj_data *weap);
 #define GET_HOST(ch)		CHECK_PLAYER_SPECIAL((ch), ((ch)->player_specials->host))
 #define GET_HISTORY(ch, i)      CHECK_PLAYER_SPECIAL((ch), ((ch)->player_specials->comm_hist[i]))
 
+#define GET_SKILL_XP(ch, i)		(ch->skillxp[i])
 #define GET_SKILL_BONUS(ch, i)		(ch->skillmods[i])
-#define SET_SKILL_BONUS(ch, i, value)	do { (ch)->skillmods[i] = value; } while (0)
 #define GET_SKILL_BASE(ch, i)		(ch->skills[i])
+
+#define SET_SKILL_BONUS(ch, i, value)	do { (ch)->skillmods[i] = value; } while (0)
+
 #define GET_SKILL(ch, i)		((ch)->skills[i] + GET_SKILL_BONUS(ch, i))
 #define SET_SKILL(ch, i, val)		do { (ch)->skills[i] = val; } while(0)
-#define SET_SKILL_CLASS(ch, i, val)             do { (ch)->skillclass[i] = val; } while(0)
+#define SET_SKILL_CLASS(ch, i, val)     do { (ch)->skillclass[i] = val; } while(0)
 #define GET_SKILL_CLASS(ch, i)          (ch->skillclass[i])
 
 #define GET_EQ(ch, i)		((ch)->equipment[i])
