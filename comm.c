@@ -3038,11 +3038,11 @@ char *act(const char *str, int hide_invisible, struct char_data *ch,
     type &= ~TO_HIDERESIST;
 
   if (res_sneak && AFF_FLAGGED(ch,  AFF_SNEAK)) {
-    dcval = roll_skill(ch, SKILL_MOVE_SILENTLY); /* How difficult to counter? */
-    resskill = SKILL_LISTEN;             /* Skill used to resist      */
+    dcval = roll_skill(ch, SKILL_STEALTH); /* How difficult to counter? */
+    resskill = SKILL_PERCEPTION;             /* Skill used to resist      */
   } else if (res_hide && AFF_FLAGGED(ch, AFF_HIDE)) {
-    dcval = roll_skill(ch, SKILL_HIDE);
-    resskill = SKILL_SPOT;
+    dcval = roll_skill(ch, SKILL_STEALTH);
+    resskill = SKILL_PERCEPTION;
   }
 
   /* this is a hack as well - DG_NO_TRIG is 256 -- Welcor */
