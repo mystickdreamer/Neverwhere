@@ -1034,7 +1034,7 @@ void save_char(struct char_data * ch)
   /* Save skills */
   if (GET_ADMLEVEL(ch) < ADMLVL_IMMORT) {
     fprintf(fl, "Skil:\n");
-    //for (i = 1; i <= MAX_LANGUAGES; i++) {
+    for (i = 1; i <= MAX_LANGUAGES; i++) {
     for (i = 1; i <= SKILL_TABLE_SIZE; i++) {
       if (IS_SET(skill_type(i), SKTYPE_SKILL)) {
         fprintf(fl, "%d %d %d\n", i, GET_SKILL_BASE(ch, i), GET_SKILL_CLASS(ch, i));
