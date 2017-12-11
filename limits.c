@@ -333,7 +333,7 @@ void skill_exp(struct char_data *ch, int gain) {
 		return;
 	}
 	if (gain > 0) {
-		gain = MIN)(CONFIG_MAX_EXP_GAIN, gain);
+		gain = MIN(CONFIG_MAX_EXP_GAIN, gain);
 		gain = MIN(cain, (level_exp(GET_SKILL_BASE(ch, i) + 1) -
 			level_exp(GET_SKILL_BASE(ch, i))));
 		GET_SKILL_XP(ch, i) += gain;
