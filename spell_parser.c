@@ -1538,7 +1538,7 @@ void mag_assign_spells(void)
   skillo(SKILL_DISARM, "disable device", SKFLAG_INTMOD | SKFLAG_NEEDTRAIN | SKFLAG_ARMORBAD);
   //skillo(SKILL_DISGUISE, "disguise", SKFLAG_CHAMOD);
   //skillo(SKILL_APPRAISE, "appraise", SKFLAG_INTMOD);
-  skillo(SKILL_MAGIC_HEAL, "heal", SKFLAG_WISMOD | SKFLAG_ARMORBAD);
+  skillo(SKILL_MAGIC_HEALING, "heal", SKFLAG_WISMOD | SKFLAG_ARMORBAD);
   //skillo(SKILL_FORGERY, "forgery", SKFLAG_INTMOD);
   skillo(SKILL_STEALTH, "hide", SKFLAG_DEXMOD | SKFLAG_ARMORALL);
   //skillo(SKILL_JUMP, "jump", SKFLAG_STRMOD | SKFLAG_ARMORALL);
