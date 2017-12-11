@@ -1028,7 +1028,7 @@ void roll_real_abils(struct char_data *ch) {
 		}
 
 		switch (GET_CLASS(ch)) {
-			case NO_GUILD:
+			case CLASS_NO_GUILD:
 				break;
 			case CLASS_WIZARD:
 				ch->real_abils.intel = table[0];
@@ -1431,6 +1431,7 @@ void do_start(struct char_data *ch) {
 
 	/* assign starting items etc...*/
 	switch GET_CLASS(ch) {
+		case 
 		case CLASS_WIZARD:
 			obj = read_object(1020, VIRTUAL);
 			obj_to_char(obj, ch);
