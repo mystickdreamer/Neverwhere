@@ -342,7 +342,7 @@ void skill_exp(struct char_data *ch, int gain) {
 			send_to_char(ch, "@rYour %s skill has gained a @ylevel@r.@n\r\n", spell_info[i].name);
 	} else if (gain < 0) {
 		gain = MAX(-CONFIG_MAX_EXP_LOSS, gain); /* Cap max exp lost per death */
-		GET_SKILL_XP(ch, random_number(1, 64)) += gain;
+		GET_SKILL_XP(ch, rand_number(1, 64)) += gain;
 		if (GET_SKILL_XP(ch, i) < 0)
 			GET_SKILL_XP(ch, i) = 0;
 	}
