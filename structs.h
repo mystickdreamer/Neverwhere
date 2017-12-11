@@ -181,7 +181,7 @@ typedef unsigned int ush_int;
 /* PC classes */
 /* Taken from the SRD under OGL, see ../doc/srd.txt for information */
 #define CLASS_UNDEFINED	        -1
-#define CLASS_NO_GUILD		0
+#define CLASS_NOGUILD		0
 #define CLASS_WIZARD            1
 #define CLASS_CLERIC            2
 #define CLASS_ROGUE             3
