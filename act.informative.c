@@ -1377,7 +1377,7 @@ ACMD(do_skills) {
 	if (IS_NPC(ch))
 		return;
 	send_to_char(ch, "This is a test for weapon %s with the score of %d\r\n", spell_info[425].name, GET_SKILL_BASE(ch, 425));
-	send_to_char(ch, "this is skilltype %s\r\n", spell_info[425].skilltype);
+	
 }
 
 ACMD(do_score) {
