@@ -612,16 +612,16 @@ int roll_skill(const struct char_data *ch, int snum) {
 	if (snum < 0 || snum >= SKILL_TABLE_SIZE) {
 		return 0;
 	}
-	if (IS_SET(spell_info[snum].skilltype, SKTYPE_SKILL)) {
+	//if (IS_SET(spell_info[snum].skilltype, SKTYPE_SKILL)) {
 		for (i = 0, roll = 0; i < skval; i++) {
 			if (rand_number(1, 10) > 6) {
 				roll++;
 			}
 		}
-	} else {
-		log("Trying to roll uncategorized skill/spell #%d for %s", snum, GET_NAME(ch));
-		return 0;
-	}
+	//} else {
+//		log("Trying to roll uncategorized skill/spell #%d for %s", snum, GET_NAME(ch));
+//		return 0;
+//	}
 	return roll;
 }
 
