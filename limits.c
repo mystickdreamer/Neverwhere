@@ -334,10 +334,10 @@ void skill_exp(struct char_data *ch, int gain) {
 	}
 	if (gain > 0) {
 		gain = MIN(CONFIG_MAX_EXP_GAIN, gain);
-		gain = MIN(cain, (level_exp(GET_SKILL_BASE(ch, i) + 1) -
+		gain = MIN(gain, (level_exp(GET_SKILL_BASE(ch, i) + 1) -
 			level_exp(GET_SKILL_BASE(ch, i))));
 		GET_SKILL_XP(ch, i) += gain;
-		if (GET_SKILL_BASE(ch, i) < CONFIG_LEVEL_AP - 1 &&
+		if (GET_SKILL_BASE(ch, i) < CONFIG_LEVEL_CAP - 1 &&
 			GET_SKILL_XP(ch, i) >= level_exp(GET_SKILL_BASE(ch, i) + 1))
 			send_to_char(ch, "@rYour %s skill has gained a @ylevel@r.@n\r\n", spell_info[i].name);
 	} else if (gain < 0) {
