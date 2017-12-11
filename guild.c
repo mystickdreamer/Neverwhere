@@ -823,7 +823,7 @@ void handle_learn(struct char_data *keeper, int guild_nr, struct char_data *ch, 
     subval = HAS_FEAT(ch, feat_num) + 1;
     SET_FEAT(ch, feat_num, subval);
     //SET_SKILL_BONUS(ch, SKILL_GATHER_INFORMATION, GET_SKILL_BONUS(ch, SKILL_GATHER_INFORMATION) + 2);
-    SET_SKILL_BONUS(ch, SKILL_Perception, GET_SKILL_BONUS(ch, SKILL_PERCEPTION) + 2);
+    SET_SKILL_BONUS(ch, SKILL_PERCEPTION, GET_SKILL_BONUS(ch, SKILL_PERCEPTION) + 2);
     break;
   case FEAT_MAGICAL_APTITUDE:
     subval = HAS_FEAT(ch, feat_num) + 1;
