@@ -232,7 +232,7 @@ void mobile_activity(void)
         if (GET_MOB_VNUM(ch) == GET_MOB_VNUM(vict))
           continue;
         if (GET_LEVEL(ch) >= GET_LEVEL(vict)) {
-          if (roll_skill(ch, SKILL_SLEIGHT_OF_HAND)) {
+          if (roll_skill(ch, SKILL_STEAL)) {
             npc_steal(ch, vict);
             found = TRUE;
           }
