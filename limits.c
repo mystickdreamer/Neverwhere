@@ -343,8 +343,8 @@ void skill_exp(struct char_data *ch, int gain) {
 	} else if (gain < 0) {
 		gain = MAX(-CONFIG_MAX_EXP_LOSS, gain); /* Cap max exp lost per death */
 		GET_SKILL_XP(ch, random_number(1, 64)) += gain;
-		if (GET_SKILL_XP(ch) < 0)
-			GET_SKILL_XP(ch) = 0;
+		if (GET_SKILL_XP(ch, i) < 0)
+			GET_SKILL_XP(ch, i) = 0;
 	}
 }
 
