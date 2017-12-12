@@ -1375,9 +1375,8 @@ char *reduct_desc(struct damreduct_type *reduct) {
 
 ACMD(do_skills) {
 	char arg;
-	if (IS_NPC(ch)) {
+	if (IS_NPC(ch)) 
 		return;
-	}
 	//one_argument(argument, arg);
 	switch (arg) {
 		case 'weapon':
@@ -1392,9 +1391,7 @@ ACMD(do_skills) {
 			send_to_char(ch, "@CWeapon   Armor   Skills    Lore    Magic    Craft@n\r\n");
 			break;
 	}
-	send_to_char(ch, "This is a test for weapon %s with the score of %d\r\n", spell_info[400].name, GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED));
-
-}
+	}
 
 ACMD(do_score) {
 	struct damreduct_type *reduct;
