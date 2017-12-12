@@ -1374,8 +1374,8 @@ char *reduct_desc(struct damreduct_type *reduct) {
 }
 
 ACMD(do_skills) {
-	char *arg[MAX_STRING_LENGTH];
-	switch (LOWER(*arg)) {
+	char *skilltype;
+	switch (LOWER(*skilltype)) {
 		case 'w':
 			if (!str_cmp(arg, "weapon")){
 			send_to_char(ch, "weapon skills\r\n");
