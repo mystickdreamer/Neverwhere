@@ -1378,7 +1378,7 @@ ACMD(do_skills) {
 	char arg[MAX_INPUT_LENGTH];
 	//if (IS_NPC(ch)) 
 	//		return;
-	//one_argument(argument, arg);
+	one_argument(argument, arg);
 	
 	switch (*arg) {
 		case 'weapon':
