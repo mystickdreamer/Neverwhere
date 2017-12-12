@@ -1395,14 +1395,17 @@ ACMD(do_score) {
 		genders[(int) GET_SEX(ch)], size_names[get_size(ch)], GET_HEIGHT(ch));
 	send_to_char(ch, "@cAlignment@n: %s%s@n (@rE@n-@gG@n: %s%d@n, @yC-L@n: @y%d@n)  @cWeight@n:@Y%dkg@n\r\n", IS_EVIL(ch) ? "@R" : IS_GOOD(ch) ? "@G" : "@D", alignments[ALIGN_TYPE(ch)], IS_EVIL(ch) ? "@R" : IS_GOOD(ch) ? "@G" : "@Y",
 		GET_ALIGNMENT(ch), GET_ETHIC_ALIGNMENT(ch), GET_WEIGHT(ch));
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@BGuilds@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BGuilds@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 
 	if (GET_LEVEL(ch) > GET_CLASS_RANKS(ch, GET_CLASS(ch))) {
 		send_to_char(ch, "@Y%s@n\r\n", class_desc_str(ch, 2, 0));
 	} else {
 		send_to_char(ch, "@YNone@n\r\n");
 	}
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BAbility Scores@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@BAbility Scores@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+	send_to_char(ch, "@cStr@n:@m%2d@n(@Y%+d@n) @cDex@n:@m%2d@n(@Y%+d@n) @cCon@n:@m%2d@n(@Y%+d@n) @cInt@n:@m%2d@n(@Y%+d@n) @cWis@n:@m%2d@n(@Y%+d@n) @cCha@n:@m%2d@n(@Y%+d@n)\r\n", 
+		GET_STR(ch), ability_mod_value(GET_STR(ch)), GET_DEX(ch), ability_mod_value(GET_DEX(ch)), GET_CON(ch), ability_mod_value(GET_CON(ch)), GET_INT(ch), ability_mod_value(GET_INT(ch)), GET_WIS(ch), ability_mod_value(GET_WIS(ch)), 
+		GET_CHA(ch), ability_mod_value(GET_CHA(ch)));
 	send_to_char(ch, "@rStr@n: [@m%2d@n(@y%+d@n)] @rDex@n: [@m%2d@n(@y%+d@n)] @rHit Points@n : @m%d@n(@y%d@n)\r\n", GET_STR(ch), ability_mod_value(GET_STR(ch)), GET_DEX(ch), ability_mod_value(GET_DEX(ch)), GET_HIT(ch), GET_MAX_HIT(ch));
 	send_to_char(ch, "@rCon@n: [@m%2d@n(@y%+d@n)] @rInt@n: [@m%2d@n(@y%+d@n)] @rArmor Class@n: @B%d@n\r\n", GET_CON(ch), ability_mod_value(GET_CON(ch)), GET_INT(ch), ability_mod_value(GET_INT(ch)), compute_armor_class(ch, NULL));
 	send_to_char(ch, "@rWis@n: [@m%2d@n(@y%+d@n)] @rCha@n: [@m%2d@n(@y%+d@n)] @rBase Attack Bonus@n: @m%d@n(@y%+d@n)\r\n", GET_WIS(ch), ability_mod_value(GET_WIS(ch)), GET_CHA(ch), ability_mod_value(GET_CHA(ch)), GET_ACCURACY_BASE(ch), ability_mod_value(GET_STR(ch)));
