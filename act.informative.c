@@ -1390,8 +1390,9 @@ ACMD(do_skills) {
 	if (*name = "weapon") {
 		//if (*arg == "weapon") {
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BWeapons@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-		send_to_char(ch, "@r=- @cSmall Edged@n:@Y%d   @cMedium Edged@n:@Y%d",
-			GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_EDGED));
+		send_to_char(ch, "@r=- @cSmall Edged@n:@Y%d   @cMedium Edged@n:@Y%d   @cHeavy Edged@n:@Y%d",
+			GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_EDGED),
+			GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_EDGED));
 
 	}
 
