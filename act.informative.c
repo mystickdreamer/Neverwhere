@@ -1388,7 +1388,7 @@ ACMD(do_skills) {
 		return;
 	}
 
-	if (*argument == 'weapon') {
+	else if (*argument == 'weapon') {
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BInfo@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 		send_to_char(ch, "@cSmall Edged@n:@Y%d",
 			GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED));
