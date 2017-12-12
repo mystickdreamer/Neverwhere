@@ -1425,38 +1425,40 @@ ACMD(do_score) {
 			send_to_char(ch, "@rExperience Points@n : @m%d@n @R%s@n (@y%d @Muntil next level@n)\r\n", GET_EXP(ch), penstr, level_exp(GET_LEVEL(ch) + 1) - GET_EXP(ch));
 	 */
 	//if (ch->hit_breakdown[0] || ch->hit_breakdown[1]) {
-/*	if (ch->hit_breakdown[0]) {
-		send_to_char(ch, "@RBreakdown of your last attack@n:\r\n");
-		if (ch->hit_breakdown[0] && ch->hit_breakdown[0][0] && ch->dam_breakdown[0]) {
-			send_to_char(ch, "  @RPrimary attack@n: @Y%s.@n", ch->hit_breakdown[0]);
-			if (ch->dam_breakdown[0]) {
-				send_to_char(ch, "@Y dam %s %s@n\r\n", ch->dam_breakdown[0],
-					ch->crit_breakdown[0] ? ch->crit_breakdown[0] : "");
-			} else {
-				send_to_char(ch, "\r\n");
+	/*	if (ch->hit_breakdown[0]) {
+			send_to_char(ch, "@RBreakdown of your last attack@n:\r\n");
+			if (ch->hit_breakdown[0] && ch->hit_breakdown[0][0] && ch->dam_breakdown[0]) {
+				send_to_char(ch, "  @RPrimary attack@n: @Y%s.@n", ch->hit_breakdown[0]);
+				if (ch->dam_breakdown[0]) {
+					send_to_char(ch, "@Y dam %s %s@n\r\n", ch->dam_breakdown[0],
+						ch->crit_breakdown[0] ? ch->crit_breakdown[0] : "");
+				} else {
+					send_to_char(ch, "\r\n");
+				}
 			}
 		}
-	}
-	if (ch->hit_breakdown[1]) {
-		if (ch->hit_breakdown[1] && ch->hit_breakdown[1][0] && ch->dam_breakdown[1]) {
-			send_to_char(ch, "  @rOffhand attack@n: @y%s.@n", ch->hit_breakdown[1]);
-			if (ch->dam_breakdown[1]) {
-				send_to_char(ch, "@y dam %s %s@n\r\n", ch->dam_breakdown[1],
-					ch->crit_breakdown[1] ? ch->crit_breakdown[1] : "");
-			} else {
-				send_to_char(ch, "\r\n");
+		if (ch->hit_breakdown[1]) {
+			if (ch->hit_breakdown[1] && ch->hit_breakdown[1][0] && ch->dam_breakdown[1]) {
+				send_to_char(ch, "  @rOffhand attack@n: @y%s.@n", ch->hit_breakdown[1]);
+				if (ch->dam_breakdown[1]) {
+					send_to_char(ch, "@y dam %s %s@n\r\n", ch->dam_breakdown[1],
+						ch->crit_breakdown[1] ? ch->crit_breakdown[1] : "");
+				} else {
+					send_to_char(ch, "\r\n");
+				}
 			}
 		}
-	}
-	if (IS_ARCANE(ch) && GET_SPELLFAIL(ch))
-		send_to_char(ch, "Your armor causes %d%% failure in arcane spells with somatic components.\r\n", GET_SPELLFAIL(ch));
+		if (IS_ARCANE(ch) && GET_SPELLFAIL(ch))
+			send_to_char(ch, "Your armor causes %d%% failure in arcane spells with somatic components.\r\n", GET_SPELLFAIL(ch));
 
-	if (ch->damreduct)
-		for (reduct = ch->damreduct; reduct; reduct = reduct->next)
-			send_to_char(ch, "@rDamage reduction@n: @g%s@n\r\n", reduct_desc(reduct));
-*/
+		if (ch->damreduct)
+			for (reduct = ch->damreduct; reduct; reduct = reduct->next)
+				send_to_char(ch, "@rDamage reduction@n: @g%s@n\r\n", reduct_desc(reduct));
+	 */
 	/* Admin flag display */
 	if (GET_ADMLEVEL(ch)) {
+		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BAdmin@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+
 		send_to_char(ch, "@rAdmin Level@n: @y%d - %s@n\r\n", GET_ADMLEVEL(ch), admin_level_names[GET_ADMLEVEL(ch)]);
 		send_to_char(ch, "@rYou possess the following administrative abilities@n:\r\n");
 		for (i = 0; i < NUM_ADMFLAGS; i++) {
