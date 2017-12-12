@@ -1387,7 +1387,7 @@ ACMD(do_skills) {
 		return;
 	}
 	switch(arg){
-		case Weapon:
+		case 'Weapon':
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BInfo@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 		send_to_char(ch, "@cSmall Edged@n:@Y%d",
 			GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED));
