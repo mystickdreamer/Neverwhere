@@ -1406,9 +1406,9 @@ ACMD(do_score) {
 	send_to_char(ch, "@cStr@n:@m%2d@n(@Y%+d@n) @cDex@n:@m%2d@n(@Y%+d@n) @cCon@n:@m%2d@n(@Y%+d@n) @cInt@n:@m%2d@n(@Y%+d@n) @cWis@n:@m%2d@n(@Y%+d@n) @cCha@n:@m%2d@n(@Y%+d@n)\r\n", 
 		GET_STR(ch), ability_mod_value(GET_STR(ch)), GET_DEX(ch), ability_mod_value(GET_DEX(ch)), GET_CON(ch), ability_mod_value(GET_CON(ch)), GET_INT(ch), ability_mod_value(GET_INT(ch)), GET_WIS(ch), ability_mod_value(GET_WIS(ch)), 
 		GET_CHA(ch), ability_mod_value(GET_CHA(ch)));
-	send_to_char(ch, "@rStr@n: [@m%2d@n(@y%+d@n)] @rDex@n: [@m%2d@n(@y%+d@n)] @rHit Points@n : @m%d@n(@y%d@n)\r\n", GET_STR(ch), ability_mod_value(GET_STR(ch)), GET_DEX(ch), ability_mod_value(GET_DEX(ch)), GET_HIT(ch), GET_MAX_HIT(ch));
-	send_to_char(ch, "@rCon@n: [@m%2d@n(@y%+d@n)] @rInt@n: [@m%2d@n(@y%+d@n)] @rArmor Class@n: @B%d@n\r\n", GET_CON(ch), ability_mod_value(GET_CON(ch)), GET_INT(ch), ability_mod_value(GET_INT(ch)), compute_armor_class(ch, NULL));
-	send_to_char(ch, "@rWis@n: [@m%2d@n(@y%+d@n)] @rCha@n: [@m%2d@n(@y%+d@n)] @rBase Attack Bonus@n: @m%d@n(@y%+d@n)\r\n", GET_WIS(ch), ability_mod_value(GET_WIS(ch)), GET_CHA(ch), ability_mod_value(GET_CHA(ch)), GET_ACCURACY_BASE(ch), ability_mod_value(GET_STR(ch)));
+	send_to_char(ch, "@rHit Points@n : @m%d@n(@y%d@n)\r\n", GET_STR(ch), ability_mod_value(GET_STR(ch)), GET_DEX(ch), ability_mod_value(GET_DEX(ch)), GET_HIT(ch), GET_MAX_HIT(ch));
+	send_to_char(ch, "@rArmor Class@n: @B%d@n\r\n", GET_CON(ch), ability_mod_value(GET_CON(ch)), GET_INT(ch), ability_mod_value(GET_INT(ch)), compute_armor_class(ch, NULL));
+	send_to_char(ch, "@rBase Attack Bonus@n: @m%d@n(@y%+d@n)\r\n", GET_WIS(ch), ability_mod_value(GET_WIS(ch)), GET_CHA(ch), ability_mod_value(GET_CHA(ch)), GET_ACCURACY_BASE(ch), ability_mod_value(GET_STR(ch)));
 	send_to_char(ch, "@rFortitude@n: [@m%d@n(@y%+d@n)]  @rReflex@n: [@m%d@n(@y%+d@n)]  @rWill@n: [@m%d@n(@y%+d@n)]  @rKi@n: @m%d@n(@y%d@n)\r\n", GET_SAVE(ch, SAVING_FORTITUDE), GET_SAVE_MOD(ch, SAVING_FORTITUDE), GET_SAVE(ch, SAVING_REFLEX), GET_SAVE_MOD(ch, SAVING_REFLEX), GET_SAVE(ch, SAVING_WILL), GET_SAVE_MOD(ch, SAVING_WILL), GET_KI(ch), GET_MAX_KI(ch));
 	penalty = 100 - calc_penalty_exp(ch, 100);
 	if (penalty)
