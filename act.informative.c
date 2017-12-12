@@ -1408,7 +1408,7 @@ ACMD(do_score) {
 		GET_CHA(ch), ability_mod_value(GET_CHA(ch)));
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BCombat@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 	send_to_char(ch, "@cArmor Class@n:@Y%d   @cHit Points@n:@G%d@n(@Y%d)  @cMana@n:@G%d@n(@Y%d)\r\n",compute_armor_class(ch, NULL), GET_HIT(ch), GET_MAX_HIT(ch), GET_MANA(ch), GET_MAX_MANA(ch));
-	send_to_char(ch, "@rFortitude@n: [@m%d@n(@y%+d@n)]  @rReflex@n: [@m%d@n(@y%+d@n)]  @rWill@n: [@m%d@n(@y%+d@n)]  @rKi@n: @m%d@n(@y%d@n)\r\n", GET_SAVE(ch, SAVING_FORTITUDE), GET_SAVE_MOD(ch, SAVING_FORTITUDE), GET_SAVE(ch, SAVING_REFLEX), GET_SAVE_MOD(ch, SAVING_REFLEX), GET_SAVE(ch, SAVING_WILL), GET_SAVE_MOD(ch, SAVING_WILL), GET_KI(ch), GET_MAX_KI(ch));
+	send_to_char(ch, "@cFortitude@n: [@G%d@n(@Y%+d@n)]  @cReflex@n: [@G%d@n(@Y%+d@n)]  @cWill@n: [@G%d@n(@Y%+d@n)]\r\n", GET_SAVE(ch, SAVING_FORTITUDE), GET_SAVE_MOD(ch, SAVING_FORTITUDE), GET_SAVE(ch, SAVING_REFLEX), GET_SAVE_MOD(ch, SAVING_REFLEX), GET_SAVE(ch, SAVING_WILL), GET_SAVE_MOD(ch, SAVING_WILL));
 	penalty = 100 - calc_penalty_exp(ch, 100);
 	if (penalty)
 		snprintf(penstr, sizeof (penstr), " (%d%% penalty)", penalty);
