@@ -1375,11 +1375,11 @@ char *reduct_desc(struct damreduct_type *reduct) {
 
 ACMD(do_skills) {
 
-	char *arg[MAX_INPUT_LENGTH];
+	char arg[MAX_INPUT_LENGTH];
 	//if (IS_NPC(ch)) 
 	//		return;
 	//one_argument(argument, arg);
-	if (!*arg) {
+	if (!arg) {
 		send_to_char(ch, "\r\n");
 		send_to_char(ch, "@cTo view skills@n:\r\n");
 		send_to_char(ch, "@CSkill @n<argument>\r\n");
