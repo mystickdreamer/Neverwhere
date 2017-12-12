@@ -1467,7 +1467,7 @@ ACMD(do_score) {
 		}
 		send_to_char(ch, "\r\n");
 	}
-		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BStatus@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BStatus@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 
 
 	switch (GET_POS(ch)) {
@@ -1557,6 +1557,9 @@ ACMD(do_score) {
 
 	if (AFF_FLAGGED(ch, AFF_LOW_LIGHT))
 		send_to_char(ch, "Your eyes are very sensitive in low light.\r\n");
+
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BOther@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+	send_to_char(ch, "@CSkills:to see your skills");
 
 }
 
