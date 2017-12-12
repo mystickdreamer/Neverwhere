@@ -1559,6 +1559,7 @@ ACMD(do_score) {
 		send_to_char(ch, "Your eyes are very sensitive in low light.\r\n");
 
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BOther@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+	send_to_char(ch, "@cCommands@n");
 	send_to_char(ch, "@CSkills:to see your skills@n");
 
 }
