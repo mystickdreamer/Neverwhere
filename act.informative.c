@@ -1373,7 +1373,7 @@ char *reduct_desc(struct damreduct_type *reduct) {
 	return buf;
 }
 
-void do_skills(char *arg) {
+void do_skills(char *arg, char_data *ch) {
 	//if (IS_NPC(ch)) 
 	//		return;
 	//one_argument(argument, arg);
