@@ -1400,7 +1400,7 @@ ACMD(do_skills) {
 	//argument = one_argument(argument, skill);
 	//if (IS_NPC(ch)) 
 	//		return;
-	one_argument(argument, arg);
+/*	one_argument(argument, arg);
 	if (!str_cmp(arg)) {
 		send_to_char(ch, "\r\n");
 		send_to_char(ch, "@cTo view skills@n:\r\n");
@@ -1418,7 +1418,7 @@ ACMD(do_skills) {
 	}
 
 }
-
+*/
 ACMD(do_score) {
 	struct damreduct_type *reduct;
 	int penalty, i, j = 0;
