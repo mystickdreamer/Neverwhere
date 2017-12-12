@@ -1378,7 +1378,7 @@ ACMD(do_skills) {
 	if (IS_NPC(ch)) {
 		return;
 	}
-	one_argument(argument, arg);
+	//one_argument(argument, arg);
 	switch (*arg) {
 		case 'weapon':
 			send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BInfo@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
