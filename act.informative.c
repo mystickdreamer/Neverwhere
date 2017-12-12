@@ -1387,7 +1387,7 @@ ACMD(do_skills) {
 		return;
 	}
 
-	if (*name = "weapon") {
+	if (*name == "weapon") {
 
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BWeapons@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 		send_to_char(ch, "@r=-  @cSmall Edged@n:@Y%5d  @cSmall Blunt@n:@Y%5d @cShortBow@n:@Y%5d @cLight Crossbow@n:@Y%5d @cLight Thrown@n:@Y%5d @r-=\r\n",
