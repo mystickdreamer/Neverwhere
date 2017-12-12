@@ -1396,6 +1396,7 @@ ACMD(do_skills) {
 			send_to_char(ch, "@CWeapon   Armor   Skills    Lore    Magic    Craft@n\r\n");
 			break;
 	}
+}
 
 	//argument = one_argument(argument, skill);
 	//if (IS_NPC(ch)) 
