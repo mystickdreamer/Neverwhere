@@ -1374,12 +1374,12 @@ char *reduct_desc(struct damreduct_type *reduct) {
 }
 
 ACMD(do_skills) {
-	char *arg;
+	char arg;
 	if (IS_NPC(ch)) {
 		return;
 	}
 	//one_argument(argument, arg);
-	switch (*arg) {
+	switch (arg) {
 		case 'weapon':
 			send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BInfo@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 			send_to_char(ch, "@cSmall Edged@n:@Y%d",
