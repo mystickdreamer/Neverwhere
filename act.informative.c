@@ -1374,19 +1374,21 @@ char *reduct_desc(struct damreduct_type *reduct) {
 }
 
 ACMD(do_skills) {
+	char skill[MAX_INPUT_LENGTH];
 
-	char arg[MAX_INPUT_LENGTH];
+	argument = one_argument(argument, skill);
 	//if (IS_NPC(ch)) 
 	//		return;
 	//one_argument(argument, arg);
-	if (!*arg) {
+	if (!*skill) {
 		send_to_char(ch, "\r\n");
 		send_to_char(ch, "@cTo view skills@n:\r\n");
 		send_to_char(ch, "@CSkill @n<argument>\r\n");
 		send_to_char(ch, "@CWeapon   Armor   Skills    Lore    Magic    Craft@n\r\n");
+		return;
 	}
-	else{
-	switch (*arg) {
+
+	switch (*skill) {
 		case 'weapon':
 			send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BInfo@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 			send_to_char(ch, "@cSmall Edged@n:@Y%d",
@@ -1396,7 +1398,7 @@ ACMD(do_skills) {
 
 			break;
 	}
-	}
+
 }
 
 ACMD(do_score) {
