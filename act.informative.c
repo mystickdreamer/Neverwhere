@@ -1400,6 +1400,8 @@ ACMD(do_skills) {
 		send_to_char(ch, "@r=-  @cHeavy Edged@n:@Y%5d  @cHeavy Blunt@n:@Y%5d  @cPolearm@n:@Y%5d       @cBackstab@n:@Y%5d\r\n", 
 			GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_BLUNT), 
 			GET_SKILL_BASE(ch, SKILL_WEAPON_POLEARM), GET_SKILL_BASE(ch, SKILL_WEAPON_BACKSTAB));
+				send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
+
 
 	}
 
