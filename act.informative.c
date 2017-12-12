@@ -1377,6 +1377,13 @@ ACMD(do_skills) {
 	if (IS_NPC(ch)){
 		return;
 	}
+	one_argument(argument, arg);
+	if (!*arg){
+		send_to_char(ch, "To view skills:\r\n");
+		send_to_char(ch, "Skill <argument>\r\n");
+		send_to_char(ch, "Weapons   Armor   Skills    Lore    Magic    Craft");
+		return;
+	}
 	send_to_char(ch, "This is a test for weapon %s with the score of %d\r\n", spell_info[400].name, GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED));
 
 }
