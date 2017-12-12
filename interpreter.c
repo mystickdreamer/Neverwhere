@@ -563,7 +563,7 @@ cpp_extern const struct command_info cmd_info[] = {
   { "shutdown" , "shutdown"	, POS_DEAD    , do_shutdown , 0, ADMLVL_IMPL	, SCMD_SHUTDOWN },
   { "sip"      , "sip"		, POS_RESTING , do_drink    , 0, ADMLVL_NONE	, SCMD_SIP },
   { "sit"      , "sit"		, POS_RESTING , do_sit      , 0, ADMLVL_NONE	, 0 },
-  //{ "skills"	, "skills"	, POS_RESTING , do_skills   , 0, ADMLVL_NONE	, 0 },
+  { "skills"	, "skills"	, POS_RESTING , do_skills   , 0, ADMLVL_NONE	, 0 },
   { "skillset" , "skillset"	, POS_SLEEPING, do_skillset , 0, ADMLVL_GRGOD	, 0 },
   { "sleep"    , "sl"		, POS_SLEEPING, do_sleep    , 0, ADMLVL_NONE	, 0 },
   { "slist"    , "slist"	, POS_SLEEPING, do_oasis    , 0, ADMLVL_BUILDER	, SCMD_OASIS_SLIST },
