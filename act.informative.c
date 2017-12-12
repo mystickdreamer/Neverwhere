@@ -1374,63 +1374,63 @@ char *reduct_desc(struct damreduct_type *reduct) {
 }
 
 ACMD(do_skills) {
-//	char name[MAX_INPUT_LENGTH];
+	//	char name[MAX_INPUT_LENGTH];
 	//argument = one_argument(argument, skill);
 	//if (IS_NPC(ch)) 
 	//		return;
-/*	argument = one_argument(argument, name);
-	if (!*name) {
-		send_to_char(ch, "\r\n");
-		send_to_char(ch, "@cTo view skills@n:\r\n");
-		send_to_char(ch, "@CSkill @n<argument>\r\n");
-		send_to_char(ch, "@CWeapon   Armor   Skills    Lore    Magic    Craft@n\r\n");
-		return;
-	}
+	/*	argument = one_argument(argument, name);
+		if (!*name) {
+			send_to_char(ch, "\r\n");
+			send_to_char(ch, "@cTo view skills@n:\r\n");
+			send_to_char(ch, "@CSkill @n<argument>\r\n");
+			send_to_char(ch, "@CWeapon   Armor   Skills    Lore    Magic    Craft@n\r\n");
+			return;
+		}
 
-	if (*name == "weapon") {
-*/
-		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BWeapons@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-		send_to_char(ch, "@r=-  @cSmall Edged@n:@Y%5d  @cSmall Blunt@n:@Y%5d @cShortBow@n:@Y%5d @cLight Crossbow@n:@Y%5d @cLight Thrown@n:@Y%5d @r-=\r\n",
-			GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_BLUNT),
-			GET_SKILL_BASE(ch, SKILL_WEAPON_SHORTBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN));
-		send_to_char(ch, "@r=- @cMedium Edged@n:@Y%5d @cMedium Blunt@n:@Y%5d  @cLongBow@n:@Y%5d @cHeavy Crossbow@n:@Y%5d @cHeavy Thrown@n:@Y%5d @r-=\r\n",
-			GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_BLUNT),
-			GET_SKILL_BASE(ch, SKILL_WEAPON_LONGBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW),
-			GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_THROWN));
-		send_to_char(ch, "@r=-  @cHeavy Edged@n:@Y%5d  @cHeavy Blunt@n:@Y%5d  @cPolearm@n:@Y%5d       @cBackstab@n:@Y%5d                    @r-=\r\n",
-			GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_BLUNT),
-			GET_SKILL_BASE(ch, SKILL_WEAPON_POLEARM), GET_SKILL_BASE(ch, SKILL_WEAPON_BACKSTAB));
-		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
-//		return;
+		if (*name == "weapon") {
+	 */
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BWeapons@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+	send_to_char(ch, "@r=-  @cSmall Edged@n:@Y%5d  @cSmall Blunt@n:@Y%5d @cShortBow@n:@Y%5d @cLight Crossbow@n:@Y%5d @cLight Thrown@n:@Y%5d @r-=\r\n",
+		GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_BLUNT),
+		GET_SKILL_BASE(ch, SKILL_WEAPON_SHORTBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN));
+	send_to_char(ch, "@r=- @cMedium Edged@n:@Y%5d @cMedium Blunt@n:@Y%5d  @cLongBow@n:@Y%5d @cHeavy Crossbow@n:@Y%5d @cHeavy Thrown@n:@Y%5d @r-=\r\n",
+		GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_BLUNT),
+		GET_SKILL_BASE(ch, SKILL_WEAPON_LONGBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW),
+		GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_THROWN));
+	send_to_char(ch, "@r=-  @cHeavy Edged@n:@Y%5d  @cHeavy Blunt@n:@Y%5d  @cPolearm@n:@Y%5d       @cBackstab@n:@Y%5d                    @r-=\r\n",
+		GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_BLUNT),
+		GET_SKILL_BASE(ch, SKILL_WEAPON_POLEARM), GET_SKILL_BASE(ch, SKILL_WEAPON_BACKSTAB));
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
+	//		return;
 
-//	}
-//	else if (*name == "armor") {
+	//	}
+	//	else if (*name == "armor") {
 
-		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BArmor@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-		send_to_char(ch, "@r=-  @cShield@n:@Y%5d  @cCloth Armor@n:@Y%5d @cLight Armor@n:@Y%5d @cMedium Armor@n:@Y%5d @cHeavy Armor@n:@Y%5d      @r-=\r\n",
-			GET_SKILL_BASE(ch, SKILL_ARMOR_SHIELD), GET_SKILL_BASE(ch, SKILL_ARMOR_CLOTH),
-			GET_SKILL_BASE(ch, SKILL_ARMOR_LIGHT), GET_SKILL_BASE(ch, SKILL_ARMOR_MEDIUM), GET_SKILL_BASE(ch, SKILL_ARMOR_HEAVY));
-		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
-		return;
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BArmor@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+	send_to_char(ch, "@r=-  @cShield@n:@Y%5d  @cCloth Armor@n:@Y%5d @cLight Armor@n:@Y%5d @cMedium Armor@n:@Y%5d @cHeavy Armor@n:@Y%5d      @r-=\r\n",
+		GET_SKILL_BASE(ch, SKILL_ARMOR_SHIELD), GET_SKILL_BASE(ch, SKILL_ARMOR_CLOTH),
+		GET_SKILL_BASE(ch, SKILL_ARMOR_LIGHT), GET_SKILL_BASE(ch, SKILL_ARMOR_MEDIUM), GET_SKILL_BASE(ch, SKILL_ARMOR_HEAVY));
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
+//	return;
 
-//	}
-//			if (*name == "weapon") {
+	//	}
+	//			if (*name == "weapon") {
 
-		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BSkills@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-		send_to_char(ch, "@r=-  @cDodge@n:@Y%5d  @cSwim@n:@Y%5d @cPerception@n:@Y%5d @cTrack@n:@Y%5d @cStealth@n:@Y%5d @r-=\r\n",
-			GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_BLUNT),
-			GET_SKILL_BASE(ch, SKILL_WEAPON_SHORTBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN));
-		send_to_char(ch, "@r=- @cMedium Edged@n:@Y%5d @cMedium Blunt@n:@Y%5d  @cLongBow@n:@Y%5d @cHeavy Crossbow@n:@Y%5d @cHeavy Thrown@n:@Y%5d @r-=\r\n",
-			GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_BLUNT),
-			GET_SKILL_BASE(ch, SKILL_WEAPON_LONGBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW),
-			GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_THROWN));
-		send_to_char(ch, "@r=-  @cHeavy Edged@n:@Y%5d  @cHeavy Blunt@n:@Y%5d  @cPolearm@n:@Y%5d       @cBackstab@n:@Y%5d                    @r-=\r\n",
-			GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_BLUNT),
-			GET_SKILL_BASE(ch, SKILL_WEAPON_POLEARM), GET_SKILL_BASE(ch, SKILL_WEAPON_BACKSTAB));
-		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
-//		return;
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BSkills@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+	send_to_char(ch, "@r=-  @cDodge@n:@Y%5d  @cSwim@n:@Y%5d @cPerception@n:@Y%5d @cTrack@n:@Y%5d @cStealth@n:@Y%5d @r-=\r\n",
+		GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_BLUNT),
+		GET_SKILL_BASE(ch, SKILL_WEAPON_SHORTBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN));
+	send_to_char(ch, "@r=- @cMedium Edged@n:@Y%5d @cMedium Blunt@n:@Y%5d  @cLongBow@n:@Y%5d @cHeavy Crossbow@n:@Y%5d @cHeavy Thrown@n:@Y%5d @r-=\r\n",
+		GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_BLUNT),
+		GET_SKILL_BASE(ch, SKILL_WEAPON_LONGBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW),
+		GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_THROWN));
+	send_to_char(ch, "@r=-  @cHeavy Edged@n:@Y%5d  @cHeavy Blunt@n:@Y%5d  @cPolearm@n:@Y%5d       @cBackstab@n:@Y%5d                    @r-=\r\n",
+		GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_BLUNT),
+		GET_SKILL_BASE(ch, SKILL_WEAPON_POLEARM), GET_SKILL_BASE(ch, SKILL_WEAPON_BACKSTAB));
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
+	//		return;
 
-//	}
+	//	}
 
 }
 
