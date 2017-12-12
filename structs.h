@@ -1810,12 +1810,12 @@ struct char_data {
 	int powerattack; /* Setting for power attack level	*/
 	int combatexpertise; /* Setting for Combat expertise level   */
 
-	cl_sint16 mana;
-	cl_sint16 max_mana; /* Max mana for PC/NPC			*/
-	cl_sint16 hit;
-	cl_sint16 max_hit; /* Max hit for PC/NPC			*/
-	cl_sint16 move;
-	cl_sint16 max_move; /* Max move for PC/NPC			*/
+	int mana;
+	int max_mana; /* Max mana for PC/NPC			*/
+	int hit;
+	int max_hit; /* Max hit for PC/NPC			*/
+	int move;
+	int max_move; /* Max move for PC/NPC			*/
 	cl_sint16 ki;
 	cl_sint16 max_ki; /* Max ki for PC/NPC			*/
 
