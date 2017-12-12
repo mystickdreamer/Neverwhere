@@ -1388,13 +1388,13 @@ ACMD(do_score) {
 	if (IS_NPC(ch))
 		return;
 
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=Info-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BInfo@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 	send_to_char(ch, "                      %10s: %10s@n\r\n", GET_NAME(ch), GET_TITLE(ch));
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 	send_to_char(ch, "@cRace@n:@Y%s@n @cAge:@n:@Y%d@n @cGender@n:@Y%s@n @cSize@n:@Y%s@n @cDeity@n: @YNot Impl@n\r\n", pc_race_types[(int) GET_RACE(ch)], GET_AGE(ch),
 		genders[(int) GET_SEX(ch)], size_names[get_size(ch)]);
 	send_to_char(ch, "@cAlignment@n: %s%s@n (@rE@n-@gG@n: %s%d@n, @yC-L@n: @y%d@n)\r\n", IS_EVIL(ch) ? "@R" : IS_GOOD(ch) ? "@G" : "@D", alignments[ALIGN_TYPE(ch)], IS_EVIL(ch) ? "@R" : IS_GOOD(ch) ? "@G" : "@Y", GET_ALIGNMENT(ch), GET_ETHIC_ALIGNMENT(ch));
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=Guilds-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@BGuilds@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 
 	if (GET_LEVEL(ch) > GET_CLASS_RANKS(ch, GET_CLASS(ch))) {
 		send_to_char(ch, "@Y%s@n\r\n", class_desc_str(ch, 2, 0));
