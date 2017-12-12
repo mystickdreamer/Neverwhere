@@ -1375,8 +1375,9 @@ char *reduct_desc(struct damreduct_type *reduct) {
 
 ACMD(do_skills) {
 	struct char_data *ch
-	if (IS_NPC(ch))
+	if (IS_NPC(ch)){
 		return;
+	}
 	send_to_char(ch, "This is a test for weapon %s with the score of %d\r\n", spell_info[400].name, GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED(ch)));
 
 }
