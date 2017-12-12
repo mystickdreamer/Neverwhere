@@ -1459,11 +1459,11 @@ ACMD(do_score) {
 	if (GET_ADMLEVEL(ch)) {
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BAdmin@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 
-		send_to_char(ch, "@rAdmin Level@n: @y%d - %s@n\r\n", GET_ADMLEVEL(ch), admin_level_names[GET_ADMLEVEL(ch)]);
-		send_to_char(ch, "@rYou possess the following administrative abilities@n:\r\n");
+		send_to_char(ch, "@cAdmin Level@n: @Y%d - %s@n\r\n", GET_ADMLEVEL(ch), admin_level_names[GET_ADMLEVEL(ch)]);
+		send_to_char(ch, "@BYou possess the following administrative abilities@n:\r\n");
 		for (i = 0; i < NUM_ADMFLAGS; i++) {
 			if (ADM_FLAGGED(ch, i))
-				send_to_char(ch, "@y%-40.40s%s@n", admin_flags[i], (!(++j % 2)) ? "\r\n" : "");
+				send_to_char(ch, "@Y%-40.40s%s@n", admin_flags[i], (!(++j % 2)) ? "\r\n" : "");
 		}
 		send_to_char(ch, "\r\n");
 	}
