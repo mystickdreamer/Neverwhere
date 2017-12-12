@@ -1375,7 +1375,7 @@ char *reduct_desc(struct damreduct_type *reduct) {
 
 ACMD(do_skills) {
 	char *arg[MAX_STRING_LENGTH];
-	switch (LOWER(*arg)) {
+	switch (*arg) {
 		case 'weapon':
 			send_to_char(ch, "weapon skills\r\n");
 			break;
