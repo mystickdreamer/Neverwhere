@@ -1411,8 +1411,7 @@ ACMD(do_score) {
 		compute_armor_class(ch, NULL), GET_HIT(ch), GET_MAX_HIT(ch), GET_MANA(ch), GET_MAX_MANA(ch), GET_SAVE(ch, SAVING_FORTITUDE), 
 		GET_SAVE_MOD(ch, SAVING_FORTITUDE), GET_SAVE(ch, SAVING_REFLEX), GET_SAVE_MOD(ch, SAVING_REFLEX), GET_SAVE(ch, SAVING_WILL), 
 		GET_SAVE_MOD(ch, SAVING_WILL));
-	send_to_char(ch, "@cFortitude@n: [@G%d@n(@Y%+d@n)]  @cReflex@n: [@G%d@n(@Y%+d@n)]  @cWill@n: [@G%d@n(@Y%+d@n)]\r\n", GET_SAVE(ch, SAVING_FORTITUDE), GET_SAVE_MOD(ch, SAVING_FORTITUDE), GET_SAVE(ch, SAVING_REFLEX), GET_SAVE_MOD(ch, SAVING_REFLEX), GET_SAVE(ch, SAVING_WILL), GET_SAVE_MOD(ch, SAVING_WILL));
-	penalty = 100 - calc_penalty_exp(ch, 100);
+/*	penalty = 100 - calc_penalty_exp(ch, 100);
 	if (penalty)
 		snprintf(penstr, sizeof (penstr), " (%d%% penalty)", penalty);
 	else
@@ -1420,7 +1419,7 @@ ACMD(do_score) {
 
 	if (GET_LEVEL(ch) < CONFIG_LEVEL_CAP - 1)
 		send_to_char(ch, "@rExperience Points@n : @m%d@n @R%s@n (@y%d @Muntil next level@n)\r\n", GET_EXP(ch), penstr, level_exp(GET_LEVEL(ch) + 1) - GET_EXP(ch));
-
+*/
 	send_to_char(ch, "@rGold@n: @Y%d @rBank@n: @Y%d@n\r\n", GET_GOLD(ch), GET_BANK_GOLD(ch));
 	//if (ch->hit_breakdown[0] || ch->hit_breakdown[1]) {
 	if (ch->hit_breakdown[0]) {
