@@ -1391,7 +1391,7 @@ ACMD(do_score) {
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=Info-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 	send_to_char(ch, "                      %10s: %10s@n\r\n", GET_NAME(ch), GET_TITLE(ch));
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-	send_to_char(ch, "@cGuild@n: @Y%s            @cRace@n: @Y%s            @cLevel@n: @Y%d@n\r\n", pc_class_types[(int) GET_CLASS(ch)], pc_race_types[(int) GET_RACE(ch)], GET_LEVEL(ch));
+	send_to_char(ch, "@cGuild@n: @Y%s            @cRace@n: @Y%s            @n\r\n", pc_class_types[(int) GET_CLASS(ch)], pc_race_types[(int) GET_RACE(ch)]);
 	if (CONFIG_ALLOW_MULTICLASS && GET_LEVEL(ch) > GET_CLASS_RANKS(ch, GET_CLASS(ch))) {
 		send_to_char(ch, "@rRanks:@n @y%s@n\r\n", class_desc_str(ch, 2, 0));
 	}
