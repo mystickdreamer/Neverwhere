@@ -1388,7 +1388,7 @@ ACMD(do_skills) {
 		return;
 	}
 
-	if (!str_cmp(arg, "weapon"){
+	if (str_cmp(arg, "weapon")){
 		//if (*arg == "weapon") {
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BInfo@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 		send_to_char(ch, "@cSmall Edged@n:@Y%d",
