@@ -1373,12 +1373,11 @@ char *reduct_desc(struct damreduct_type *reduct) {
 	return buf;
 }
 
-ACMD(do_skills) {
-	char arg;
+void do_skills(char *arg) {
 	//if (IS_NPC(ch)) 
-//		return;
+	//		return;
 	//one_argument(argument, arg);
-	switch (arg) {
+	switch (*arg) {
 		case 'weapon':
 			send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BInfo@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 			send_to_char(ch, "@cSmall Edged@n:@Y%d",
@@ -1391,7 +1390,7 @@ ACMD(do_skills) {
 			send_to_char(ch, "@CWeapon   Armor   Skills    Lore    Magic    Craft@n\r\n");
 			break;
 	}
-	}
+}
 
 ACMD(do_score) {
 	struct damreduct_type *reduct;
