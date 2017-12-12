@@ -1396,7 +1396,7 @@ ACMD(do_score) {
 	if (GET_LEVEL(ch) > GET_CLASS_RANKS(ch, GET_CLASS(ch))) {
 		send_to_char(ch, "@cGuilds:@n @Y%s@n\r\n", class_desc_str(ch, 2, 0));
 	}
-	send_to_char(ch, "@cAlignment@n: %s%s@n (@rE@n-@gG@n: %s%d@n, @yC-L@n: @y%d@n)\r\n", IS_EVIL(ch) ? "@R" : IS_GOOD(ch) ? "@G" : "@Y", alignments[ALIGN_TYPE(ch)], IS_EVIL(ch) ? "@R" : IS_GOOD(ch) ? "@G" : "@Y", GET_ALIGNMENT(ch), GET_ETHIC_ALIGNMENT(ch));
+	send_to_char(ch, "@cAlignment@n: %s%s@n (@rE@n-@gG@n: %s%d@n, @yC-L@n: @y%d@n)\r\n", IS_EVIL(ch) ? "@R" : IS_GOOD(ch) ? "@G" : "@D", alignments[ALIGN_TYPE(ch)], IS_EVIL(ch) ? "@R" : IS_GOOD(ch) ? "@G" : "@Y", GET_ALIGNMENT(ch), GET_ETHIC_ALIGNMENT(ch));
 	send_to_char(ch, "@rHeight@n: @y%dcm@n @rWeight@n: @y%dkg@n\r\n", GET_HEIGHT(ch), GET_WEIGHT(ch));
 	send_to_char(ch, "@rStr@n: [@m%2d@n(@y%+d@n)] @rDex@n: [@m%2d@n(@y%+d@n)] @rHit Points@n : @m%d@n(@y%d@n)\r\n", GET_STR(ch), ability_mod_value(GET_STR(ch)), GET_DEX(ch), ability_mod_value(GET_DEX(ch)), GET_HIT(ch), GET_MAX_HIT(ch));
 	send_to_char(ch, "@rCon@n: [@m%2d@n(@y%+d@n)] @rInt@n: [@m%2d@n(@y%+d@n)] @rArmor Class@n: @B%d@n\r\n", GET_CON(ch), ability_mod_value(GET_CON(ch)), GET_INT(ch), ability_mod_value(GET_INT(ch)), compute_armor_class(ch, NULL));
