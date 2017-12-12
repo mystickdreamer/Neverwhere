@@ -1391,11 +1391,12 @@ ACMD(do_score) {
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=Info-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 	send_to_char(ch, "                      %10s: %10s@n\r\n", GET_NAME(ch), GET_TITLE(ch));
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-	send_to_char(ch, "@cRace@n:@Y%s@n @cAge:@n:@Y%d@n @cGender@n:@Y%s@n @cSize@n:@Y%s@n\r\n", pc_race_types[(int) GET_RACE(ch)], GET_AGE(ch), genders[(int) GET_SEX(ch)], size_names[get_size(ch)]);
+	send_to_char(ch, "@cRace@n:@Y%s@n @cAge:@n:@Y%d@n @cGender@n:@Y%s@n @cSize@n:@Y%s@n @cAlignment@n: %s%s@n (@rE@n-@gG@n: %s%d@n, @yC-L@n: @Y%d@n)@n\r\n", pc_race_types[(int) GET_RACE(ch)], GET_AGE(ch), 
+		genders[(int) GET_SEX(ch)], size_names[get_size(ch)], IS_EVIL(ch) ? "@r" : IS_GOOD(ch) ? "@g" : "@y", alignments[ALIGN_TYPE(ch)], IS_EVIL(ch) ? "@r" : IS_GOOD(ch) ? "@g" : "@y");
 	if (GET_LEVEL(ch) > GET_CLASS_RANKS(ch, GET_CLASS(ch))) {
 		send_to_char(ch, "@cGuilds:@n @Y%s@n\r\n", class_desc_str(ch, 2, 0));
 	}
-	send_to_char(ch, "@rAlignment@n: %s%s@n (@rE@n-@gG@n: %s%d@n, @yC-L@n: @y%d@n) @rDeity@n: @y(None)@n\r\n", IS_EVIL(ch) ? "@r" : IS_GOOD(ch) ? "@g" : "@y", alignments[ALIGN_TYPE(ch)], IS_EVIL(ch) ? "@r" : IS_GOOD(ch) ? "@g" : "@y", GET_ALIGNMENT(ch), GET_ETHIC_ALIGNMENT(ch));
+	send_to_char(ch, "@cAlignment@n: %s%s@n (@rE@n-@gG@n: %s%d@n, @yC-L@n: @y%d@n) @rDeity@n: @y(None)@n\r\n", IS_EVIL(ch) ? "@r" : IS_GOOD(ch) ? "@g" : "@y", alignments[ALIGN_TYPE(ch)], IS_EVIL(ch) ? "@r" : IS_GOOD(ch) ? "@g" : "@y", GET_ALIGNMENT(ch), GET_ETHIC_ALIGNMENT(ch));
 	send_to_char(ch, "@rHeight@n: @y%dcm@n @rWeight@n: @y%dkg@n\r\n", GET_HEIGHT(ch), GET_WEIGHT(ch));
 	send_to_char(ch, "@rStr@n: [@m%2d@n(@y%+d@n)] @rDex@n: [@m%2d@n(@y%+d@n)] @rHit Points@n : @m%d@n(@y%d@n)\r\n", GET_STR(ch), ability_mod_value(GET_STR(ch)), GET_DEX(ch), ability_mod_value(GET_DEX(ch)), GET_HIT(ch), GET_MAX_HIT(ch));
 	send_to_char(ch, "@rCon@n: [@m%2d@n(@y%+d@n)] @rInt@n: [@m%2d@n(@y%+d@n)] @rArmor Class@n: @B%d@n\r\n", GET_CON(ch), ability_mod_value(GET_CON(ch)), GET_INT(ch), ability_mod_value(GET_INT(ch)), compute_armor_class(ch, NULL));
