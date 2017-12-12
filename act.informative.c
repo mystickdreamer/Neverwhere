@@ -1426,11 +1426,11 @@ ACMD(do_score) {
 	 */
 	//if (ch->hit_breakdown[0] || ch->hit_breakdown[1]) {
 	if (ch->hit_breakdown[0]) {
-		send_to_char(ch, "@rBreakdown of your last attack@n:\r\n");
+		send_to_char(ch, "@RBreakdown of your last attack@n:\r\n");
 		if (ch->hit_breakdown[0] && ch->hit_breakdown[0][0] && ch->dam_breakdown[0]) {
-			send_to_char(ch, "  @rPrimary attack@n: @y%s.@n", ch->hit_breakdown[0]);
+			send_to_char(ch, "  @RPrimary attack@n: @Y%s.@n", ch->hit_breakdown[0]);
 			if (ch->dam_breakdown[0]) {
-				send_to_char(ch, "@y dam %s %s@n\r\n", ch->dam_breakdown[0],
+				send_to_char(ch, "@Y dam %s %s@n\r\n", ch->dam_breakdown[0],
 					ch->crit_breakdown[0] ? ch->crit_breakdown[0] : "");
 			} else {
 				send_to_char(ch, "\r\n");
