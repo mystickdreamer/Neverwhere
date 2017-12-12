@@ -1374,38 +1374,12 @@ char *reduct_desc(struct damreduct_type *reduct) {
 }
 
 ACMD(do_skills) {
-	char *skilltype;
-	switch (LOWER(*skilltype)) {
-		case 'w':
-			if (!str_cmp(skilltype, "weapon")){
-			send_to_char(ch, "weapon skills\r\n");
-			}
-			break;
-		case 'armor':
-			send_to_char(ch, "armor skills\r\n");
-			break;
-		case 'skills':
-			break;
-		case 'lore':
-			break;
-		case 'magic':
-			break;
-		case 'craft':
-			break;
-		default:
-			send_to_char(ch, "\r\n");
-			send_to_char(ch, "@cTo view skills@n:\r\n");
-			send_to_char(ch, "@CSkill @n<argument>\r\n");
-			send_to_char(ch, "@CWeapon   Armor   Skills    Lore    Magic    Craft@n\r\n");
-			break;
-	}
-}
-
+	char name[MAX_INPUT_LENGTH];
 	//argument = one_argument(argument, skill);
 	//if (IS_NPC(ch)) 
 	//		return;
-/*	one_argument(argument, arg);
-	if (!str_cmp(arg)) {
+	argument = one_argument(argument, name);
+	if (!*name) {
 		send_to_char(ch, "\r\n");
 		send_to_char(ch, "@cTo view skills@n:\r\n");
 		send_to_char(ch, "@CSkill @n<argument>\r\n");
@@ -1422,7 +1396,7 @@ ACMD(do_skills) {
 	}
 
 }
-*/
+
 ACMD(do_score) {
 	struct damreduct_type *reduct;
 	int penalty, i, j = 0;
