@@ -1377,7 +1377,7 @@ ACMD(do_skills) {
 	char *skilltype;
 	switch (LOWER(*skilltype)) {
 		case 'w':
-			if (!str_cmp(arg, "weapon")){
+			if (!str_cmp(field, "weapon")){
 			send_to_char(ch, "weapon skills\r\n");
 			}
 			break;
