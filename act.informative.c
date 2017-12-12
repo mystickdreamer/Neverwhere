@@ -1394,12 +1394,12 @@ ACMD(do_score) {
 	send_to_char(ch, "@cRace@n:@Y%s@n @cAge:@n:@Y%d@n @cGender@n:@Y%s@n @cSize@n:@Y%s@n @cDeity@n: @YNot Impl@n\r\n", pc_race_types[(int) GET_RACE(ch)], GET_AGE(ch),
 		genders[(int) GET_SEX(ch)], size_names[get_size(ch)]);
 	send_to_char(ch, "@cAlignment@n: %s%s@n (@rE@n-@gG@n: %s%d@n, @yC-L@n: @y%d@n)\r\n", IS_EVIL(ch) ? "@R" : IS_GOOD(ch) ? "@G" : "@D", alignments[ALIGN_TYPE(ch)], IS_EVIL(ch) ? "@R" : IS_GOOD(ch) ? "@G" : "@Y", GET_ALIGNMENT(ch), GET_ETHIC_ALIGNMENT(ch));
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-Guilds=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 
 	if (GET_LEVEL(ch) > GET_CLASS_RANKS(ch, GET_CLASS(ch))) {
-		send_to_char(ch, "@cGuilds:@n @Y%s@n\r\n", class_desc_str(ch, 2, 0));
+		send_to_char(ch, "@Y%s@n\r\n", class_desc_str(ch, 2, 0));
 	} else {
-		send_to_char(ch, "@cGuilds@n: @YNone@n\r\n");
+		send_to_char(ch, "@YNone@n\r\n");
 	}
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 
