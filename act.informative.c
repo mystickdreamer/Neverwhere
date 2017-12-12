@@ -65,10 +65,11 @@ void print_object_location(int num, struct obj_data *obj, struct char_data *ch, 
 void show_obj_to_char(struct obj_data *obj, struct char_data *ch, int mode);
 void list_obj_to_char(struct obj_data *list, struct char_data *ch, int mode, int show);
 int show_obj_modifiers(struct obj_data *obj, struct char_data *ch);
+void do_skills(char_data *ch, char *arg);
 ACMD(do_look);
 ACMD(do_examine);
 ACMD(do_gold);
-ACMD(do_skills);
+//ACMD(do_skills);
 ACMD(do_score);
 ACMD(do_inventory);
 ACMD(do_equipment);
