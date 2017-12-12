@@ -1402,12 +1402,13 @@ ACMD(do_score) {
 	} else {
 		send_to_char(ch, "@YNone@n\r\n");
 	}
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BFinance@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+	send_to_char(ch, "   @rGold@n: @Y%d               @rBank@n: @Y%d@n\r\n", GET_GOLD(ch), GET_BANK_GOLD(ch));
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@BAbility Scores@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 	send_to_char(ch, "@cStr@n:@G%2d@n(@Y%+d@n)   @cDex@n:@G%2d@n(@Y%+d@n)   @cCon@n:@G%2d@n(@Y%+d@n)   @cInt@n:@G%2d@n(@Y%+d@n)   @cWis@n:@G%2d@n(@Y%+d@n)   @cCha@n:@G%2d@n(@Y%+d@n)\r\n",
 		GET_STR(ch), ability_mod_value(GET_STR(ch)), GET_DEX(ch), ability_mod_value(GET_DEX(ch)), GET_CON(ch), ability_mod_value(GET_CON(ch)), GET_INT(ch), ability_mod_value(GET_INT(ch)), GET_WIS(ch), ability_mod_value(GET_WIS(ch)),
 		GET_CHA(ch), ability_mod_value(GET_CHA(ch)));
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BFinance@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-	send_to_char(ch, "   @rGold@n: @Y%d               @rBank@n: @Y%d@n\r\n", GET_GOLD(ch), GET_BANK_GOLD(ch));
+
 
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BCombat@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 	send_to_char(ch, "@cArmor Class@n:@Y%d @cHit Points@n:@G%d@n(@Y%d) @cMana@n:@G%d@n(@Y%d) @cFort@n:@G%d@n(@Y%+d@n) @cRef@n:@G%d@n(@Y%+d@n) @cWill@n:@G%d@n(@Y%+d@n)\r\n",
