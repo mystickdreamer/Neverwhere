@@ -1386,18 +1386,15 @@ ACMD(do_skills) {
 		send_to_char(ch, "@CSkill @n<argument>\r\n");
 		send_to_char(ch, "@CWeapon   Armor   Skills    Lore    Magic    Craft@n\r\n");
 		return;
-	} else {
-		switch (*skill) {
-			case 'weapon':
-				send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BInfo@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-				send_to_char(ch, "@cSmall Edged@n:@Y%d",
-					GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED));
-				break;
-			default:
-
-				break;
-		}
 	}
+
+	if (*skill == 'weapon') {
+		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BInfo@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+		send_to_char(ch, "@cSmall Edged@n:@Y%d",
+			GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED));
+
+	}
+
 }
 
 ACMD(do_score) {
