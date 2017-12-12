@@ -1390,12 +1390,12 @@ ACMD(do_skills) {
 	if (*name = "weapon") {
 		//if (*arg == "weapon") {
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BWeapons@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-		send_to_char(ch, "@r=-  @cSmall Edged@n:@Y%d  @cSmall Blunt@n:@Y%d @cShortBow@n:@Y%d\r\n",
+		send_to_char(ch, "@r=-  @cSmall Edged@n:@Y%d  @cSmall Blunt@n:@Y%d @cShortBow@n:@Y%d @cLight Crossbow@n:@Y%d\r\n",
 			GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_BLUNT),
-			GET_SKILL_BASE(ch, SKILL_WEAPON_SHORTBOW));
-		send_to_char(ch, "@r=- @cMedium Edged@n:@Y%d @cMedium Blunt@n:@Y%d  @cLongBow@n:@Y%d\r\n", 
+			GET_SKILL_BASE(ch, SKILL_WEAPON_SHORTBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW));
+		send_to_char(ch, "@r=- @cMedium Edged@n:@Y%d @cMedium Blunt@n:@Y%d  @cLongBow@n:@Y%d @cHeavy Crossbow@n:@Y%d\r\n", 
 			GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_BLUNT), 
-			GET_SKILL_BASE(ch, SKILL_WEAPON_LONGBOW));
+			GET_SKILL_BASE(ch, SKILL_WEAPON_LONGBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_CROSSBOW));
 		send_to_char(ch, "@r=-  @cHeavy Edged@n:@Y%d  @cHeavy Blunt@n:@Y%d\r\n", 
 			GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_BLUNT));
 
