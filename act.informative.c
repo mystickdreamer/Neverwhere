@@ -1375,6 +1375,7 @@ char *reduct_desc(struct damreduct_type *reduct) {
 
 ACMD(do_skills) {
 	char skill;
+	char arg[MAX_INPUT_LENGTH]
 	//if (IS_NPC(ch)) 
 	//		return;
 	//one_argument(argument, arg);
