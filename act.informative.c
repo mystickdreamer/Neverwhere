@@ -1374,7 +1374,7 @@ char *reduct_desc(struct damreduct_type *reduct) {
 }
 
 ACMD(do_skills) {
-	char arg;
+	char *arg;
 	switch (LOWER(*arg)) {
 		case 'weapon':
 			send_to_char(ch, "weapon skills\r\n");
