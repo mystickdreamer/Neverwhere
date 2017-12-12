@@ -1419,10 +1419,10 @@ ACMD(do_skills) {
 	//			if (*name == "weapon") {
 
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BSkills@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-	send_to_char(ch, "@r=-    @cDodge@n:@Y%5d   @cSwim@n:@Y%5d @cPerception@n:@Y%5d @cTrack@n:@Y%5d @cStealth@n:@Y%5d @r-=\r\n",
+	send_to_char(ch, "@r=-    @cDodge@n:@Y%5d   @cSwim@n:@Y%5d @cPerception@n:@Y%5d @cTrack@n:@Y%5d  @cStealth@n:@Y%5d      @r-=\r\n",
 		GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_BLUNT),
 		GET_SKILL_BASE(ch, SKILL_WEAPON_SHORTBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN));
-	send_to_char(ch, "@r=- @cLockpick@n:@Y%5d @cDisarm@n:@Y%5d      @cSteal@n:@Y%5d @cSkin@n:@Y%5d @cFirstAid@n:@Y%5d @r-=\r\n",
+	send_to_char(ch, "@r=- @cLockpick@n:@Y%5d @cDisarm@n:@Y%5d      @cSteal@n:@Y%5d  @cSkin@n:@Y%5d @cFirstAid@n:@Y%5d      @r-=\r\n",
 		GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_BLUNT),
 		GET_SKILL_BASE(ch, SKILL_WEAPON_LONGBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW),
 		GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_THROWN));
