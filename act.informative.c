@@ -65,11 +65,10 @@ void print_object_location(int num, struct obj_data *obj, struct char_data *ch, 
 void show_obj_to_char(struct obj_data *obj, struct char_data *ch, int mode);
 void list_obj_to_char(struct obj_data *list, struct char_data *ch, int mode, int show);
 int show_obj_modifiers(struct obj_data *obj, struct char_data *ch);
-void do_skills(char_data *ch, char *arg);
 ACMD(do_look);
 ACMD(do_examine);
 ACMD(do_gold);
-//ACMD(do_skills);
+ACMD(do_skills);
 ACMD(do_score);
 ACMD(do_inventory);
 ACMD(do_equipment);
@@ -1374,9 +1373,9 @@ char *reduct_desc(struct damreduct_type *reduct) {
 	return buf;
 }
 
-void do_skills(char_data *ch, char *arg) {
-
-	switch (LOWER(*arg)) {
+ACMD(do_skills) {
+	char *arg;
+	switch (LOWER(*arg) {
 		case 'weapon':
 			send_to_char(ch, "weapon skills\r\n");
 			break;
@@ -1400,10 +1399,9 @@ void do_skills(char_data *ch, char *arg) {
 	}
 }
 
-//argument = one_argument(argument, skill);
-//if (IS_NPC(ch)) 
-//		return;
-
+	//argument = one_argument(argument, skill);
+	//if (IS_NPC(ch)) 
+	//		return;
 /*	one_argument(argument, arg);
 	if (!str_cmp(arg)) {
 		send_to_char(ch, "\r\n");
@@ -1422,7 +1420,7 @@ void do_skills(char_data *ch, char *arg) {
 	}
 
 }
- */
+*/
 ACMD(do_score) {
 	struct damreduct_type *reduct;
 	int penalty, i, j = 0;
