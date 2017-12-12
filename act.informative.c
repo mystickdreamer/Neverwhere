@@ -1375,8 +1375,8 @@ char *reduct_desc(struct damreduct_type *reduct) {
 
 ACMD(do_skills) {
 	char arg;
-	if (IS_NPC(ch)) 
-		return;
+	//if (IS_NPC(ch)) 
+//		return;
 	//one_argument(argument, arg);
 	switch (arg) {
 		case 'weapon':
