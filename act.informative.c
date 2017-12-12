@@ -1463,7 +1463,7 @@ ACMD(do_score) {
 		send_to_char(ch, "@BYou possess the following administrative abilities@n:\r\n");
 		for (i = 0; i < NUM_ADMFLAGS; i++) {
 			if (ADM_FLAGGED(ch, i))
-				send_to_char(ch, "@Y%-40.40s%s@n", admin_flags[i], (!(++j % 2)) ? "\r\n" : "");
+				send_to_char(ch, "@g%-40.40s%s@n", admin_flags[i], (!(++j % 2)) ? "\r\n" : "");
 		}
 		send_to_char(ch, "\r\n");
 	}
