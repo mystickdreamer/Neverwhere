@@ -1393,7 +1393,7 @@ ACMD(do_score) {
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 	send_to_char(ch, "@cRace@n:@Y%s@n @cAge:@n:@Y%d@n @cGender@n:@Y%s@n @cSize@n:@Y%s@n @cHeight@n:@Y%dcm@n @cDeity@n: @YNot Impl@n\r\n", pc_race_types[(int) GET_RACE(ch)], GET_AGE(ch),
 		genders[(int) GET_SEX(ch)], size_names[get_size(ch)], GET_HEIGHT(ch));
-	send_to_char(ch, "@cAlignment@n: %s%s@n (@rE@n-@gG@n: %s%d@n, @yC-L@n: @y%d@n)  @cWeight@n:@Y%dkg@n\r\n", IS_EVIL(ch) ? "@R" : IS_GOOD(ch) ? "@G" : "@D", alignments[ALIGN_TYPE(ch)], IS_EVIL(ch) ? "@R" : IS_GOOD(ch) ? "@G" : "@Y",
+	send_to_char(ch, "@cAlignment@n: %s%s@n (@rE@n-@gG@n: %s%d@n, @yC-L@n: @Y%d@n)  @cWeight@n:@Y%dkg@n\r\n", IS_EVIL(ch) ? "@R" : IS_GOOD(ch) ? "@G" : "@D", alignments[ALIGN_TYPE(ch)], IS_EVIL(ch) ? "@R" : IS_GOOD(ch) ? "@G" : "@Y",
 		GET_ALIGNMENT(ch), GET_ETHIC_ALIGNMENT(ch), GET_WEIGHT(ch));
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BGuilds@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 
