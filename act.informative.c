@@ -1467,6 +1467,8 @@ ACMD(do_score) {
 		}
 		send_to_char(ch, "\r\n");
 	}
+		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BStatus@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+
 
 	switch (GET_POS(ch)) {
 		case POS_DEAD:
