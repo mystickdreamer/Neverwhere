@@ -1373,8 +1373,8 @@ char *reduct_desc(struct damreduct_type *reduct) {
 	return buf;
 }
 
-ACMD(do_skills) {
-	char *arg;
+void do_skills(char_data *ch, char *arg) {
+
 	switch (LOWER(*arg)) {
 		case 'weapon':
 			send_to_char(ch, "weapon skills\r\n");
@@ -1399,9 +1399,10 @@ ACMD(do_skills) {
 	}
 }
 
-	//argument = one_argument(argument, skill);
-	//if (IS_NPC(ch)) 
-	//		return;
+//argument = one_argument(argument, skill);
+//if (IS_NPC(ch)) 
+//		return;
+
 /*	one_argument(argument, arg);
 	if (!str_cmp(arg)) {
 		send_to_char(ch, "\r\n");
@@ -1420,7 +1421,7 @@ ACMD(do_skills) {
 	}
 
 }
-*/
+ */
 ACMD(do_score) {
 	struct damreduct_type *reduct;
 	int penalty, i, j = 0;
