@@ -1373,11 +1373,13 @@ char *reduct_desc(struct damreduct_type *reduct) {
 	return buf;
 }
 
-void do_skills(char *arg, char_data *ch) {
+ACMD(do_skills) {
+	char skill;
 	//if (IS_NPC(ch)) 
 	//		return;
 	//one_argument(argument, arg);
-	switch (*arg) {
+	skill = *(arg+1);
+	switch (skill) {
 		case 'weapon':
 			send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BInfo@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 			send_to_char(ch, "@cSmall Edged@n:@Y%d",
