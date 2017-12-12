@@ -1374,7 +1374,7 @@ char *reduct_desc(struct damreduct_type *reduct) {
 }
 
 ACMD(do_skills) {
-	struct char_data *ch
+	struct char_data *ch;
 	if (IS_NPC(ch)){
 		return;
 	}
