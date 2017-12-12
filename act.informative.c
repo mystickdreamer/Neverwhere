@@ -1375,16 +1375,21 @@ char *reduct_desc(struct damreduct_type *reduct) {
 
 ACMD(do_skills) {
 	char arg[MAX_INPUT_LENGTH];
-	if (IS_NPC(ch)){
+	if (IS_NPC(ch)) {
 		return;
 	}
 	one_argument(argument, arg);
-	if (!*arg){
+	if (!*arg) {
 		send_to_char(ch, "\r\n");
 		send_to_char(ch, "@cTo view skills@n:\r\n");
 		send_to_char(ch, "@CSkill @n<argument>\r\n");
 		send_to_char(ch, "@CWeapons   Armor   Skills    Lore    Magic    Craft@n\r\n");
 		return;
+	}
+	if (arg == Weapon) {
+		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BInfo@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+		send_to_char(ch, "@cSmall Edged@n:@Y%d",
+			GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED));
 	}
 	send_to_char(ch, "This is a test for weapon %s with the score of %d\r\n", spell_info[400].name, GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED));
 
