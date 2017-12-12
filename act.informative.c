@@ -1406,6 +1406,9 @@ ACMD(do_score) {
 	send_to_char(ch, "@cStr@n:@G%2d@n(@Y%+d@n)   @cDex@n:@G%2d@n(@Y%+d@n)   @cCon@n:@G%2d@n(@Y%+d@n)   @cInt@n:@G%2d@n(@Y%+d@n)   @cWis@n:@G%2d@n(@Y%+d@n)   @cCha@n:@G%2d@n(@Y%+d@n)\r\n",
 		GET_STR(ch), ability_mod_value(GET_STR(ch)), GET_DEX(ch), ability_mod_value(GET_DEX(ch)), GET_CON(ch), ability_mod_value(GET_CON(ch)), GET_INT(ch), ability_mod_value(GET_INT(ch)), GET_WIS(ch), ability_mod_value(GET_WIS(ch)),
 		GET_CHA(ch), ability_mod_value(GET_CHA(ch)));
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BFinance@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+	send_to_char(ch, "   @rGold@n: @Y%d               @rBank@n: @Y%d@n\r\n", GET_GOLD(ch), GET_BANK_GOLD(ch));
+
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BCombat@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 	send_to_char(ch, "@cArmor Class@n:@Y%d @cHit Points@n:@G%d@n(@Y%d) @cMana@n:@G%d@n(@Y%d) @cFort@n:@G%d@n(@Y%+d@n) @cRef@n:@G%d@n(@Y%+d@n) @cWill@n:@G%d@n(@Y%+d@n)\r\n",
 		compute_armor_class(ch, NULL), GET_HIT(ch), GET_MAX_HIT(ch), GET_MANA(ch), GET_MAX_MANA(ch), GET_SAVE(ch, SAVING_FORTITUDE),
@@ -1420,8 +1423,6 @@ ACMD(do_score) {
 		if (GET_LEVEL(ch) < CONFIG_LEVEL_CAP - 1)
 			send_to_char(ch, "@rExperience Points@n : @m%d@n @R%s@n (@y%d @Muntil next level@n)\r\n", GET_EXP(ch), penstr, level_exp(GET_LEVEL(ch) + 1) - GET_EXP(ch));
 	 */
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BFinance@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-	send_to_char(ch, "   @rGold@n: @Y%d               @rBank@n: @Y%d@n\r\n", GET_GOLD(ch), GET_BANK_GOLD(ch));
 	//if (ch->hit_breakdown[0] || ch->hit_breakdown[1]) {
 	if (ch->hit_breakdown[0]) {
 		send_to_char(ch, "@rBreakdown of your last attack@n:\r\n");
