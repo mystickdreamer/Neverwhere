@@ -1407,7 +1407,7 @@ ACMD(do_score) {
 		GET_STR(ch), ability_mod_value(GET_STR(ch)), GET_DEX(ch), ability_mod_value(GET_DEX(ch)), GET_CON(ch), ability_mod_value(GET_CON(ch)), GET_INT(ch), ability_mod_value(GET_INT(ch)), GET_WIS(ch), ability_mod_value(GET_WIS(ch)),
 		GET_CHA(ch), ability_mod_value(GET_CHA(ch)));
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BCombat@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-	send_to_char(ch, "@cArmor Class@n:@Y%d @cHit Points@n:@G%d@n(@Y%d) @cMana@n:@G%d@n(@Y%d) @cFort@n:[@G%d@n(@Y%+d@n)] @cRef@n:[@G%d@n(@Y%+d@n)] @cWill@n:[@G%d@n(@Y%+d@n)]\r\n",
+	send_to_char(ch, "@cArmor Class@n:@Y%d @cHit Points@n:@G%d@n(@Y%d) @cMana@n:@G%d@n(@Y%d) @cFort@n:@G%d@n(@Y%+d@n) @cRef@n:@G%d@n(@Y%+d@n) @cWill@n:@G%d@n(@Y%+d@n)\r\n",
 		compute_armor_class(ch, NULL), GET_HIT(ch), GET_MAX_HIT(ch), GET_MANA(ch), GET_MAX_MANA(ch), GET_SAVE(ch, SAVING_FORTITUDE), 
 		GET_SAVE_MOD(ch, SAVING_FORTITUDE), GET_SAVE(ch, SAVING_REFLEX), GET_SAVE_MOD(ch, SAVING_REFLEX), GET_SAVE(ch, SAVING_WILL), 
 		GET_SAVE_MOD(ch, SAVING_WILL));
