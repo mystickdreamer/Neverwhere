@@ -1407,7 +1407,7 @@ ACMD(do_skills) {
 	//	else if (*name == "armor") {
 
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BArmor@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-	send_to_char(ch, "@r=-        @cShield@n:@Y%5d  @cCloth Armor@n:@Y%5d @cLight Armor@n:@Y%5d @cMedium Armor@n:@Y%5d @cHeavy Armor@n:@Y%5d      @r-=\r\n",
+	send_to_char(ch, "@r=-       @cShield@n:@Y%5d  @cCloth Armor@n:@Y%5d @cLight Armor@n:@Y%5d @cMedium Armor@n:@Y%5d @cHeavy Armor@n:@Y%5d      @r-=\r\n",
 		GET_SKILL_BASE(ch, SKILL_ARMOR_SHIELD), GET_SKILL_BASE(ch, SKILL_ARMOR_CLOTH),
 		GET_SKILL_BASE(ch, SKILL_ARMOR_LIGHT), GET_SKILL_BASE(ch, SKILL_ARMOR_MEDIUM), GET_SKILL_BASE(ch, SKILL_ARMOR_HEAVY));
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
