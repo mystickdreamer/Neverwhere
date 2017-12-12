@@ -1402,9 +1402,7 @@ ACMD(do_score) {
 	} else {
 		send_to_char(ch, "@YNone@n\r\n");
 	}
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-
-	send_to_char(ch, "@rWeight@n: @y%dkg@n\r\n", GET_WEIGHT(ch));
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BAbility Scoresr-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 	send_to_char(ch, "@rStr@n: [@m%2d@n(@y%+d@n)] @rDex@n: [@m%2d@n(@y%+d@n)] @rHit Points@n : @m%d@n(@y%d@n)\r\n", GET_STR(ch), ability_mod_value(GET_STR(ch)), GET_DEX(ch), ability_mod_value(GET_DEX(ch)), GET_HIT(ch), GET_MAX_HIT(ch));
 	send_to_char(ch, "@rCon@n: [@m%2d@n(@y%+d@n)] @rInt@n: [@m%2d@n(@y%+d@n)] @rArmor Class@n: @B%d@n\r\n", GET_CON(ch), ability_mod_value(GET_CON(ch)), GET_INT(ch), ability_mod_value(GET_INT(ch)), compute_armor_class(ch, NULL));
 	send_to_char(ch, "@rWis@n: [@m%2d@n(@y%+d@n)] @rCha@n: [@m%2d@n(@y%+d@n)] @rBase Attack Bonus@n: @m%d@n(@y%+d@n)\r\n", GET_WIS(ch), ability_mod_value(GET_WIS(ch)), GET_CHA(ch), ability_mod_value(GET_CHA(ch)), GET_ACCURACY_BASE(ch), ability_mod_value(GET_STR(ch)));
