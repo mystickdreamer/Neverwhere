@@ -1374,11 +1374,11 @@ char *reduct_desc(struct damreduct_type *reduct) {
 }
 
 ACMD(do_skills) {
-	char name[MAX_INPUT_LENGTH];
+//	char name[MAX_INPUT_LENGTH];
 	//argument = one_argument(argument, skill);
 	//if (IS_NPC(ch)) 
 	//		return;
-	argument = one_argument(argument, name);
+/*	argument = one_argument(argument, name);
 	if (!*name) {
 		send_to_char(ch, "\r\n");
 		send_to_char(ch, "@cTo view skills@n:\r\n");
@@ -1388,7 +1388,7 @@ ACMD(do_skills) {
 	}
 
 	if (*name == "weapon") {
-
+*/
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BWeapons@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 		send_to_char(ch, "@r=-  @cSmall Edged@n:@Y%5d  @cSmall Blunt@n:@Y%5d @cShortBow@n:@Y%5d @cLight Crossbow@n:@Y%5d @cLight Thrown@n:@Y%5d @r-=\r\n",
 			GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_BLUNT),
@@ -1403,8 +1403,8 @@ ACMD(do_skills) {
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
 		return;
 
-	}
-	else if (*name == "armor") {
+//	}
+//	else if (*name == "armor") {
 
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BArmor@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 		send_to_char(ch, "@r=-  @cShield@n:@Y%5d  @cCloth Armor@n:@Y%5d @cLight Armor@n:@Y%5d @cMedium Armor@n:@Y%5d @cHeavy Armor@n:@Y%5d   @r-=\r\n",
@@ -1413,7 +1413,7 @@ ACMD(do_skills) {
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
 		return;
 
-	}
+//	}
 
 }
 
