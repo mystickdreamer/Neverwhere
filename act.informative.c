@@ -1401,7 +1401,7 @@ ACMD(do_skills) {
 			GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_BLUNT),
 			GET_SKILL_BASE(ch, SKILL_WEAPON_POLEARM), GET_SKILL_BASE(ch, SKILL_WEAPON_BACKSTAB));
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
-		return;
+//		return;
 
 //	}
 //	else if (*name == "armor") {
