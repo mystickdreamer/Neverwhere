@@ -1425,7 +1425,7 @@ ACMD(do_score) {
 			send_to_char(ch, "@rExperience Points@n : @m%d@n @R%s@n (@y%d @Muntil next level@n)\r\n", GET_EXP(ch), penstr, level_exp(GET_LEVEL(ch) + 1) - GET_EXP(ch));
 	 */
 	//if (ch->hit_breakdown[0] || ch->hit_breakdown[1]) {
-	if (ch->hit_breakdown[0]) {
+/*	if (ch->hit_breakdown[0]) {
 		send_to_char(ch, "@RBreakdown of your last attack@n:\r\n");
 		if (ch->hit_breakdown[0] && ch->hit_breakdown[0][0] && ch->dam_breakdown[0]) {
 			send_to_char(ch, "  @RPrimary attack@n: @Y%s.@n", ch->hit_breakdown[0]);
@@ -1454,7 +1454,7 @@ ACMD(do_score) {
 	if (ch->damreduct)
 		for (reduct = ch->damreduct; reduct; reduct = reduct->next)
 			send_to_char(ch, "@rDamage reduction@n: @g%s@n\r\n", reduct_desc(reduct));
-
+*/
 	/* Admin flag display */
 	if (GET_ADMLEVEL(ch)) {
 		send_to_char(ch, "@rAdmin Level@n: @y%d - %s@n\r\n", GET_ADMLEVEL(ch), admin_level_names[GET_ADMLEVEL(ch)]);
