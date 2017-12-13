@@ -1045,10 +1045,10 @@ static void look_at_target(struct char_data *ch, char *arg, int cmread) {
 					hidelooker = roll_resisted(ch, SKILL_PERCEPTION, found_char, SKILL_STEALTH);
 				if (hidelooker) {
 					look_at_char(found_char, ch);
-					if (CAN_SEE(found_char, ch)) {
+					if (CAN_SEE(found_char, ch)) 
 						act("$n looks at you.", TRUE, ch, 0, found_char, TO_VICT);
 						act("$n looks at $N.", TRUE, ch, 0, found_char, TO_NOTVICT);
-					}
+					
 				} else {
 					send_to_char(ch, "What are you trying to look at?");
 				} else
@@ -1060,8 +1060,9 @@ static void look_at_target(struct char_data *ch, char *arg, int cmread) {
 					act("$n looks at $N.", TRUE, ch, 0, found_char, TO_NOTVICT);
 				}
 			}
-			return;
 		}
+			return;
+		
 
 		/* Strip off "number." from 2.foo and friends. */
 		if (!(fnum = get_number(&arg))) {
