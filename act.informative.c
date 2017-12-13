@@ -1044,6 +1044,9 @@ static void look_at_target(struct char_data *ch, char *arg, int cmread) {
 			if (ch != found_char) {
 				if (AFF_FLAGGED(ch, AFF_HIDE))
 					hidelooker = roll_resisted(ch, SKILL_STEALTH, found_char, SKILL_PERCEPTION);
+				if (hidelooker){
+					return;
+				}
 				else
 					hidelooker = 0;
 				if (!hidelooker) {
