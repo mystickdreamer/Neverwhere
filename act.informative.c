@@ -442,7 +442,7 @@ void look_at_char(struct char_data *i, struct char_data *ch) {
 				show_obj_to_char(GET_EQ(i, j), ch, SHOW_OBJ_SHORT);
 			}
 	}
-	if (ch != i && (IS_ROGUE(ch) || GET_ADMLEVEL(ch))) {
+	if (ch != i && (GET_SKILL_BASE(ch, SKILL_PERCEPTION) > 20 || GET_ADMLEVEL(ch))) {
 		found = FALSE;
 		act("\r\nYou attempt to peek at $s inventory:", FALSE, i, 0, ch, TO_VICT);
 		for (tmp_obj = i->carrying; tmp_obj; tmp_obj = tmp_obj->next_content) {
