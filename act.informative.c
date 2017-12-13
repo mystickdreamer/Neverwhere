@@ -1055,7 +1055,9 @@ static void look_at_target(struct char_data *ch, char *arg, int cmread) {
 					return;
 				} else{
 					return;
+				
 				}
+			}
 
 
 					if (ch != found_char) {
