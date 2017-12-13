@@ -1426,7 +1426,7 @@ ACMD(do_skills) {
 		GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_BLUNT),
 		GET_SKILL_BASE(ch, SKILL_WEAPON_LONGBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW),
 		GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_THROWN));
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 	send_to_char(ch, "\r\n");
 	//		return;
 	//	else if (*name == "armor") {
@@ -1435,13 +1435,29 @@ ACMD(do_skills) {
 	send_to_char(ch, "@r=-  @cScholarship@n:@Y%5d  @cMusic@n:@Y%5d @cAppraise@n:@Y%5d@n                                              @r-=\r\n",
 		GET_SKILL_BASE(ch, SKILL_LORE_SCHOLARSHIP), GET_SKILL_BASE(ch, SKILL_LORE_MUSIC),
 		GET_SKILL_BASE(ch, SKILL_LORE_APPRAISE));
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
+	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 	send_to_char(ch, "\r\n");
 	//	return;
 	//	}
 //	if (*name == "weapon") {
 		
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BMagic@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+		send_to_char(ch, "@r=-  @cCasting@n:@Y%5d      @cFire@n:@Y%5d    @cAir@n:@Y%5d   @cEarth@n:@Y%5d     @cWater@n:@Y%5d   @cHexen@n:@Y%5d    @r-=\r\n",
+			GET_SKILL_BASE(ch, SKILL_MAGIC_CASTING), GET_SKILL_BASE(ch, SKILL_MAGIC_FIRE),
+			GET_SKILL_BASE(ch, SKILL_MAGIC_AIR), GET_SKILL_BASE(ch, SKILL_MAGIC_EARTH), GET_SKILL_BASE(ch, SKILL_MAGIC_WATER), 
+			GET_SKILL_BASE(ch, SKILL_MAGIC_HEXEN));
+		send_to_char(ch, "@r=-  @cWarding@n:@Y%5d     @cMusic@n:@Y%5d @cTravel@n:@Y%5d @cHealing@n:@Y%5d     @cDream@n:@Y%5d @cSeeking@n:@Y%5d    @r-=\r\n",
+			GET_SKILL_BASE(ch, SKILL_MAGIC_WARDING), GET_SKILL_BASE(ch, SKILL_MAGIC_MUSIC), GET_SKILL_BASE(ch, SKILL_MAGIC_TRAVEL),
+			GET_SKILL_BASE(ch, SKILL_MAGIC_HEALING), GET_SKILL_BASE(ch, SKILL_MAGIC_DREAM), GET_SKILL_BASE(ch, SKILL_MAGIC_SEEKING));
+		send_to_char(ch, "@r=-  @cThought@n:@Y%5d  @cCatalysm@n:@Y%5d  @cDeath@n:@Y%5d    @cVoid@n:@Y%5d  @cIllusion@n:@Y%5d                  @r-=\r\n",
+			GET_SKILL_BASE(ch, SKILL_MAGIC_THOUGHT), GET_SKILL_BASE(ch, SKILL_MAGIC_CATALYSM),
+			GET_SKILL_BASE(ch, SKILL_MAGIC_DEATH), GET_SKILL_BASE(ch, SKILL_MAGIC_VOID), GET_SKILL_BASE(ch, SKILL_MAGIC_ILLUSION));
+		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
+		send_to_char(ch, "\r\n");
+		//		return;
+		//	if (*name == "weapon") {
+		
+		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BCraft@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 		send_to_char(ch, "@r=-  @cCasting@n:@Y%5d      @cFire@n:@Y%5d    @cAir@n:@Y%5d   @cEarth@n:@Y%5d     @cWater@n:@Y%5d   @cHexen@n:@Y%5d    @r-=\r\n",
 			GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_BLUNT),
 			GET_SKILL_BASE(ch, SKILL_WEAPON_SHORTBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN), 
@@ -1456,6 +1472,7 @@ ACMD(do_skills) {
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
 		send_to_char(ch, "\r\n");
 		//		return;
+		
 
 	}
 
