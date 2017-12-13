@@ -1538,6 +1538,8 @@ void mag_assign_spells(void) {
 	skillo(SKILL_WEAPON_HEAVY_BLUNT, "heavy blunt", SKFLAG_STRMOD);
 	skillo(SKILL_WEAPON_SHORTBOW, "shortbow", SKFLAG_DEXMOD);
 	skillo(SKILL_WEAPON_LONGBOW, "longbow", SKFLAG_DEXMOD);
+	skillo(SKILL_WEAPON_LIGHT_CROSSBOW, "light crossbow", SKFLAG_DEXMOD);
+	skillo(SKILL_WEAPON_HEAVY_CROSSBOW, "heavy crossbow", SKFLAG_DEXMOD);
 	skillo(SKILL_WEAPON_POLEARM, "polearm", SKFLAG_STRMOD);
 	skillo(SKILL_WEAPON_LIGHT_THROWN, "light thrown", SKFLAG_DEXMOD);
 	skillo(SKILL_WEAPON_HEAVY_THROWN, "heavy thrown", SKFLAG_DEXMOD);
