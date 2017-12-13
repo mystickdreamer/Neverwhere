@@ -1060,16 +1060,16 @@ static void look_at_target(struct char_data *ch, char *arg, int cmread) {
 			}
 
 
-					if (ch != found_char) {
+					//if (ch != found_char) {
 					//if (AFF_FLAGGED(ch, AFF_HIDE))
 					//	hidelooker = roll_resisted(ch, GET_SKILL_BASE(ch, SKILL_PERCEPTION), found_char, GET_SKILL_BASE(found_char, SKILL_STEALTH));
-					else
-						hidelooker = 0;
-					if (!hidelooker) {
-						if (CAN_SEE(found_char, ch))
-							act("$n looks at you.", TRUE, ch, 0, found_char, TO_VICT);
-						act("$n looks at $N.", TRUE, ch, 0, found_char, TO_NOTVICT);
-					}
+					//else
+					//	hidelooker = 0;
+					//if (!hidelooker) {
+					//	if (CAN_SEE(found_char, ch))
+					//		act("$n looks at you.", TRUE, ch, 0, found_char, TO_VICT);
+					//	act("$n looks at $N.", TRUE, ch, 0, found_char, TO_NOTVICT);
+					//}
 				}
 				return;
 			}
