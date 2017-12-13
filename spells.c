@@ -608,7 +608,7 @@ ASPELL(art_abundant_step)
 
 int roll_skill(const struct char_data *ch, int snum) {
 	int roll, skval, i;
-	skval = GET_SKILL(ch, snum);
+	skval = GET_SKILL_BASE(ch, snum);
 	if (snum < 0 || snum >= SKILL_TABLE_SIZE) {
 		return 0;
 	}
