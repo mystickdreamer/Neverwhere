@@ -448,7 +448,11 @@ void look_at_char(struct char_data *i, struct char_data *ch) {
 		act("\r\nYou attempt to peek at $s inventory:", FALSE, i, 0, ch, TO_VICT);
 		for (tmp_obj = i->carrying; tmp_obj; tmp_obj = tmp_obj->next_content) {
 			if (CAN_SEE_OBJ(ch, tmp_obj) &&
-				(ADM_FLAGGED(ch, ADM_SEEINV) || (seeinv == 1)) {
+				(ADM_FLAGGED(ch, ADM_SEEINV))) {
+				show_obj_to_char(tmp_obj, ch, SHOW_OBJ_SHORT);
+				found = TRUE;
+			}
+			else if (seeinv){
 				show_obj_to_char(tmp_obj, ch, SHOW_OBJ_SHORT);
 				found = TRUE;
 			}
