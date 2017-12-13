@@ -1040,17 +1040,13 @@ static void look_at_target(struct char_data *ch, char *arg, int cmread) {
 
 		/* Is the target a character? */
 		if (found_char != NULL) {
-			
+			look_at_char(found_char, ch);
 			if (ch != found_char) {
 				if (AFF_FLAGGED(ch, AFF_HIDE))
-					hidelooker = roll_resisted(ch, SKILL_PERCEPTION, found_char, SKILL_STEALTH);
-				if (hidelooker){
-					return;
-				}
+					hidelooker = roll_resisted(ch, SKILL_STEALTH, found_char, SKILL_PERCEPTION);
 				else
 					hidelooker = 0;
 				if (!hidelooker) {
-					look_at_char(found_char, ch);
 					if (CAN_SEE(found_char, ch))
 						act("$n looks at you.", TRUE, ch, 0, found_char, TO_VICT);
 					act("$n looks at $N.", TRUE, ch, 0, found_char, TO_NOTVICT);
