@@ -1446,8 +1446,8 @@ ACMD(do_skills) {
 			GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_BLUNT),
 			GET_SKILL_BASE(ch, SKILL_WEAPON_SHORTBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN), 
 			GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN));
-		send_to_char(ch, "@r=- @cWarding@n:@Y%5d @cMusic@n:@Y%5d  @cTravel@n:@Y%5d @cHealing@n:@Y%5d @cDream@n:@Y%5d @r-=\r\n",
-			GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_BLUNT),
+		send_to_char(ch, "@r=- @cWarding@n:@Y%5d @cMusic@n:@Y%5d  @cTravel@n:@Y%5d @cHealing@n:@Y%5d @cDream@n:@Y%5d @cSeeking@n:@Y%5d@r-=\r\n",
+			GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_BLUNT), GET_SKILL_BASE(ch, SKILL_WEAPON_SHORTBOW),
 			GET_SKILL_BASE(ch, SKILL_WEAPON_LONGBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW),
 			GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_THROWN));
 		send_to_char(ch, "@r=-  @cHeavy Edged@n:@Y%5d  @cHeavy Blunt@n:@Y%5d  @cPolearm@n:@Y%5d       @cBackstab@n:@Y%5d                    @r-=\r\n",
