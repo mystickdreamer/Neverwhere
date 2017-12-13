@@ -1456,13 +1456,13 @@ ACMD(do_skills) {
 		//	if (*name == "weapon") {
 		
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BCraft@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-		send_to_char(ch, "@r=-  @cMining@n:@Y%5d   @cForage@n:@Y%5d   @cForestry@n:@Y%5d     @cCooking@n:@Y%5d @cBlacksmithing@n:@Y%5d     @r-=\r\n",
+		send_to_char(ch, "@r=-  @cMining@n:@Y%5d   @cForage@n:@Y%5d   @cForestry@n:@Y%5d     @cCooking@n:@Y%5d @cBlacksmithing@n:@Y%5d        @r-=\r\n",
 			GET_SKILL_BASE(ch, SKILL_CRAFT_MINING), GET_SKILL_BASE(ch, SKILL_CRAFT_FORAGE),
 			GET_SKILL_BASE(ch, SKILL_CRAFT_FORESTRY), GET_SKILL_BASE(ch, SKILL_CRAFT_COOKING), GET_SKILL_BASE(ch, SKILL_CRAFT_BLACKSMITHING));
-		send_to_char(ch, "@r=-  @cTailor@n:@Y%5d  @cTanning@n:@Y%5d @cJewelcraft@n:@Y%5d @cWoodWorking@n:@Y%5d        @cTinker@n:@Y%5d     @r-=\r\n",
+		send_to_char(ch, "@r=-  @cTailor@n:@Y%5d  @cTanning@n:@Y%5d @cJewelcraft@n:@Y%5d @cWoodWorking@n:@Y%5d        @cTinker@n:@Y%5d        @r-=\r\n",
 			GET_SKILL_BASE(ch, SKILL_CRAFT_TAILOR), GET_SKILL_BASE(ch, SKILL_CRAFT_TANNING), GET_SKILL_BASE(ch, SKILL_CRAFT_JEWELCRAFT),
 			GET_SKILL_BASE(ch, SKILL_CRAFT_WOODWORKING), GET_SKILL_BASE(ch, SKILL_CRAFT_TINKER));
-		send_to_char(ch, "@r=- @cAlchemy@n:@Y%5d  @cEnchant@n:@Y%5d  @cRunecraft@n:@Y%5d@n     @cForging@n:@Y%5d                  @r-=\r\n",
+		send_to_char(ch, "@r=- @cAlchemy@n:@Y%5d  @cEnchant@n:@Y%5d  @cRunecraft@n:@Y%5d@n     @cForging@n:@Y%5d                           @r-=\r\n",
 			GET_SKILL_BASE(ch, SKILL_CRAFT_ALCHEMY), GET_SKILL_BASE(ch, SKILL_CRAFT_ENCHANT),
 			GET_SKILL_BASE(ch, SKILL_CRAFT_RUNECRAFT), GET_SKILL_BASE(ch, SKILL_CRAFT_FORGING));
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
