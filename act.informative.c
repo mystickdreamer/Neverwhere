@@ -1442,17 +1442,17 @@ ACMD(do_skills) {
 //	if (*name == "weapon") {
 		
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BMagic@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-		send_to_char(ch, "@r=-  @cCasting@n:@Y%5d      @cFire@n:@Y%5d    @cAir@n:@Y%5d   @cEarth@n:@Y%5d @cWater@n:@Y%5d @cHexen@n:@Y%5d @cIllusion@n:@Y%5d@r-=\r\n",
+		send_to_char(ch, "@r=-  @cCasting@n:@Y%5d      @cFire@n:@Y%5d    @cAir@n:@Y%5d   @cEarth@n:@Y%5d @cWater@n:@Y%5d @cHexen@n:@Y%5d @r-=\r\n",
 			GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_BLUNT),
 			GET_SKILL_BASE(ch, SKILL_WEAPON_SHORTBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN), 
-			GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN));
+			GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN));
 		send_to_char(ch, "@r=-  @cWarding@n:@Y%5d     @cMusic@n:@Y%5d @cTravel@n:@Y%5d @cHealing@n:@Y%5d @cDream@n:@Y%5d @cSeeking@n:@Y%5d@r-=\r\n",
 			GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_BLUNT), GET_SKILL_BASE(ch, SKILL_WEAPON_SHORTBOW),
 			GET_SKILL_BASE(ch, SKILL_WEAPON_LONGBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW),
 			GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_THROWN));
-		send_to_char(ch, "@r=-  @cThought@n:@Y%5d  @cCatalysm@n:@Y%5d  @cDeath@n:@Y%5d    @cVoid@n:@Y%5d                    @r-=\r\n",
+		send_to_char(ch, "@r=-  @cThought@n:@Y%5d  @cCatalysm@n:@Y%5d  @cDeath@n:@Y%5d    @cVoid@n:@Y%5d  @cIllusion@n:@Y%5d                  @r-=\r\n",
 			GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_BLUNT),
-			GET_SKILL_BASE(ch, SKILL_WEAPON_POLEARM), GET_SKILL_BASE(ch, SKILL_WEAPON_BACKSTAB));
+			GET_SKILL_BASE(ch, SKILL_WEAPON_POLEARM), GET_SKILL_BASE(ch, SKILL_WEAPON_BACKSTAB), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN));
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
 		send_to_char(ch, "\r\n");
 		//		return;
