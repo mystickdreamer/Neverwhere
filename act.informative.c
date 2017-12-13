@@ -1419,8 +1419,8 @@ ACMD(do_skills) {
 	//			if (*name == "weapon") {
 
 	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BSkills@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-	send_to_char(ch, "@r=-    @cDodge@n:@Y%5d   @cSwim@n:@Y%5d @cPerception@n:@Y%5d @cTrack@n:@Y%5d  @cStealth@n:@Y%5d                     @r-=\r\n",
-		GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_BLUNT),
+	send_to_char(ch, "@r=-    @cDodge@n:@Y%5d   @cSwim@n:@Y%5d @cPerception@n:@Y%5d @cTrack@n:@Y%5d  @cStealth@n:@Y%5d @cHandle Animal@n:@Y%5d        @r-=\r\n",
+		GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_BLUNT), GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_BLUNT),
 		GET_SKILL_BASE(ch, SKILL_WEAPON_SHORTBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN));
 	send_to_char(ch, "@r=- @cLockpick@n:@Y%5d @cDisarm@n:@Y%5d      @cSteal@n:@Y%5d  @cSkin@n:@Y%5d @cFirstAid@n:@Y%5d                     @r-=\r\n",
 		GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_BLUNT),
@@ -1458,15 +1458,15 @@ ACMD(do_skills) {
 		//	if (*name == "weapon") {
 		
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BCraft@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-		send_to_char(ch, "@r=-  @cMining@n:@Y%5d      @cForage@n:@Y%5d    @cForestry@n:@Y%5d   @cCooking@n:@Y%5d     @cBlacksmithing@n:@Y%5d   @cTailor@n:@Y%5d    @r-=\r\n",
+		send_to_char(ch, "@r=-  @cMining@n:@Y%5d      @cForage@n:@Y%5d    @cForestry@n:@Y%5d   @cCooking@n:@Y%5d     @cBlacksmithing@n:@Y%5d     @r-=\r\n",
 			GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_BLUNT),
 			GET_SKILL_BASE(ch, SKILL_WEAPON_SHORTBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN), 
 			GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN));
-		send_to_char(ch, "@r=-  @cWarding@n:@Y%5d     @cMusic@n:@Y%5d @cTravel@n:@Y%5d @cHealing@n:@Y%5d     @cDream@n:@Y%5d @cSeeking@n:@Y%5d    @r-=\r\n",
+		send_to_char(ch, "@r=-  @cTailor@n:@Y%5d     @cTanning@n:@Y%5d @cJewelcraft@n:@Y%5d @cWoodWorking@n:@Y%5d     @cTinker@n:@Y%5d @cForging@n:@Y%5d    @r-=\r\n",
 			GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_BLUNT), GET_SKILL_BASE(ch, SKILL_WEAPON_SHORTBOW),
 			GET_SKILL_BASE(ch, SKILL_WEAPON_LONGBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW),
 			GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_THROWN));
-		send_to_char(ch, "@r=-  @cThought@n:@Y%5d  @cCatalysm@n:@Y%5d  @cDeath@n:@Y%5d    @cVoid@n:@Y%5d  @cIllusion@n:@Y%5d                  @r-=\r\n",
+		send_to_char(ch, "@r=-  @cAlchemy@n:@Y%5d  @cEnchant@n:@Y%5d  @cRunecraft@n:@Y%5d@n:@Y%5d                  @r-=\r\n",
 			GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_BLUNT),
 			GET_SKILL_BASE(ch, SKILL_WEAPON_POLEARM), GET_SKILL_BASE(ch, SKILL_WEAPON_BACKSTAB), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN));
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
