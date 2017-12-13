@@ -1439,8 +1439,8 @@ ACMD(do_skills) {
 	send_to_char(ch, "\r\n");
 	//	return;
 	//	}
-	if (*name == "weapon") {
-		*/
+//	if (*name == "weapon") {
+		
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BMagic@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 		send_to_char(ch, "@r=-  @cCasting@n:@Y%5d  @cFire@n:@Y%5d @cAir@n:@Y%5d @cEarth@n:@Y%5d @cWater@n:@Y%5d @r-=\r\n",
 			GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_BLUNT),
