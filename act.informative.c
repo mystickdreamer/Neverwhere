@@ -1049,7 +1049,7 @@ static void look_at_target(struct char_data *ch, char *arg, int cmread) {
 						act("$n looks at you.", TRUE, ch, 0, found_char, TO_VICT);
 					act("$n looks at $N.", TRUE, ch, 0, found_char, TO_NOTVICT);
 				}
-			} else {
+			 else {
 				send_to_char(ch, "What are you trying to look at?");
 			} else
 				hidelooker = 0;
@@ -1059,7 +1059,7 @@ static void look_at_target(struct char_data *ch, char *arg, int cmread) {
 					act("$n looks at you.", TRUE, ch, 0, found_char, TO_VICT);
 				act("$n looks at $N.", TRUE, ch, 0, found_char, TO_NOTVICT);
 			}
-		//}
+		}
 		return;
 	}
 
