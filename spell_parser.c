@@ -1575,7 +1575,7 @@ void mag_assign_spells(void) {
 	skillo(SKILL_MAGIC_WATER, "water", SKFLAG_INTMOD);
 	skillo(SKILL_MAGIC_HEXEN, "hexen", SKFLAG_INTMOD);
 	skillo(SKILL_MAGIC_ILLUSION, "illusion", SKFLAG_INTMOD);
-	skillo(SKILL_MAGIC_MUSIC, "music", SKFLAG_INTMOD);
+	skillo(SKILL_MAGIC_MUSIC, "Siren Song", SKFLAG_INTMOD);
 	skillo(SKILL_MAGIC_TRAVEL, "travel", SKFLAG_INTMOD);
 	skillo(SKILL_MAGIC_HEALING, "healing", SKFLAG_INTMOD);
 	skillo(SKILL_MAGIC_DREAM, "dream", SKFLAG_INTMOD);
