@@ -1556,10 +1556,10 @@ void mag_assign_spells(void) {
 	skillo(SKILL_SWIM, "swim", SKFLAG_DEXMOD);
 	skillo(SKILL_PERCEPTION, "perception", SKFLAG_WISMOD);
 	skillo(SKILL_TRACK, "track", SKFLAG_WISMOD);
+	skillo(SKILL_STEAL, "steal", SKFLAG_DEXMOD);
 	skillo(SKILL_STEALTH, "stealth", SKFLAG_DEXMOD);
 	skillo(SKILL_LOCKPICK, "lockpick", SKFLAG_DEXMOD);
 	skillo(SKILL_DISARM, "disarm", SKFLAG_DEXMOD);
-	skillo(SKILL_STEAL, "steal", SKFLAG_DEXMOD);
 	skillo(SKILL_SKIN, "skin", SKFLAG_DEXMOD);
 	skillo(SKILL_FIRSTAID, "firstaid", SKFLAG_WISMOD);
 	
