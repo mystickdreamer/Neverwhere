@@ -390,6 +390,9 @@ void look_at_char(struct char_data *i, struct char_data *ch) {
 	int j, found;
 	struct obj_data *tmp_obj;
 
+	if (!CAN_SEE(ch, i))
+		return;
+	
 	if (!ch->desc)
 		return;
 
