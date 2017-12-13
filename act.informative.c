@@ -1079,7 +1079,7 @@ static void look_at_target(struct char_data *ch, char *arg, int cmread) {
 //			}
 //			}
 //			return;
-		}
+//		}
 
 		/* Strip off "number." from 2.foo and friends. */
 		if (!(fnum = get_number(&arg))) {
