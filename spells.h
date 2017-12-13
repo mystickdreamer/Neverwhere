@@ -219,10 +219,10 @@
 #define SKILL_SWIM				421
 #define SKILL_PERCEPTION			422
 #define SKILL_TRACK				423
-#define SKILL_STEALTH				424
+#define SKILL_STEAL				424
 #define SKILL_LOCKPICK				425
 #define SKILL_DISARM				426
-#define SKILL_STEAL				427
+#define SKILL_STEALTH				427
 #define SKILL_SKIN				428
 #define SKILL_FIRSTAID				429
 #define SKILL_LORE_SCHOLARSHIP			430
