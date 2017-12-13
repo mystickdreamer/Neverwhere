@@ -257,7 +257,7 @@ void show_obj_to_char(struct obj_data *obj, struct char_data *ch, int mode) {
 int show_obj_modifiers(struct obj_data *obj, struct char_data *ch) {
 	int found = FALSE;
 
-	if (OBJ_FLAGGED(obj, ITEM_INVISIBLE) && roll_skill(ch, SKILL_MAGIC_SEEKING) > 1) {
+	if (OBJ_FLAGGED(obj, ITEM_INVISIBLE)) {
 		send_to_char(ch, " (invisible)");
 		found++;
 	}
