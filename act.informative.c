@@ -453,8 +453,10 @@ void look_at_char(struct char_data *i, struct char_data *ch) {
 				found = TRUE;
 			}
 			else if (seeinv){
+				if(CAN_SEE_OBJ(ch, tmp_obj)){
 				show_obj_to_char(tmp_obj, ch, SHOW_OBJ_SHORT);
 				found = TRUE;
+				}
 			}
 		}
 
