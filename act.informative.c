@@ -392,7 +392,7 @@ void look_at_char(struct char_data *i, struct char_data *ch) {
 
 	if (!CAN_SEE(ch, i))
 		return;
-	
+
 	if (!ch->desc)
 		return;
 
@@ -1043,411 +1043,423 @@ static void look_at_target(struct char_data *ch, char *arg, int cmread) {
 
 		/* Is the target a character? */
 		if (found_char != NULL) {
-			look_at_char(found_char, ch);
-			if (ch != found_char) {
-				if (AFF_FLAGGED(ch, AFF_HIDE)){
-					hidelooker = roll_resisted(ch, GET_SKILL_BASE(ch, SKILL_PERCEPTION), found_char, GET_SKILL_BASE(found_char, SKILL_STEALTH));
-				act("%d just a check",TRUE, hidelooker, 0, ch, TO_VICT );
-				}
-				else
-					hidelooker = 0;
-				if (!hidelooker) {
-					if (CAN_SEE(found_char, ch))
-						act("$n looks at you.", TRUE, ch, 0, found_char, TO_VICT);
+			if (AFF_FLAGGED(found_char, AFF_HIDE))
+				hidelooker = roll_resisted(ch, GET_SKILL_BASE(ch, SKILL_PERCEPTION), found_char, GET_SKILL_BASE(found_char, SKILL_STEALTH));
+			if (hidelooker) {
+
+				look_at_char(found_char, ch);
+				if (CAN_SEE(found_char, ch)) {
+					act("$n looks at you.", TRUE, ch, 0, found_char, TO_VICT);
 					act("$n looks at $N.", TRUE, ch, 0, found_char, TO_NOTVICT);
+				} else {
+					return;
+				} else{
+					return;
 				}
-			}
-			return;
-		}
 
-		/* Strip off "number." from 2.foo and friends. */
-		if (!(fnum = get_number(&arg))) {
-			send_to_char(ch, "Look at what?\r\n");
-			return;
-		}
 
-		/* Does the argument match an extra desc in the room? */
-		if ((desc = find_exdesc(arg, world[IN_ROOM(ch)].ex_description)) != NULL && ++i == fnum) {
-			page_string(ch->desc, desc, FALSE);
-			return;
-		}
-
-		/* Does the argument match an extra desc in the char's equipment? */
-		for (j = 0; j < NUM_WEARS && !found; j++)
-			if (GET_EQ(ch, j) && CAN_SEE_OBJ(ch, GET_EQ(ch, j)))
-				if ((desc = find_exdesc(arg, GET_EQ(ch, j)->ex_description)) != NULL && ++i == fnum) {
-					send_to_char(ch, "%s", desc);
-					if (isname(arg, GET_EQ(ch, j)->name)) {
-						if (GET_OBJ_TYPE(GET_EQ(ch, j)) == ITEM_WEAPON) {
-							send_to_char(ch, "The weapon type of %s is a %s.\r\n",
-								GET_OBJ_SHORT(GET_EQ(ch, j)),
-								weapon_type[(int) GET_OBJ_VAL(GET_EQ(ch, j), VAL_WEAPON_SKILL)]);
-						}
-						if (GET_OBJ_TYPE(GET_EQ(ch, j)) == ITEM_SPELLBOOK) {
-							display_spells(ch, GET_EQ(ch, j));
-						}
-						if (GET_OBJ_TYPE(GET_EQ(ch, j)) == ITEM_SCROLL) {
-							display_scroll(ch, GET_EQ(ch, j));
-						}
-						diag_obj_to_char(GET_EQ(ch, j), ch);
-						send_to_char(ch, "It appears to be made of %s.\r\n", material_names[GET_OBJ_MATERIAL(GET_EQ(ch, j))]);
+					if (ch != found_char) {
+					//if (AFF_FLAGGED(ch, AFF_HIDE))
+					//	hidelooker = roll_resisted(ch, GET_SKILL_BASE(ch, SKILL_PERCEPTION), found_char, GET_SKILL_BASE(found_char, SKILL_STEALTH));
+					else
+						hidelooker = 0;
+					if (!hidelooker) {
+						if (CAN_SEE(found_char, ch))
+							act("$n looks at you.", TRUE, ch, 0, found_char, TO_VICT);
+						act("$n looks at $N.", TRUE, ch, 0, found_char, TO_NOTVICT);
 					}
-					found = TRUE;
 				}
+				return;
+			}
 
-		/* Does the argument match an extra desc in the char's inventory? */
-		for (obj = ch->carrying; obj && !found; obj = obj->next_content) {
-			if (CAN_SEE_OBJ(ch, obj))
-				if ((desc = find_exdesc(arg, obj->ex_description)) != NULL && ++i == fnum) {
-					if (GET_OBJ_TYPE(obj) == ITEM_BOARD) {
-						show_board(GET_OBJ_VNUM(obj), ch);
-					} else {
+			/* Strip off "number." from 2.foo and friends. */
+			if (!(fnum = get_number(&arg))) {
+				send_to_char(ch, "Look at what?\r\n");
+				return;
+			}
+
+			/* Does the argument match an extra desc in the room? */
+			if ((desc = find_exdesc(arg, world[IN_ROOM(ch)].ex_description)) != NULL && ++i == fnum) {
+				page_string(ch->desc, desc, FALSE);
+				return;
+			}
+
+			/* Does the argument match an extra desc in the char's equipment? */
+			for (j = 0; j < NUM_WEARS && !found; j++)
+				if (GET_EQ(ch, j) && CAN_SEE_OBJ(ch, GET_EQ(ch, j)))
+					if ((desc = find_exdesc(arg, GET_EQ(ch, j)->ex_description)) != NULL && ++i == fnum) {
 						send_to_char(ch, "%s", desc);
-						if (isname(arg, obj->name)) {
-							if (GET_OBJ_TYPE(obj) == ITEM_WEAPON) {
+						if (isname(arg, GET_EQ(ch, j)->name)) {
+							if (GET_OBJ_TYPE(GET_EQ(ch, j)) == ITEM_WEAPON) {
 								send_to_char(ch, "The weapon type of %s is a %s.\r\n",
-									GET_OBJ_SHORT(obj), weapon_type[(int) GET_OBJ_VAL(obj,
-									VAL_WEAPON_SKILL)]);
+									GET_OBJ_SHORT(GET_EQ(ch, j)),
+									weapon_type[(int) GET_OBJ_VAL(GET_EQ(ch, j), VAL_WEAPON_SKILL)]);
 							}
-							if (GET_OBJ_TYPE(obj) == ITEM_SPELLBOOK) {
-								display_spells(ch, obj);
+							if (GET_OBJ_TYPE(GET_EQ(ch, j)) == ITEM_SPELLBOOK) {
+								display_spells(ch, GET_EQ(ch, j));
 							}
-							if (GET_OBJ_TYPE(obj) == ITEM_SCROLL) {
-								display_scroll(ch, obj);
+							if (GET_OBJ_TYPE(GET_EQ(ch, j)) == ITEM_SCROLL) {
+								display_scroll(ch, GET_EQ(ch, j));
+							}
+							diag_obj_to_char(GET_EQ(ch, j), ch);
+							send_to_char(ch, "It appears to be made of %s.\r\n", material_names[GET_OBJ_MATERIAL(GET_EQ(ch, j))]);
+						}
+						found = TRUE;
+					}
+
+			/* Does the argument match an extra desc in the char's inventory? */
+			for (obj = ch->carrying; obj && !found; obj = obj->next_content) {
+				if (CAN_SEE_OBJ(ch, obj))
+					if ((desc = find_exdesc(arg, obj->ex_description)) != NULL && ++i == fnum) {
+						if (GET_OBJ_TYPE(obj) == ITEM_BOARD) {
+							show_board(GET_OBJ_VNUM(obj), ch);
+						} else {
+							send_to_char(ch, "%s", desc);
+							if (isname(arg, obj->name)) {
+								if (GET_OBJ_TYPE(obj) == ITEM_WEAPON) {
+									send_to_char(ch, "The weapon type of %s is a %s.\r\n",
+										GET_OBJ_SHORT(obj), weapon_type[(int) GET_OBJ_VAL(obj,
+										VAL_WEAPON_SKILL)]);
+								}
+								if (GET_OBJ_TYPE(obj) == ITEM_SPELLBOOK) {
+									display_spells(ch, obj);
+								}
+								if (GET_OBJ_TYPE(obj) == ITEM_SCROLL) {
+									display_scroll(ch, obj);
+								}
+								diag_obj_to_char(obj, ch);
+								send_to_char(ch, "It appears to be made of %s.\r\n", material_names[GET_OBJ_MATERIAL(obj)]);
+							}
+						}
+						found = TRUE;
+					}
+			}
+
+			/* Does the argument match an extra desc of an object in the room? */
+			for (obj = world[IN_ROOM(ch)].contents; obj && !found; obj = obj->next_content)
+				if (CAN_SEE_OBJ(ch, obj))
+					if ((desc = find_exdesc(arg, obj->ex_description)) != NULL && ++i == fnum) {
+						if (GET_OBJ_TYPE(obj) == ITEM_BOARD) {
+							show_board(GET_OBJ_VNUM(obj), ch);
+						} else {
+							send_to_char(ch, "%s", desc);
+							if (GET_OBJ_TYPE(obj) == ITEM_WEAPON) {
+								send_to_char(ch, "The weapon type of %s is a %s.\r\n", GET_OBJ_SHORT(obj), weapon_type[(int) GET_OBJ_VAL(obj, VAL_WEAPON_SKILL)]);
 							}
 							diag_obj_to_char(obj, ch);
 							send_to_char(ch, "It appears to be made of %s.\r\n", material_names[GET_OBJ_MATERIAL(obj)]);
 						}
+						found = TRUE;
 					}
-					found = TRUE;
+
+			/* If an object was found back in generic_find */
+			if (bits) {
+				if (!found)
+					show_obj_to_char(found_obj, ch, SHOW_OBJ_ACTION);
+				else {
+					show_obj_modifiers(found_obj, ch);
+					send_to_char(ch, "\r\n");
 				}
+			} else if (!found)
+				send_to_char(ch, "You do not see that here.\r\n");
 		}
-
-		/* Does the argument match an extra desc of an object in the room? */
-		for (obj = world[IN_ROOM(ch)].contents; obj && !found; obj = obj->next_content)
-			if (CAN_SEE_OBJ(ch, obj))
-				if ((desc = find_exdesc(arg, obj->ex_description)) != NULL && ++i == fnum) {
-					if (GET_OBJ_TYPE(obj) == ITEM_BOARD) {
-						show_board(GET_OBJ_VNUM(obj), ch);
-					} else {
-						send_to_char(ch, "%s", desc);
-						if (GET_OBJ_TYPE(obj) == ITEM_WEAPON) {
-							send_to_char(ch, "The weapon type of %s is a %s.\r\n", GET_OBJ_SHORT(obj), weapon_type[(int) GET_OBJ_VAL(obj, VAL_WEAPON_SKILL)]);
-						}
-						diag_obj_to_char(obj, ch);
-						send_to_char(ch, "It appears to be made of %s.\r\n", material_names[GET_OBJ_MATERIAL(obj)]);
-					}
-					found = TRUE;
-				}
-
-		/* If an object was found back in generic_find */
-		if (bits) {
-			if (!found)
-				show_obj_to_char(found_obj, ch, SHOW_OBJ_ACTION);
-			else {
-				show_obj_modifiers(found_obj, ch);
-				send_to_char(ch, "\r\n");
-			}
-		} else if (!found)
-			send_to_char(ch, "You do not see that here.\r\n");
 	}
-}
 
-void look_out_window(struct char_data *ch, char *arg) {
-	struct obj_data *i, *viewport = NULL, *vehicle = NULL;
-	struct char_data *dummy = NULL;
-	room_rnum target_room = NOWHERE;
-	int bits, door;
+	void look_out_window(struct char_data *ch, char *arg) {
+		struct obj_data *i, *viewport = NULL, *vehicle = NULL;
+		struct char_data *dummy = NULL;
+		room_rnum target_room = NOWHERE;
+		int bits, door;
 
-	/* First, lets find something to look out of or through. */
-	if (*arg) {
-		/* Find this object and see if it is a window */
-		if (!(bits = generic_find(arg,
-			FIND_OBJ_ROOM | FIND_OBJ_INV | FIND_OBJ_EQUIP,
-			ch, &dummy, &viewport))) {
-			send_to_char(ch, "You don't see that here.\r\n");
-			return;
-		} else if (GET_OBJ_TYPE(viewport) != ITEM_WINDOW) {
-			send_to_char(ch, "You can't look out that!\r\n");
-			return;
-		}
-	} else if (OUTSIDE(ch)) {
-		/* yeah, sure stupid */
-		send_to_char(ch, "But you are already outside.\r\n");
-		return;
-	} else {
-		/* Look for any old window in the room */
-		for (i = world[IN_ROOM(ch)].contents; i; i = i->next_content)
-			if ((GET_OBJ_TYPE(i) == ITEM_WINDOW) &&
-				isname("window", i->name)) {
-				viewport = i;
-				continue;
+		/* First, lets find something to look out of or through. */
+		if (*arg) {
+			/* Find this object and see if it is a window */
+			if (!(bits = generic_find(arg,
+				FIND_OBJ_ROOM | FIND_OBJ_INV | FIND_OBJ_EQUIP,
+				ch, &dummy, &viewport))) {
+				send_to_char(ch, "You don't see that here.\r\n");
+				return;
+			} else if (GET_OBJ_TYPE(viewport) != ITEM_WINDOW) {
+				send_to_char(ch, "You can't look out that!\r\n");
+				return;
 			}
-	}
-	if (!viewport) {
-		/* Nothing suitable to look through */
-		send_to_char(ch, "You don't seem to be able to see outside.\r\n");
-	} else if (OBJVAL_FLAGGED(viewport, CONT_CLOSEABLE) &&
-		OBJVAL_FLAGGED(viewport, CONT_CLOSED)) {
-		/* The window is closed */
-		send_to_char(ch, "It is closed.\r\n");
-	} else {
-		if (GET_OBJ_VAL(viewport, VAL_WINDOW_VEHICLE_VNUM) < 0) {
-			/* We are looking out of the room */
-			if (GET_OBJ_VAL(viewport, VAL_WINDOW_UNUSED4) < 0) {
-				/* Look for the default "outside" room */
-				for (door = 0; door < NUM_OF_DIRS; door++)
-					if (EXIT(ch, door))
-						if (EXIT(ch, door)->to_room != NOWHERE)
-							if (!ROOM_FLAGGED(EXIT(ch, door)->to_room, ROOM_INDOORS)) {
-								target_room = EXIT(ch, door)->to_room;
-								continue;
-							}
-			} else {
-				target_room = real_room(GET_OBJ_VAL(viewport, VAL_WINDOW_UNUSED4));
-			}
+		} else if (OUTSIDE(ch)) {
+			/* yeah, sure stupid */
+			send_to_char(ch, "But you are already outside.\r\n");
+			return;
 		} else {
-			/* We are looking out of a vehicle */
-			if ((vehicle = find_vehicle_by_vnum(GET_OBJ_VAL(viewport, VAL_WINDOW_VEHICLE_VNUM))))
-				target_room = IN_ROOM(vehicle);
+			/* Look for any old window in the room */
+			for (i = world[IN_ROOM(ch)].contents; i; i = i->next_content)
+				if ((GET_OBJ_TYPE(i) == ITEM_WINDOW) &&
+					isname("window", i->name)) {
+					viewport = i;
+					continue;
+				}
 		}
-		if (target_room == NOWHERE) {
+		if (!viewport) {
+			/* Nothing suitable to look through */
 			send_to_char(ch, "You don't seem to be able to see outside.\r\n");
+		} else if (OBJVAL_FLAGGED(viewport, CONT_CLOSEABLE) &&
+			OBJVAL_FLAGGED(viewport, CONT_CLOSED)) {
+			/* The window is closed */
+			send_to_char(ch, "It is closed.\r\n");
 		} else {
-			if (viewport->action_description)
-				act(viewport->action_description, TRUE, ch, viewport, 0, TO_CHAR);
-			else
-				send_to_char(ch, "You look outside and see:\r\n");
-			look_at_room(target_room, ch, 0);
+			if (GET_OBJ_VAL(viewport, VAL_WINDOW_VEHICLE_VNUM) < 0) {
+				/* We are looking out of the room */
+				if (GET_OBJ_VAL(viewport, VAL_WINDOW_UNUSED4) < 0) {
+					/* Look for the default "outside" room */
+					for (door = 0; door < NUM_OF_DIRS; door++)
+						if (EXIT(ch, door))
+							if (EXIT(ch, door)->to_room != NOWHERE)
+								if (!ROOM_FLAGGED(EXIT(ch, door)->to_room, ROOM_INDOORS)) {
+									target_room = EXIT(ch, door)->to_room;
+									continue;
+								}
+				} else {
+					target_room = real_room(GET_OBJ_VAL(viewport, VAL_WINDOW_UNUSED4));
+				}
+			} else {
+				/* We are looking out of a vehicle */
+				if ((vehicle = find_vehicle_by_vnum(GET_OBJ_VAL(viewport, VAL_WINDOW_VEHICLE_VNUM))))
+					target_room = IN_ROOM(vehicle);
+			}
+			if (target_room == NOWHERE) {
+				send_to_char(ch, "You don't seem to be able to see outside.\r\n");
+			} else {
+				if (viewport->action_description)
+					act(viewport->action_description, TRUE, ch, viewport, 0, TO_CHAR);
+				else
+					send_to_char(ch, "You look outside and see:\r\n");
+				look_at_room(target_room, ch, 0);
+			}
 		}
 	}
-}
 
-ACMD(do_look) {
-	int look_type;
+	ACMD(do_look) {
+		int look_type;
 
-	if (!ch->desc)
-		return;
-
-	if (GET_POS(ch) < POS_SLEEPING)
-		send_to_char(ch, "You can't see anything but stars!\r\n");
-	else if (AFF_FLAGGED(ch, AFF_BLIND))
-		send_to_char(ch, "You can't see a damned thing, you're blind!\r\n");
-	else if (IS_DARK(IN_ROOM(ch)) && !CAN_SEE_IN_DARK(ch)) {
-		send_to_char(ch, "It is pitch black...\r\n");
-		list_char_to_char(world[IN_ROOM(ch)].people, ch); /* glowing red eyes */
-	} else {
-		char arg[MAX_INPUT_LENGTH], arg2[MAX_INPUT_LENGTH];
-
-		if (subcmd == SCMD_READ) {
-			one_argument(argument, arg);
-			if (!*arg)
-				send_to_char(ch, "Read what?\r\n");
-			else
-				look_at_target(ch, arg, 1);
+		if (!ch->desc)
 			return;
-		}
-		argument = any_one_arg(argument, arg);
-		one_argument(argument, arg2);
-		if (!*arg) {
-			if (subcmd == SCMD_SEARCH)
-				send_to_char(ch, "You need to search in a particular direction.\r\n");
-			else
-				look_at_room(IN_ROOM(ch), ch, 1);
-		} else if (is_abbrev(arg, "inside") && EXIT(ch, INDIR) && !*arg2) {
-			if (subcmd == SCMD_SEARCH)
+
+		if (GET_POS(ch) < POS_SLEEPING)
+			send_to_char(ch, "You can't see anything but stars!\r\n");
+		else if (AFF_FLAGGED(ch, AFF_BLIND))
+			send_to_char(ch, "You can't see a damned thing, you're blind!\r\n");
+		else if (IS_DARK(IN_ROOM(ch)) && !CAN_SEE_IN_DARK(ch)) {
+			send_to_char(ch, "It is pitch black...\r\n");
+			list_char_to_char(world[IN_ROOM(ch)].people, ch); /* glowing red eyes */
+		} else {
+			char arg[MAX_INPUT_LENGTH], arg2[MAX_INPUT_LENGTH];
+
+			if (subcmd == SCMD_READ) {
+				one_argument(argument, arg);
+				if (!*arg)
+					send_to_char(ch, "Read what?\r\n");
+				else
+					look_at_target(ch, arg, 1);
+				return;
+			}
+			argument = any_one_arg(argument, arg);
+			one_argument(argument, arg2);
+			if (!*arg) {
+				if (subcmd == SCMD_SEARCH)
+					send_to_char(ch, "You need to search in a particular direction.\r\n");
+				else
+					look_at_room(IN_ROOM(ch), ch, 1);
+			} else if (is_abbrev(arg, "inside") && EXIT(ch, INDIR) && !*arg2) {
+				if (subcmd == SCMD_SEARCH)
+					search_in_direction(ch, INDIR);
+				else
+					look_in_direction(ch, INDIR);
+			} else if (is_abbrev(arg, "inside") && (subcmd == SCMD_SEARCH) && !*arg2) {
 				search_in_direction(ch, INDIR);
-			else
-				look_in_direction(ch, INDIR);
-		} else if (is_abbrev(arg, "inside") && (subcmd == SCMD_SEARCH) && !*arg2) {
-			search_in_direction(ch, INDIR);
-		} else if (is_abbrev(arg, "inside") ||
-			is_abbrev(arg, "into")) {
-			look_in_obj(ch, arg2);
-		} else if ((is_abbrev(arg, "outside") ||
-			is_abbrev(arg, "through") ||
-			is_abbrev(arg, "thru")) &&
-			(subcmd == SCMD_LOOK) && *arg2) {
-			look_out_window(ch, arg2);
-		} else if (is_abbrev(arg, "outside") &&
-			(subcmd == SCMD_LOOK) && !EXIT(ch, OUTDIR)) {
-			look_out_window(ch, arg2);
-		} else if ((look_type = search_block(arg, dirs, FALSE)) >= 0 ||
-			(look_type = search_block(arg, abbr_dirs, FALSE)) >= 0) {
-			if (subcmd == SCMD_SEARCH)
-				search_in_direction(ch, look_type);
-			else
-				look_in_direction(ch, look_type);
-		} else if ((is_abbrev(arg, "towards")) &&
-			((look_type = search_block(arg2, dirs, FALSE)) >= 0 ||
-			(look_type = search_block(arg2, abbr_dirs, FALSE)) >= 0)) {
-			if (subcmd == SCMD_SEARCH)
-				search_in_direction(ch, look_type);
-			else
-				look_in_direction(ch, look_type);
-		} else if (is_abbrev(arg, "at")) {
-			if (subcmd == SCMD_SEARCH)
-				send_to_char(ch, "That is not a direction!\r\n");
-			else
-				look_at_target(ch, arg2, 0);
-		} else if (find_exdesc(arg, world[IN_ROOM(ch)].ex_description) != NULL) {
-			look_at_target(ch, arg, 0);
-		} else {
-			if (subcmd == SCMD_SEARCH)
-				send_to_char(ch, "That is not a direction!\r\n");
-			else
+			} else if (is_abbrev(arg, "inside") ||
+				is_abbrev(arg, "into")) {
+				look_in_obj(ch, arg2);
+			} else if ((is_abbrev(arg, "outside") ||
+				is_abbrev(arg, "through") ||
+				is_abbrev(arg, "thru")) &&
+				(subcmd == SCMD_LOOK) && *arg2) {
+				look_out_window(ch, arg2);
+			} else if (is_abbrev(arg, "outside") &&
+				(subcmd == SCMD_LOOK) && !EXIT(ch, OUTDIR)) {
+				look_out_window(ch, arg2);
+			} else if ((look_type = search_block(arg, dirs, FALSE)) >= 0 ||
+				(look_type = search_block(arg, abbr_dirs, FALSE)) >= 0) {
+				if (subcmd == SCMD_SEARCH)
+					search_in_direction(ch, look_type);
+				else
+					look_in_direction(ch, look_type);
+			} else if ((is_abbrev(arg, "towards")) &&
+				((look_type = search_block(arg2, dirs, FALSE)) >= 0 ||
+				(look_type = search_block(arg2, abbr_dirs, FALSE)) >= 0)) {
+				if (subcmd == SCMD_SEARCH)
+					search_in_direction(ch, look_type);
+				else
+					look_in_direction(ch, look_type);
+			} else if (is_abbrev(arg, "at")) {
+				if (subcmd == SCMD_SEARCH)
+					send_to_char(ch, "That is not a direction!\r\n");
+				else
+					look_at_target(ch, arg2, 0);
+			} else if (find_exdesc(arg, world[IN_ROOM(ch)].ex_description) != NULL) {
 				look_at_target(ch, arg, 0);
+			} else {
+				if (subcmd == SCMD_SEARCH)
+					send_to_char(ch, "That is not a direction!\r\n");
+				else
+					look_at_target(ch, arg, 0);
+			}
 		}
 	}
-}
 
-ACMD(do_examine) {
-	struct char_data *tmp_char;
-	struct obj_data *tmp_object;
-	char tempsave[MAX_INPUT_LENGTH], arg[MAX_INPUT_LENGTH];
+	ACMD(do_examine) {
+		struct char_data *tmp_char;
+		struct obj_data *tmp_object;
+		char tempsave[MAX_INPUT_LENGTH], arg[MAX_INPUT_LENGTH];
 
-	one_argument(argument, arg);
+		one_argument(argument, arg);
 
-	if (!*arg) {
-		send_to_char(ch, "Examine what?\r\n");
-		return;
-	}
-
-	/* look_at_target() eats the number. */
-	look_at_target(ch, strcpy(tempsave, arg), 0); /* strcpy: OK */
-
-	generic_find(arg, FIND_OBJ_INV | FIND_OBJ_ROOM | FIND_CHAR_ROOM |
-		FIND_OBJ_EQUIP, ch, &tmp_char, &tmp_object);
-
-	if (tmp_object) {
-		if ((GET_OBJ_TYPE(tmp_object) == ITEM_DRINKCON) ||
-			(GET_OBJ_TYPE(tmp_object) == ITEM_FOUNTAIN) ||
-			(GET_OBJ_TYPE(tmp_object) == ITEM_CONTAINER)) {
-			send_to_char(ch, "When you look inside, you see:\r\n");
-			look_in_obj(ch, arg);
-		}
-	}
-}
-
-ACMD(do_gold) {
-	if (GET_GOLD(ch) == 0)
-		send_to_char(ch, "You're broke!\r\n");
-	else if (GET_GOLD(ch) == 1)
-		send_to_char(ch, "You have one miserable little gold coin.\r\n");
-	else
-		send_to_char(ch, "You have %d gold coins.\r\n", GET_GOLD(ch));
-}
-
-char *reduct_desc(struct damreduct_type *reduct) {
-	static char buf[MAX_INPUT_LENGTH];
-	char buf2[MAX_INPUT_LENGTH];
-	int len = 0;
-	int slash = 0;
-	int i;
-	if (reduct->mod == -1)
-		len += snprintf(buf + len, sizeof (buf) - len, "FULL");
-	else
-		len += snprintf(buf + len, sizeof (buf) - len, "%d", reduct->mod);
-	for (i = 0; i < MAX_DAMREDUCT_MULTI; i++) {
-		switch (reduct->damstyle[i]) {
-			case DR_NONE:
-				continue;
-			case DR_ADMIN:
-				snprintf(buf2, sizeof (buf2), "%s", admin_level_names[reduct->damstyleval[i]]);
-				break;
-			case DR_MATERIAL:
-				snprintf(buf2, sizeof (buf2), "%s", material_names[reduct->damstyleval[i]]);
-				break;
-			case DR_BONUS:
-				snprintf(buf2, sizeof (buf2), "%+d", reduct->damstyleval[i]);
-				break;
-			case DR_SPELL:
-				snprintf(buf2, sizeof (buf2), "%s%s", reduct->damstyleval[i] ? "spell " : "", reduct->damstyleval[i] ? spell_info[reduct->damstyleval[i]].name : "spells");
-				break;
-			default:
-				log("reduct_desc: unknown damstyle %d", reduct->damstyle[i]);
-		}
-		if (slash++)
-			len += snprintf(buf + len, sizeof (buf) - len, " or ");
-		else
-			len += snprintf(buf + len, sizeof (buf) - len, "/");
-		len += snprintf(buf + len, sizeof (buf) - len, "%s", buf2);
-	}
-	if (!slash)
-		len += snprintf(buf + len, sizeof (buf) - len, "/--");
-	return buf;
-}
-
-ACMD(do_skills) {
-	//	char name[MAX_INPUT_LENGTH];
-	//argument = one_argument(argument, skill);
-	//if (IS_NPC(ch)) 
-	//		return;
-	/*	argument = one_argument(argument, name);
-		if (!*name) {
-			send_to_char(ch, "\r\n");
-			send_to_char(ch, "@cTo view skills@n:\r\n");
-			send_to_char(ch, "@CSkill @n<argument>\r\n");
-			send_to_char(ch, "@CWeapon   Armor   Skills    Lore    Magic    Craft@n\r\n");
+		if (!*arg) {
+			send_to_char(ch, "Examine what?\r\n");
 			return;
 		}
 
-		if (*name == "weapon") {
-	 */
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BWeapons@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-	send_to_char(ch, "@r=-  @cSmall Edged@n:@Y%5d  @cSmall Blunt@n:@Y%5d @cShortBow@n:@Y%5d @cLight Crossbow@n:@Y%5d @cLight Thrown@n:@Y%5d @r-=\r\n",
-		GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_BLUNT),
-		GET_SKILL_BASE(ch, SKILL_WEAPON_SHORTBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN));
-	send_to_char(ch, "@r=- @cMedium Edged@n:@Y%5d @cMedium Blunt@n:@Y%5d  @cLongBow@n:@Y%5d @cHeavy Crossbow@n:@Y%5d @cHeavy Thrown@n:@Y%5d @r-=\r\n",
-		GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_BLUNT),
-		GET_SKILL_BASE(ch, SKILL_WEAPON_LONGBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_THROWN));
-	send_to_char(ch, "@r=-  @cHeavy Edged@n:@Y%5d  @cHeavy Blunt@n:@Y%5d  @cPolearm@n:@Y%5d       @cBackstab@n:@Y%5d                    @r-=\r\n",
-		GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_BLUNT),
-		GET_SKILL_BASE(ch, SKILL_WEAPON_POLEARM), GET_SKILL_BASE(ch, SKILL_WEAPON_BACKSTAB));
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
-	send_to_char(ch, "\r\n");
-	//		return;
+		/* look_at_target() eats the number. */
+		look_at_target(ch, strcpy(tempsave, arg), 0); /* strcpy: OK */
 
-	//	}
-	//	else if (*name == "armor") {
+		generic_find(arg, FIND_OBJ_INV | FIND_OBJ_ROOM | FIND_CHAR_ROOM |
+			FIND_OBJ_EQUIP, ch, &tmp_char, &tmp_object);
 
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BArmor@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-	send_to_char(ch, "@r=-  @cShield@n:@Y%5d  @cCloth Armor@n:@Y%5d @cLight Armor@n:@Y%5d @cMedium Armor@n:@Y%5d @cHeavy Armor@n:@Y%5d      @r-=\r\n",
-		GET_SKILL_BASE(ch, SKILL_ARMOR_SHIELD), GET_SKILL_BASE(ch, SKILL_ARMOR_CLOTH),
-		GET_SKILL_BASE(ch, SKILL_ARMOR_LIGHT), GET_SKILL_BASE(ch, SKILL_ARMOR_MEDIUM), GET_SKILL_BASE(ch, SKILL_ARMOR_HEAVY));
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
-	send_to_char(ch, "\r\n");
-	//	return;
+		if (tmp_object) {
+			if ((GET_OBJ_TYPE(tmp_object) == ITEM_DRINKCON) ||
+				(GET_OBJ_TYPE(tmp_object) == ITEM_FOUNTAIN) ||
+				(GET_OBJ_TYPE(tmp_object) == ITEM_CONTAINER)) {
+				send_to_char(ch, "When you look inside, you see:\r\n");
+				look_in_obj(ch, arg);
+			}
+		}
+	}
 
-	//	}
-	//			if (*name == "weapon") {
+	ACMD(do_gold) {
+		if (GET_GOLD(ch) == 0)
+			send_to_char(ch, "You're broke!\r\n");
+		else if (GET_GOLD(ch) == 1)
+			send_to_char(ch, "You have one miserable little gold coin.\r\n");
+		else
+			send_to_char(ch, "You have %d gold coins.\r\n", GET_GOLD(ch));
+	}
 
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BSkills@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-	send_to_char(ch, "@r=-    @cDodge@n:@Y%5d   @cSwim@n:@Y%5d @cPerception@n:@Y%5d @cTrack@n:@Y%5d  @cStealth@n:@Y%5d @cHandle Animal@n:@Y%5d @r-=\r\n",
-		GET_SKILL_BASE(ch, SKILL_DODGE), GET_SKILL_BASE(ch, SKILL_SWIM), GET_SKILL_BASE(ch, SKILL_PERCEPTION),
-		GET_SKILL_BASE(ch, SKILL_TRACK), GET_SKILL_BASE(ch, SKILL_STEALTH), GET_SKILL_BASE(ch, SKILL_HANDLE_ANIMAL));
-	send_to_char(ch, "@r=- @cLockpick@n:@Y%5d @cDisarm@n:@Y%5d      @cSteal@n:@Y%5d  @cSkin@n:@Y%5d @cFirstAid@n:@Y%5d                     @r-=\r\n",
-		GET_SKILL_BASE(ch, SKILL_LOCKPICK), GET_SKILL_BASE(ch, SKILL_DISARM),
-		GET_SKILL_BASE(ch, SKILL_STEAL), GET_SKILL_BASE(ch, SKILL_SKIN), GET_SKILL_BASE(ch, SKILL_FIRSTAID));
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-	send_to_char(ch, "\r\n");
-	//		return;
-	//	else if (*name == "armor") {
+	char *reduct_desc(struct damreduct_type * reduct) {
+		static char buf[MAX_INPUT_LENGTH];
+		char buf2[MAX_INPUT_LENGTH];
+		int len = 0;
+		int slash = 0;
+		int i;
+		if (reduct->mod == -1)
+			len += snprintf(buf + len, sizeof (buf) - len, "FULL");
+		else
+			len += snprintf(buf + len, sizeof (buf) - len, "%d", reduct->mod);
+		for (i = 0; i < MAX_DAMREDUCT_MULTI; i++) {
+			switch (reduct->damstyle[i]) {
+				case DR_NONE:
+					continue;
+				case DR_ADMIN:
+					snprintf(buf2, sizeof (buf2), "%s", admin_level_names[reduct->damstyleval[i]]);
+					break;
+				case DR_MATERIAL:
+					snprintf(buf2, sizeof (buf2), "%s", material_names[reduct->damstyleval[i]]);
+					break;
+				case DR_BONUS:
+					snprintf(buf2, sizeof (buf2), "%+d", reduct->damstyleval[i]);
+					break;
+				case DR_SPELL:
+					snprintf(buf2, sizeof (buf2), "%s%s", reduct->damstyleval[i] ? "spell " : "", reduct->damstyleval[i] ? spell_info[reduct->damstyleval[i]].name : "spells");
+					break;
+				default:
+					log("reduct_desc: unknown damstyle %d", reduct->damstyle[i]);
+			}
+			if (slash++)
+				len += snprintf(buf + len, sizeof (buf) - len, " or ");
+			else
+				len += snprintf(buf + len, sizeof (buf) - len, "/");
+			len += snprintf(buf + len, sizeof (buf) - len, "%s", buf2);
+		}
+		if (!slash)
+			len += snprintf(buf + len, sizeof (buf) - len, "/--");
+		return buf;
+	}
 
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BLore@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-	send_to_char(ch, "@r=-  @cScholarship@n:@Y%5d  @cMusic@n:@Y%5d @cAppraise@n:@Y%5d@n                                              @r-=\r\n",
-		GET_SKILL_BASE(ch, SKILL_LORE_SCHOLARSHIP), GET_SKILL_BASE(ch, SKILL_LORE_MUSIC),
-		GET_SKILL_BASE(ch, SKILL_LORE_APPRAISE));
-	send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
-	send_to_char(ch, "\r\n");
-	//	return;
-	//	}
-//	if (*name == "weapon") {
-		
+	ACMD(do_skills) {
+		//	char name[MAX_INPUT_LENGTH];
+		//argument = one_argument(argument, skill);
+		//if (IS_NPC(ch)) 
+		//		return;
+		/*	argument = one_argument(argument, name);
+			if (!*name) {
+				send_to_char(ch, "\r\n");
+				send_to_char(ch, "@cTo view skills@n:\r\n");
+				send_to_char(ch, "@CSkill @n<argument>\r\n");
+				send_to_char(ch, "@CWeapon   Armor   Skills    Lore    Magic    Craft@n\r\n");
+				return;
+			}
+
+			if (*name == "weapon") {
+		 */
+		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BWeapons@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+		send_to_char(ch, "@r=-  @cSmall Edged@n:@Y%5d  @cSmall Blunt@n:@Y%5d @cShortBow@n:@Y%5d @cLight Crossbow@n:@Y%5d @cLight Thrown@n:@Y%5d @r-=\r\n",
+			GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_SMALL_BLUNT),
+			GET_SKILL_BASE(ch, SKILL_WEAPON_SHORTBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_LIGHT_THROWN));
+		send_to_char(ch, "@r=- @cMedium Edged@n:@Y%5d @cMedium Blunt@n:@Y%5d  @cLongBow@n:@Y%5d @cHeavy Crossbow@n:@Y%5d @cHeavy Thrown@n:@Y%5d @r-=\r\n",
+			GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_MEDIUM_BLUNT),
+			GET_SKILL_BASE(ch, SKILL_WEAPON_LONGBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_CROSSBOW), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_THROWN));
+		send_to_char(ch, "@r=-  @cHeavy Edged@n:@Y%5d  @cHeavy Blunt@n:@Y%5d  @cPolearm@n:@Y%5d       @cBackstab@n:@Y%5d                    @r-=\r\n",
+			GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_EDGED), GET_SKILL_BASE(ch, SKILL_WEAPON_HEAVY_BLUNT),
+			GET_SKILL_BASE(ch, SKILL_WEAPON_POLEARM), GET_SKILL_BASE(ch, SKILL_WEAPON_BACKSTAB));
+		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
+		send_to_char(ch, "\r\n");
+		//		return;
+
+		//	}
+		//	else if (*name == "armor") {
+
+		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BArmor@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+		send_to_char(ch, "@r=-  @cShield@n:@Y%5d  @cCloth Armor@n:@Y%5d @cLight Armor@n:@Y%5d @cMedium Armor@n:@Y%5d @cHeavy Armor@n:@Y%5d      @r-=\r\n",
+			GET_SKILL_BASE(ch, SKILL_ARMOR_SHIELD), GET_SKILL_BASE(ch, SKILL_ARMOR_CLOTH),
+			GET_SKILL_BASE(ch, SKILL_ARMOR_LIGHT), GET_SKILL_BASE(ch, SKILL_ARMOR_MEDIUM), GET_SKILL_BASE(ch, SKILL_ARMOR_HEAVY));
+		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
+		send_to_char(ch, "\r\n");
+		//	return;
+
+		//	}
+		//			if (*name == "weapon") {
+
+		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BSkills@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+		send_to_char(ch, "@r=-    @cDodge@n:@Y%5d   @cSwim@n:@Y%5d @cPerception@n:@Y%5d @cTrack@n:@Y%5d  @cStealth@n:@Y%5d @cHandle Animal@n:@Y%5d @r-=\r\n",
+			GET_SKILL_BASE(ch, SKILL_DODGE), GET_SKILL_BASE(ch, SKILL_SWIM), GET_SKILL_BASE(ch, SKILL_PERCEPTION),
+			GET_SKILL_BASE(ch, SKILL_TRACK), GET_SKILL_BASE(ch, SKILL_STEALTH), GET_SKILL_BASE(ch, SKILL_HANDLE_ANIMAL));
+		send_to_char(ch, "@r=- @cLockpick@n:@Y%5d @cDisarm@n:@Y%5d      @cSteal@n:@Y%5d  @cSkin@n:@Y%5d @cFirstAid@n:@Y%5d                     @r-=\r\n",
+			GET_SKILL_BASE(ch, SKILL_LOCKPICK), GET_SKILL_BASE(ch, SKILL_DISARM),
+			GET_SKILL_BASE(ch, SKILL_STEAL), GET_SKILL_BASE(ch, SKILL_SKIN), GET_SKILL_BASE(ch, SKILL_FIRSTAID));
+		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+		send_to_char(ch, "\r\n");
+		//		return;
+		//	else if (*name == "armor") {
+
+		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BLore@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+		send_to_char(ch, "@r=-  @cScholarship@n:@Y%5d  @cMusic@n:@Y%5d @cAppraise@n:@Y%5d@n                                              @r-=\r\n",
+			GET_SKILL_BASE(ch, SKILL_LORE_SCHOLARSHIP), GET_SKILL_BASE(ch, SKILL_LORE_MUSIC),
+			GET_SKILL_BASE(ch, SKILL_LORE_APPRAISE));
+		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
+		send_to_char(ch, "\r\n");
+		//	return;
+		//	}
+		//	if (*name == "weapon") {
+
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BMagic@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 		send_to_char(ch, "@r=-  @cCasting@n:@Y%5d       @cFire@n:@Y%5d    @cAir@n:@Y%5d   @cEarth@n:@Y%5d     @cWater@n:@Y%5d   @cHexen@n:@Y%5d    @r-=\r\n",
 			GET_SKILL_BASE(ch, SKILL_MAGIC_CASTING), GET_SKILL_BASE(ch, SKILL_MAGIC_FIRE),
-			GET_SKILL_BASE(ch, SKILL_MAGIC_AIR), GET_SKILL_BASE(ch, SKILL_MAGIC_EARTH), GET_SKILL_BASE(ch, SKILL_MAGIC_WATER), 
+			GET_SKILL_BASE(ch, SKILL_MAGIC_AIR), GET_SKILL_BASE(ch, SKILL_MAGIC_EARTH), GET_SKILL_BASE(ch, SKILL_MAGIC_WATER),
 			GET_SKILL_BASE(ch, SKILL_MAGIC_HEXEN));
 		send_to_char(ch, "@r=-  @cWarding@n:@Y%5d @cSiren Song@n:@Y%5d @cTravel@n:@Y%5d @cHealing@n:@Y%5d     @cDream@n:@Y%5d @cSeeking@n:@Y%5d    @r-=\r\n",
 			GET_SKILL_BASE(ch, SKILL_MAGIC_WARDING), GET_SKILL_BASE(ch, SKILL_MAGIC_MUSIC), GET_SKILL_BASE(ch, SKILL_MAGIC_TRAVEL),
@@ -1459,7 +1471,7 @@ ACMD(do_skills) {
 		send_to_char(ch, "\r\n");
 		//		return;
 		//	if (*name == "weapon") {
-		
+
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@BCraft@r-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=@n\r\n");
 		send_to_char(ch, "@r=-  @cMining@n:@Y%5d   @cForage@n:@Y%5d   @cForestry@n:@Y%5d     @cCooking@n:@Y%5d @cBlacksmithing@n:@Y%5d        @r-=\r\n",
 			GET_SKILL_BASE(ch, SKILL_CRAFT_MINING), GET_SKILL_BASE(ch, SKILL_CRAFT_FORAGE),
@@ -1473,7 +1485,7 @@ ACMD(do_skills) {
 		send_to_char(ch, "@r=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-@n\r\n");
 		send_to_char(ch, "\r\n");
 		//		return;
-		
+
 
 	}
 
