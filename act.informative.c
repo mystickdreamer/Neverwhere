@@ -1048,111 +1048,112 @@ static void look_at_target(struct char_data *ch, char *arg, int cmread) {
 					if (CAN_SEE(found_char, ch))
 						act("$n looks at you.", TRUE, ch, 0, found_char, TO_VICT);
 					act("$n looks at $N.", TRUE, ch, 0, found_char, TO_NOTVICT);
-				} else {
-					send_to_char(ch, "What are you trying to look at?");
-				} else
-					hidelooker = 0;
-				if (!hidelooker) {
-					look_at_char(found_char, ch);
-					if (CAN_SEE(found_char, ch))
-						act("$n looks at you.", TRUE, ch, 0, found_char, TO_VICT);
-					act("$n looks at $N.", TRUE, ch, 0, found_char, TO_NOTVICT);
 				}
+			} else {
+				send_to_char(ch, "What are you trying to look at?");
+			} else
+				hidelooker = 0;
+			if (!hidelooker) {
+				look_at_char(found_char, ch);
+				if (CAN_SEE(found_char, ch))
+					act("$n looks at you.", TRUE, ch, 0, found_char, TO_VICT);
+				act("$n looks at $N.", TRUE, ch, 0, found_char, TO_NOTVICT);
 			}
-			return;
 		}
+		return;
+	}
 
-		/* Strip off "number." from 2.foo and friends. */
-		if (!(fnum = get_number(&arg))) {
-			send_to_char(ch, "Look at what?\r\n");
-			return;
-		}
+	/* Strip off "number." from 2.foo and friends. */
+	if (!(fnum = get_number(&arg))) {
+		send_to_char(ch, "Look at what?\r\n");
+		return;
+	}
 
-		/* Does the argument match an extra desc in the room? */
-		if ((desc = find_exdesc(arg, world[IN_ROOM(ch)].ex_description)) != NULL && ++i == fnum) {
-			page_string(ch->desc, desc, FALSE);
-			return;
-		}
+	/* Does the argument match an extra desc in the room? */
+	if ((desc = find_exdesc(arg, world[IN_ROOM(ch)].ex_description)) != NULL && ++i == fnum) {
+		page_string(ch->desc, desc, FALSE);
+		return;
+	}
 
-		/* Does the argument match an extra desc in the char's equipment? */
-		for (j = 0; j < NUM_WEARS && !found; j++)
-			if (GET_EQ(ch, j) && CAN_SEE_OBJ(ch, GET_EQ(ch, j)))
-				if ((desc = find_exdesc(arg, GET_EQ(ch, j)->ex_description)) != NULL && ++i == fnum) {
+	/* Does the argument match an extra desc in the char's equipment? */
+	for (j = 0; j < NUM_WEARS && !found; j++)
+		if (GET_EQ(ch, j) && CAN_SEE_OBJ(ch, GET_EQ(ch, j)))
+			if ((desc = find_exdesc(arg, GET_EQ(ch, j)->ex_description)) != NULL && ++i == fnum) {
+				send_to_char(ch, "%s", desc);
+				if (isname(arg, GET_EQ(ch, j)->name)) {
+					if (GET_OBJ_TYPE(GET_EQ(ch, j)) == ITEM_WEAPON) {
+						send_to_char(ch, "The weapon type of %s is a %s.\r\n",
+							GET_OBJ_SHORT(GET_EQ(ch, j)),
+							weapon_type[(int) GET_OBJ_VAL(GET_EQ(ch, j), VAL_WEAPON_SKILL)]);
+					}
+					if (GET_OBJ_TYPE(GET_EQ(ch, j)) == ITEM_SPELLBOOK) {
+						display_spells(ch, GET_EQ(ch, j));
+					}
+					if (GET_OBJ_TYPE(GET_EQ(ch, j)) == ITEM_SCROLL) {
+						display_scroll(ch, GET_EQ(ch, j));
+					}
+					diag_obj_to_char(GET_EQ(ch, j), ch);
+					send_to_char(ch, "It appears to be made of %s.\r\n", material_names[GET_OBJ_MATERIAL(GET_EQ(ch, j))]);
+				}
+				found = TRUE;
+			}
+
+	/* Does the argument match an extra desc in the char's inventory? */
+	for (obj = ch->carrying; obj && !found; obj = obj->next_content) {
+		if (CAN_SEE_OBJ(ch, obj))
+			if ((desc = find_exdesc(arg, obj->ex_description)) != NULL && ++i == fnum) {
+				if (GET_OBJ_TYPE(obj) == ITEM_BOARD) {
+					show_board(GET_OBJ_VNUM(obj), ch);
+				} else {
 					send_to_char(ch, "%s", desc);
-					if (isname(arg, GET_EQ(ch, j)->name)) {
-						if (GET_OBJ_TYPE(GET_EQ(ch, j)) == ITEM_WEAPON) {
-							send_to_char(ch, "The weapon type of %s is a %s.\r\n",
-								GET_OBJ_SHORT(GET_EQ(ch, j)),
-								weapon_type[(int) GET_OBJ_VAL(GET_EQ(ch, j), VAL_WEAPON_SKILL)]);
-						}
-						if (GET_OBJ_TYPE(GET_EQ(ch, j)) == ITEM_SPELLBOOK) {
-							display_spells(ch, GET_EQ(ch, j));
-						}
-						if (GET_OBJ_TYPE(GET_EQ(ch, j)) == ITEM_SCROLL) {
-							display_scroll(ch, GET_EQ(ch, j));
-						}
-						diag_obj_to_char(GET_EQ(ch, j), ch);
-						send_to_char(ch, "It appears to be made of %s.\r\n", material_names[GET_OBJ_MATERIAL(GET_EQ(ch, j))]);
-					}
-					found = TRUE;
-				}
-
-		/* Does the argument match an extra desc in the char's inventory? */
-		for (obj = ch->carrying; obj && !found; obj = obj->next_content) {
-			if (CAN_SEE_OBJ(ch, obj))
-				if ((desc = find_exdesc(arg, obj->ex_description)) != NULL && ++i == fnum) {
-					if (GET_OBJ_TYPE(obj) == ITEM_BOARD) {
-						show_board(GET_OBJ_VNUM(obj), ch);
-					} else {
-						send_to_char(ch, "%s", desc);
-						if (isname(arg, obj->name)) {
-							if (GET_OBJ_TYPE(obj) == ITEM_WEAPON) {
-								send_to_char(ch, "The weapon type of %s is a %s.\r\n",
-									GET_OBJ_SHORT(obj), weapon_type[(int) GET_OBJ_VAL(obj,
-									VAL_WEAPON_SKILL)]);
-							}
-							if (GET_OBJ_TYPE(obj) == ITEM_SPELLBOOK) {
-								display_spells(ch, obj);
-							}
-							if (GET_OBJ_TYPE(obj) == ITEM_SCROLL) {
-								display_scroll(ch, obj);
-							}
-							diag_obj_to_char(obj, ch);
-							send_to_char(ch, "It appears to be made of %s.\r\n", material_names[GET_OBJ_MATERIAL(obj)]);
-						}
-					}
-					found = TRUE;
-				}
-		}
-
-		/* Does the argument match an extra desc of an object in the room? */
-		for (obj = world[IN_ROOM(ch)].contents; obj && !found; obj = obj->next_content)
-			if (CAN_SEE_OBJ(ch, obj))
-				if ((desc = find_exdesc(arg, obj->ex_description)) != NULL && ++i == fnum) {
-					if (GET_OBJ_TYPE(obj) == ITEM_BOARD) {
-						show_board(GET_OBJ_VNUM(obj), ch);
-					} else {
-						send_to_char(ch, "%s", desc);
+					if (isname(arg, obj->name)) {
 						if (GET_OBJ_TYPE(obj) == ITEM_WEAPON) {
-							send_to_char(ch, "The weapon type of %s is a %s.\r\n", GET_OBJ_SHORT(obj), weapon_type[(int) GET_OBJ_VAL(obj, VAL_WEAPON_SKILL)]);
+							send_to_char(ch, "The weapon type of %s is a %s.\r\n",
+								GET_OBJ_SHORT(obj), weapon_type[(int) GET_OBJ_VAL(obj,
+								VAL_WEAPON_SKILL)]);
+						}
+						if (GET_OBJ_TYPE(obj) == ITEM_SPELLBOOK) {
+							display_spells(ch, obj);
+						}
+						if (GET_OBJ_TYPE(obj) == ITEM_SCROLL) {
+							display_scroll(ch, obj);
 						}
 						diag_obj_to_char(obj, ch);
 						send_to_char(ch, "It appears to be made of %s.\r\n", material_names[GET_OBJ_MATERIAL(obj)]);
 					}
-					found = TRUE;
 				}
-
-		/* If an object was found back in generic_find */
-		if (bits) {
-			if (!found)
-				show_obj_to_char(found_obj, ch, SHOW_OBJ_ACTION);
-			else {
-				show_obj_modifiers(found_obj, ch);
-				send_to_char(ch, "\r\n");
+				found = TRUE;
 			}
-		} else if (!found)
-			send_to_char(ch, "You do not see that here.\r\n");
 	}
+
+	/* Does the argument match an extra desc of an object in the room? */
+	for (obj = world[IN_ROOM(ch)].contents; obj && !found; obj = obj->next_content)
+		if (CAN_SEE_OBJ(ch, obj))
+			if ((desc = find_exdesc(arg, obj->ex_description)) != NULL && ++i == fnum) {
+				if (GET_OBJ_TYPE(obj) == ITEM_BOARD) {
+					show_board(GET_OBJ_VNUM(obj), ch);
+				} else {
+					send_to_char(ch, "%s", desc);
+					if (GET_OBJ_TYPE(obj) == ITEM_WEAPON) {
+						send_to_char(ch, "The weapon type of %s is a %s.\r\n", GET_OBJ_SHORT(obj), weapon_type[(int) GET_OBJ_VAL(obj, VAL_WEAPON_SKILL)]);
+					}
+					diag_obj_to_char(obj, ch);
+					send_to_char(ch, "It appears to be made of %s.\r\n", material_names[GET_OBJ_MATERIAL(obj)]);
+				}
+				found = TRUE;
+			}
+
+	/* If an object was found back in generic_find */
+	if (bits) {
+		if (!found)
+			show_obj_to_char(found_obj, ch, SHOW_OBJ_ACTION);
+		else {
+			show_obj_modifiers(found_obj, ch);
+			send_to_char(ch, "\r\n");
+		}
+	} else if (!found)
+		send_to_char(ch, "You do not see that here.\r\n");
+}
 }
 
 void look_out_window(struct char_data *ch, char *arg) {
