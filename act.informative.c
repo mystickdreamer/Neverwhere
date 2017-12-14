@@ -2002,8 +2002,8 @@ ACMD(do_who) {
 				continue;
 
 			if (short_list) {
-				send_to_char(ch, "@B[@W%3d @Y%s @C%s@B]@W %-12.12s@n%s@n",
-					GET_LEVEL(tch), RACE_ABBR(tch), CLASS_ABBR(tch), GET_NAME(tch),
+				send_to_char(ch, "@B[@Y%s @B]@W %-12.12s@n%s@n",
+					 RACE_ABBR(tch), GET_NAME(tch),
 					((!(++num_can_see % 4)) ? "\r\n" : ""));
 			} else {
 				num_can_see++;
