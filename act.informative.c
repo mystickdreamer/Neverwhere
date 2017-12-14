@@ -1923,9 +1923,6 @@ ACMD(do_who) {
 		{ "\r\n@RXx@B-=-=-=-=-=@W  [ @GAdministrators @W]  @B=-=-=-=-=-@RxX@n\r\n", ADMLVL_GRGOD, ADMLVL_IMPL, 0},
 		{ "\r\n@RXx@B-=-=-=-=-=@W  [    @GImmortals   @W]  @B=-=-=-=-=-@RxX@n\r\n", ADMLVL_IMMORT, ADMLVL_GRGOD - 1, 0},
 		{ "\r\n@RXx@B-=-=-=-=-=@W  [     @GMortals    @W]  @B=-=-=-=-=-@RxX@n\r\n", 0, ADMLVL_IMMORT - 1, 0}
-		/*{ "\r\n@GAdministrators@n\r\n\r\n", ADMLVL_GRGOD, ADMLVL_IMPL, 0},
-		{ "\r\n@GImmortals@n\r\n\r\n"     , ADMLVL_IMMORT, ADMLVL_GRGOD - 1, 0},
-		{ "\r\n@GMortal@n\r\n\r\n"        , 0, ADMLVL_IMMORT - 1, 0 }*/
 	};
 
 	int num_ranks = sizeof (rank) / sizeof (rank[0]);
@@ -1936,7 +1933,7 @@ ACMD(do_who) {
 		else if (!(tch = d->character))
 			continue;
 
-		if (GET_ADMLEVEL(tch) >= ADMLVL_IMMORT)
+		if (GET_ADMLEVEL(tch) > ADMLVL_NONE)
 			line_color = "@y";
 		else
 			line_color = "@n";
