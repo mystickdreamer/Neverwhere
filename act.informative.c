@@ -1942,7 +1942,7 @@ ACMD(do_who) {
 			if (*name_search && str_cmp(GET_NAME(tch), name_search) &&
 				!strstr(GET_TITLE(tch), name_search))
 				continue;
-			if (!CAN_SEE(ch, tch) || GET_ADMLEVEL(tch) < low || GET_ADMLEVEL(tch) > high)
+			if (!CAN_SEE(ch, tch) || GET_LEVEL(tch) < low || GET_LEVEL(tch) > high)
 				continue;
 			if (outlaws && !PLR_FLAGGED(tch, PLR_KILLER) && !PLR_FLAGGED(tch, PLR_THIEF))
 				continue;
@@ -1952,8 +1952,8 @@ ACMD(do_who) {
 				continue;
 			if (who_room && (IN_ROOM(tch) != IN_ROOM(ch)))
 				continue;
-			if (showclass && !(showclass & (1 << GET_CLASS(tch))))
-				continue;
+			//if (showclass && !(showclass & (1 << GET_CLASS(tch))))
+			//	continue;
 			if (showgroup && (!tch->master || !AFF_FLAGGED(tch, AFF_GROUP)))
 				continue;
 			for (i = 0; i < num_ranks; i++)
