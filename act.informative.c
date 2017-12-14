@@ -1920,9 +1920,9 @@ ACMD(do_who) {
 		int max_level;
 		int count; /* must always start as 0 */
 	} rank[] = {
-		{ "\r\n@D[@RXx@D]@B-=-=-=-=-=@W  [ @GAdministrators @W]  @B=-=-=-=-=-@D[@RxX@D]@n\r\n", ADMLVL_GRGOD, ADMLVL_IMPL, 0},
+		{ "\r\n@RXx@B-=-=-=-=-=@W  [ @GAdministrators @W]  @B=-=-=-=-=-@RxX@n\r\n", ADMLVL_GRGOD, ADMLVL_IMPL, 0},
 		{ "\r\n@RXx@B-=-=-=-=-=@W  [    @GImmortals   @W]  @B=-=-=-=-=-@RxX@n\r\n", ADMLVL_IMMORT, ADMLVL_GRGOD - 1, 0},
-		{ "\r\n@D[@wx@D]@yxxxxxxxxxx@W  [     @GMortals    @W]  @yxxxxxxxxxx@D[@wx@D]@n\r\n", 0, ADMLVL_IMMORT - 1, 0}
+		{ "\r\n@RXx@B-=-=-=-=-=@W  [     @GMortals    @W]  @B=-=-=-=-=-@RxX@n\r\n", 0, ADMLVL_IMMORT - 1, 0}
 		/*{ "\r\n@GAdministrators@n\r\n\r\n", ADMLVL_GRGOD, ADMLVL_IMPL, 0},
 		{ "\r\n@GImmortals@n\r\n\r\n"     , ADMLVL_IMMORT, ADMLVL_GRGOD - 1, 0},
 		{ "\r\n@GMortal@n\r\n\r\n"        , 0, ADMLVL_IMMORT - 1, 0 }*/
