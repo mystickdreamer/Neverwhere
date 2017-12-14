@@ -390,14 +390,14 @@ void look_at_char(struct char_data *i, struct char_data *ch) {
 	int j, found, seechar, seeinv;
 	struct obj_data *tmp_obj;
 
-	if (AFF_FLAGGED(i, AFF_HIDE)){
+	if (AFF_FLAGGED(i, AFF_HIDE)) {
 		seechar = roll_resisted(ch, SKILL_PERCEPTION, i, SKILL_STEALTH);
 		if (!seechar)
 			send_to_char(ch, "You do not see that here!\r\n");
 		return;
 	}
 
-		if (!ch->desc)
+	if (!ch->desc)
 		return;
 
 	if (i->description)
@@ -451,11 +451,10 @@ void look_at_char(struct char_data *i, struct char_data *ch) {
 				(ADM_FLAGGED(ch, ADM_SEEINV))) {
 				show_obj_to_char(tmp_obj, ch, SHOW_OBJ_SHORT);
 				found = TRUE;
-			}
-			else if (seeinv){
-				if(CAN_SEE_OBJ(ch, tmp_obj)){
-				show_obj_to_char(tmp_obj, ch, SHOW_OBJ_SHORT);
-				found = TRUE;
+			} else if (seeinv) {
+				if (CAN_SEE_OBJ(ch, tmp_obj)) {
+					show_obj_to_char(tmp_obj, ch, SHOW_OBJ_SHORT);
+					found = TRUE;
 				}
 			}
 		}
@@ -1921,7 +1920,7 @@ ACMD(do_who) {
 		int max_level;
 		int count; /* must always start as 0 */
 	} rank[] = {
-		{ "\r\n@D[@wx@D]@yxxxxxxxxxx@W  [ @GAdministrators @W]  @yxxxxxxxxxx@D[@wx@D]@n\r\n", ADMLVL_GRGOD, ADMLVL_IMPL, 0},
+		{ "\r\n@D[@Xx@D]@B-=-=-=-=-=@W  [ @GAdministrators @W]  @B=-=-=-=-=-@D[@RxX@D]@n\r\n", ADMLVL_GRGOD, ADMLVL_IMPL, 0},
 		{ "\r\n@D[@wx@D]@yxxxxxxxxxx@W  [    @GImmortals   @W]  @yxxxxxxxxxx@D[@wx@D]@n\r\n", ADMLVL_IMMORT, ADMLVL_GRGOD - 1, 0},
 		{ "\r\n@D[@wx@D]@yxxxxxxxxxx@W  [     @GMortals    @W]  @yxxxxxxxxxx@D[@wx@D]@n\r\n", 0, ADMLVL_IMMORT - 1, 0}
 		/*{ "\r\n@GAdministrators@n\r\n\r\n", ADMLVL_GRGOD, ADMLVL_IMPL, 0},
