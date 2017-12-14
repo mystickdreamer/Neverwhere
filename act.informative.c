@@ -1952,8 +1952,8 @@ ACMD(do_who) {
 				continue;
 			if (who_room && (IN_ROOM(tch) != IN_ROOM(ch)))
 				continue;
-			//if (showclass && !(showclass & (1 << GET_CLASS(tch))))
-			//	continue;
+			if (showclass && !(showclass & (1 << GET_CLASS(tch))))
+				continue;
 			if (showgroup && (!tch->master || !AFF_FLAGGED(tch, AFF_GROUP)))
 				continue;
 			for (i = 0; i < num_ranks; i++)
