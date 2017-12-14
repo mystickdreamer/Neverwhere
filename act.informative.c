@@ -2002,7 +2002,7 @@ ACMD(do_who) {
 				continue;
 
 			if (short_list) {
-				send_to_char(ch, "@B[@Y%s @B]@W %-12.12s@n%s@n",
+				send_to_char(ch, "@B[@Y%s @B]@W %-12.12s@n%s@n\r\n",
 					 RACE_ABBR(tch), GET_NAME(tch),
 					((!(++num_can_see % 4)) ? "\r\n" : ""));
 			} else {
