@@ -1933,10 +1933,7 @@ ACMD(do_who) {
 		else if (!(tch = d->character))
 			continue;
 
-		if (GET_ADMLEVEL(tch) > ADMLVL_NONE)
-			line_color = "@y";
-		else
-			line_color = "@n";
+
 
 		if (CAN_SEE(ch, tch) && IS_PLAYING(d)) {
 			if (*name_search && str_cmp(GET_NAME(tch), name_search) &&
@@ -2008,12 +2005,11 @@ ACMD(do_who) {
 			} else {
 				num_can_see++;
 				if (CONFIG_ALLOW_MULTICLASS) {
-					send_to_char(ch, "%s[%s] %s %s%s (%s)", line_color,
-						RACE_ABBR(tch), GET_NAME(tch), GET_TITLE(tch), line_color, class_desc_str(tch, TRUE, 0));
+					send_to_char(ch, "[%s] %s%s (%s)",
+						RACE_ABBR(tch), GET_NAME(tch), GET_TITLE(tch), class_desc_str(tch, TRUE, 0));
 				} else {
-					send_to_char(ch, "%s[%s] %s%s%s%s", line_color,
-						RACE_ABBR(tch), GET_NAME(tch), *GET_TITLE(tch) ? " " : "", GET_TITLE(tch),
-						line_color);
+					send_to_char(ch, "[%s] %s%s%s",
+						RACE_ABBR(tch), GET_NAME(tch), *GET_TITLE(tch) ? " " : "", GET_TITLE(tch);
 				}
 
 				if (GET_ADMLEVEL(tch))
