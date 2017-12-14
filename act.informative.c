@@ -2008,11 +2008,11 @@ ACMD(do_who) {
 			} else {
 				num_can_see++;
 				if (CONFIG_ALLOW_MULTICLASS) {
-					send_to_char(ch, "%s[%3d %s] %s %s%s (%s)", line_color, GET_LEVEL(tch),
+					send_to_char(ch, "%s[%s] %s %s%s (%s)", line_color,
 						RACE_ABBR(tch), GET_NAME(tch), GET_TITLE(tch), line_color, class_desc_str(tch, TRUE, 0));
 				} else {
-					send_to_char(ch, "%s[%3d %s %s] %s%s%s%s", line_color, GET_LEVEL(tch),
-						CLASS_ABBR(tch), RACE_ABBR(tch), GET_NAME(tch), *GET_TITLE(tch) ? " " : "", GET_TITLE(tch),
+					send_to_char(ch, "%s[%s] %s%s%s%s", line_color,
+						RACE_ABBR(tch), GET_NAME(tch), *GET_TITLE(tch) ? " " : "", GET_TITLE(tch),
 						line_color);
 				}
 
