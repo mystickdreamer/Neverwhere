@@ -2009,7 +2009,7 @@ ACMD(do_who) {
 						RACE_ABBR(tch), GET_NAME(tch), GET_TITLE(tch));
 				} else {
 					send_to_char(ch, "[%s] %s%s%s",
-						RACE_ABBR(tch), GET_NAME(tch), *GET_TITLE(tch) ? " " : "", GET_TITLE(tch);
+						RACE_ABBR(tch), GET_NAME(tch), *GET_TITLE(tch) ? " " : "", GET_TITLE(tch));
 				}
 
 				if (GET_ADMLEVEL(tch))
