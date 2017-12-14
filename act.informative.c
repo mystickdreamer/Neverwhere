@@ -2005,10 +2005,10 @@ ACMD(do_who) {
 			} else {
 				num_can_see++;
 				if (CONFIG_ALLOW_MULTICLASS) {
-					send_to_char(ch, "@n[@c%s@n] @Y%s @R%s@n",
+					send_to_char(ch, "@n[@c%s@n] @Y%s @c%s@n",
 						RACE_ABBR(tch), GET_NAME(tch), GET_TITLE(tch));
 				} else {
-					send_to_char(ch, "[%s] %s @R%s%s@n",
+					send_to_char(ch, "[%s] %s @c%s%s@n",
 						RACE_ABBR(tch), GET_NAME(tch), *GET_TITLE(tch) ? " " : "", GET_TITLE(tch));
 				}
 
