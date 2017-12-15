@@ -322,14 +322,14 @@ void gain_exp_regardless(struct char_data *ch, int gain) {
 	}
 }
 
-void learn_from_success(struct char_data *ch, int i) {
+void learn_from_success(struct char_data *ch, char *argument) {
 	int skill_num, gain;
 	char buf[MAX_STRING_LENGTH];
 	gain = 10 * rand_number(1, 1000);
 	gain = (gain * CONFIG_EXP_MULTIPLIER);
 
 
-	skill_num = find_skill_num(i, SKTYPE_SKILL);
+	skill_num = find_skill_num(argument, SKTYPE_SKILL);
 	send_to_char(ch, "Congrats made it to the xp part");
 	SET_SKILL_XP(ch, GET_SKILL_BASE(ch, i), GET_SKILL_XP(ch, skill_num) + gain);
 
