@@ -324,6 +324,7 @@ void gain_exp_regardless(struct char_data *ch, int gain) {
 
 void learn_from_success(const struct char_data *ch, int i) {
 	//int gain, percent, i;
+	int gain;
 	gain = 10 * rand_number(1, 100);
 	//skill_exp(ch, gain);
 
@@ -331,7 +332,6 @@ void learn_from_success(const struct char_data *ch, int i) {
 
 //void skill_exp(struct char_data *ch, int gain) {
 //	int i;
-	int gain;
 	gain = (gain * CONFIG_EXP_MULTIPLIER);
 	if (IS_NPC(ch)) {
 		return;
