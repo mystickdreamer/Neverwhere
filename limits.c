@@ -337,7 +337,7 @@ void learn_from_success(const struct char_data *ch, int i) {
 		return;
 	}
 	if (!IS_NPC(ch) && GET_SKILL_BASE(ch, i) < 1) {
-		GET_SKILL_BASE(ch, i) += 1;
+		SEET_SKILL(ch, i, 1);
 		return;
 	}
 	if (gain > 0) {
