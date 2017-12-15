@@ -322,6 +322,28 @@ void gain_exp_regardless(struct char_data *ch, int gain) {
 	}
 }
 
+void learn_from_success(struct char_data *ch, int i) {
+	int skill_num, gain;
+	char buf[MAX_STRING_LENGTH];
+	gain = 10 * rand_number(1, 1000);
+	gain = (gain * CONFIG_EXP_MULTIPLIER);
+
+
+	skill_num = find_skill_num(i, SKTYPE_SKILL);
+	send_to_char(ch, "Congrats made it to the xp part");
+	SET_SKILL_XP(ch, GET_SKILL_BASE(ch, i), GET_SKILL_XP(ch, skill_num) + gain);
+
+	/**** Can the player learn the skill if the GM knows it?  ****/
+	if (IS_SET(spell_info[skill_num].skilltype, SKTYPE_SKILL)) {
+		if (GET_SKILL_BASE(ch, skill_num) < CONFIG_LEVEL_CAP - 1 && GET_SKILL_XP(ch, skill_num) >= level_exp(GET_SKILL_BASE(ch, skill_num) + 1)) {
+			send_to_char(ch, "@rYour %s skill has gained a @ylevel@r.@n\r\n", spell_info[i].name);
+			send_to_char(ch, "You practice for a while...\r\n");
+			SET_SKILL(ch, skill_num, GET_SKILL_BASE(ch, skill_num) + 1);
+
+		}
+	}
+}
+
 void skill_exp(struct char_data *ch, int gain) {
 	int i;
 	gain = (gain * CONFIG_EXP_MULTIPLIER);
