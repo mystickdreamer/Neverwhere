@@ -448,4 +448,4 @@ const char *skill_name(int num);
 int roll_skill(const struct char_data *ch, int snum);
 int roll_resisted(const struct char_data *actor, int sact, const struct char_data *resistor, int sres);
 int skill_type(int skill);
-void learn_from_success(struct char_data *ch, char *argument, int dc);
+void learn_from_success(struct char_data *ch, char *argument);
