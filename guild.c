@@ -407,13 +407,13 @@ void what_does_guild_know(int guild_nr, struct char_data * ch) {
 void learn_from_success(struct char_data *ch, int i) {
 	int skill_num, gain;
 	char buf[MAX_STRING_LENGTH];
-	gain = 10 * rand_number(1, 100);
+	gain = 10 * rand_number(1, 1000);
 	gain = (gain * CONFIG_EXP_MULTIPLIER);
 
 
 	skill_num = find_skill_num(i, SKTYPE_SKILL);
 
-	SET_SKILL_XP(ch, skill_num, GET_SKILL_XP(ch, skill_num) + gain);
+	SET_SKILL_XP(ch, GET_SKILL_BASE(ch, i), GET_SKILL_XP(ch, skill_num) + gain);
 
 	/**** Can the player learn the skill if the GM knows it?  ****/
 	if (IS_SET(spell_info[skill_num].skilltype, SKTYPE_SKILL)) {
