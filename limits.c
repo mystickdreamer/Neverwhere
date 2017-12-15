@@ -324,7 +324,6 @@ void gain_exp_regardless(struct char_data *ch, int gain) {
 
 void learn_from_success(const struct char_data *ch, int i) {
 	//int gain, percent, i;
-	int gain, val;
 	gain = 10 * rand_number(1, 100);
 	//skill_exp(ch, gain);
 
@@ -337,14 +336,14 @@ void learn_from_success(const struct char_data *ch, int i) {
 		return;
 	}
 	if (!IS_NPC(ch) && GET_SKILL_BASE(ch, i) < 1) {
-		SEET_SKILL(ch, i, 1);
+		GET_SKILL_BASE(ch, i) += 1;
 		return;
 	}
 	if (gain > 0) {
 		gain = MIN(CONFIG_MAX_EXP_GAIN, gain);
 		gain = MIN(gain, (level_exp(GET_SKILL_BASE(ch, i) + 1) -
 			level_exp(GET_SKILL_BASE(ch, i))));
-		SET_SKILL_XP(ch, i, (GET_SKILL_XP(ch, i) + gain);
+		GET_SKILL_XP(ch, i) += gain;
 		if (GET_SKILL_BASE(ch, i) < CONFIG_LEVEL_CAP - 1 &&
 			GET_SKILL_XP(ch, i) >= level_exp(GET_SKILL_BASE(ch, i) + 1)) {
 			send_to_char(ch, "@rYour %s skill has gained a @ylevel@r.@n\r\n", spell_info[i].name);
@@ -352,9 +351,9 @@ void learn_from_success(const struct char_data *ch, int i) {
 		}
 	} else if (gain < 0) {
 		gain = MAX(-CONFIG_MAX_EXP_LOSS, gain); /* Cap max exp lost per death */
-		SET_SKILL_XP(ch, rand_number(1, 64), gain);
+		GET_SKILL_XP(ch, rand_number(1, 64)) += gain;
 		if (GET_SKILL_XP(ch, i) < 0)
-			SET_SKILL_XP(ch, i) += 0;
+			GET_SKILL_XP(ch, i) = 0;
 	}
 }
 
