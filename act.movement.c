@@ -613,7 +613,7 @@ void do_doorcmd(struct char_data *ch, struct obj_data *obj, int door, int scmd) 
 				TOGGLE_LOCK(other_room, obj, rev_dir[door]);
 			send_to_char(ch, "The lock quickly yields to your skills.\r\n");
 			len = strlcpy(buf, "$n skillfully picks the lock on ", sizeof (buf));
-			//learn_from_success(ch, SKILL_LOCKPICK);
+			learn_from_success(ch, SKILL_LOCKPICK);
 			break;
 	}
 
