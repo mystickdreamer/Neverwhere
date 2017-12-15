@@ -1283,7 +1283,7 @@ ACMD(do_mount) {
 		send_to_char(ch, "It is already mounted.\r\n");
 	} else if (GET_ADMLEVEL(ch) < ADMLVL_IMMORT && IS_NPC(vict) && !MOB_FLAGGED(vict, MOB_MOUNTABLE)) {
 		send_to_char(ch, "You can't mount that!\r\n");
-	} else if (GET_ADMLEVEL(ch) < ADMLVL_IMMORT && !AFF_FLAGGED(vict, AFF_TAMED) && !GET_SKILL(ch, SKILL_HANDLE_ANIMAL)) {
+	} else if (GET_ADMLEVEL(ch) < ADMLVL_IMMORT && !AFF_FLAGGED(vict, AFF_TAMED)) {
 		send_to_char(ch, "It isn't tame enough for you to handle properly.\r\n");
 	} else {
 		act("You mount $N.", FALSE, ch, 0, vict, TO_CHAR);
