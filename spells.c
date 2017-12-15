@@ -651,4 +651,5 @@ void learn_from_success(struct char_data *ch, int i) {
 
 		}
 	}
+	return;
 }
