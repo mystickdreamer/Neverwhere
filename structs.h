@@ -675,7 +675,7 @@ typedef unsigned int ush_int;
 #define ITEM_PORTAL    28               /* Item is a portal	        */
 #define ITEM_SPELLBOOK 29               /* Item is a spellbook	        */
 #define ITEM_BOARD     30               /* Item is a message board 	*/
-#define ITEM_LOCKPICK	31		// This is a lockpick or a set of thieves tools
+#define ITEM_LOCKPICK  31		// This is a lockpick or a set of thieves tools
 
 #define NUM_ITEM_TYPES 32
 
