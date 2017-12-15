@@ -324,7 +324,7 @@ void gain_exp_regardless(struct char_data *ch, int gain) {
 
 void learn_from_success(struct char_data *ch, int gain) {
 	//int gain, percent, i;
-	gain = 10 * number_range(1, 100);
+	gain = 10 * rand_number(1, 100);
 	//skill_exp(ch, gain);
 
 //}
