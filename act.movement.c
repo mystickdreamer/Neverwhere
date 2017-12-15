@@ -632,6 +632,8 @@ void do_doorcmd(struct char_data *ch, struct obj_data *obj, int door, int scmd) 
 
 int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int dclock, int scmd) {
 	int skill_lvl;
+	struct obj_data *o;
+	int i;
 	bool lockpick = FALSE;
 	if (scmd != SCMD_PICK)
 		return (1);
