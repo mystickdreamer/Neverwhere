@@ -445,6 +445,7 @@ int wield_type(int chsize, const struct obj_data *weap);
 
 #define GET_SKILL(ch, i)		((ch)->skills[i] + GET_SKILL_BONUS(ch, i))
 #define SET_SKILL(ch, i, val)		do { (ch)->skills[i] = val; } while(0)
+#define SET_SKILL_XP(ch, i, val)	do { (ch)->skillxp[i] = val; } while(0)
 #define SET_SKILL_CLASS(ch, i, val)     do { (ch)->skillclass[i] = val; } while(0)
 #define GET_SKILL_CLASS(ch, i)          (ch->skillclass[i])
 
