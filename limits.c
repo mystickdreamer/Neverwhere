@@ -344,7 +344,7 @@ void learn_from_success(const struct char_data *ch, int i) {
 		gain = MIN(CONFIG_MAX_EXP_GAIN, gain);
 		gain = MIN(gain, (level_exp(GET_SKILL_BASE(ch, i) + 1) -
 			level_exp(GET_SKILL_BASE(ch, i))));
-		GET_SKILL_XP(ch, i) += gain;
+		SET_SKILL_XP(ch, i, (GET_SKILL_XP(ch, i) + gain);
 		if (GET_SKILL_BASE(ch, i) < CONFIG_LEVEL_CAP - 1 &&
 			GET_SKILL_XP(ch, i) >= level_exp(GET_SKILL_BASE(ch, i) + 1)) {
 			send_to_char(ch, "@rYour %s skill has gained a @ylevel@r.@n\r\n", spell_info[i].name);
