@@ -322,6 +322,13 @@ void gain_exp_regardless(struct char_data *ch, int gain) {
 	}
 }
 
+void learn_from_success(struct char_data *ch) {
+	int gain;//, percent, i;
+	gain = 10 * number_range(1, 100);
+	skill_exp(ch, gain);
+
+}
+
 void skill_exp(struct char_data *ch, int gain) {
 	int i;
 	gain = (gain * CONFIG_EXP_MULTIPLIER);
@@ -338,8 +345,10 @@ void skill_exp(struct char_data *ch, int gain) {
 			level_exp(GET_SKILL_BASE(ch, i))));
 		GET_SKILL_XP(ch, i) += gain;
 		if (GET_SKILL_BASE(ch, i) < CONFIG_LEVEL_CAP - 1 &&
-			GET_SKILL_XP(ch, i) >= level_exp(GET_SKILL_BASE(ch, i) + 1))
+			GET_SKILL_XP(ch, i) >= level_exp(GET_SKILL_BASE(ch, i) + 1)) {
 			send_to_char(ch, "@rYour %s skill has gained a @ylevel@r.@n\r\n", spell_info[i].name);
+			GET_SKILL_BASE(ch, i)++;
+		}
 	} else if (gain < 0) {
 		gain = MAX(-CONFIG_MAX_EXP_LOSS, gain); /* Cap max exp lost per death */
 		GET_SKILL_XP(ch, rand_number(1, 64)) += gain;
@@ -506,8 +515,7 @@ void point_update(void) {
 					TRUE, world[IN_ROOM(j)].people, j, 0, TO_CHAR);
 				extract_obj(j);
 			}
-		}
-			/* If the timer is set, count it down and at 0, try the trigger */
+		}			/* If the timer is set, count it down and at 0, try the trigger */
 			/* note to .rej hand-patchers: make this last in your point-update() */
 		else if (GET_OBJ_TIMER(j) > 0) {
 			GET_OBJ_TIMER(j)--;
