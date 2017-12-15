@@ -526,7 +526,7 @@ int has_lockpick(struct char_data *ch) {
 #define NEED_UNLOCKED	(1 << 2)
 #define NEED_LOCKED	(1 << 3)
 
-const char *cmd_door[NUM_DOOR_CMD] ={
+const char *cmd_door[NUM_DOOR_CMD] = {
 	"open",
 	"close",
 	"unlock",
@@ -534,7 +534,7 @@ const char *cmd_door[NUM_DOOR_CMD] ={
 	"pick"
 };
 
-const int flags_door[] ={
+const int flags_door[] = {
 	NEED_CLOSED | NEED_UNLOCKED,
 	NEED_OPEN,
 	NEED_CLOSED | NEED_LOCKED,
@@ -632,12 +632,27 @@ void do_doorcmd(struct char_data *ch, struct obj_data *obj, int door, int scmd) 
 
 int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int dclock, int scmd) {
 	int skill_lvl;
-
+	bool lockpick = FALSE;
 	if (scmd != SCMD_PICK)
 		return (1);
 
+
+	for (o = ch->carrying; o; o = o->next_content) {
+		if (GET_OBJ_TYPE(o) == ITEM_LOCKPICK) {
+			lockpick = TRUE;
+		}
+	}
+
+	for (i = 0; i < NUM_WEARS; i++) {
+		if (GET_EQ(ch, i)) {
+			if (GET_OBJ_TYPE(GET_EQ(ch, i)) == ITEM_LOCKPICK) {
+				lockpick = TRUE;
+			}
+		}
+	}
+
 	/* PICKING_LOCKS is not an untrained skill */
-	if (!has_lockpick) {
+	if (!lockpick) {
 		send_to_char(ch, "You need a lockpick to do that!\r\n");
 		return (0);
 	}
@@ -913,8 +928,7 @@ ACMD(do_enter) {
 	}
 }
 
-int do_simple_leave(struct char_data *ch, struct obj_data *obj, int need_specials_check)
- {
+int do_simple_leave(struct char_data *ch, struct obj_data *obj, int need_specials_check) {
 	room_rnum was_in = IN_ROOM(ch), dest_room = NOWHERE;
 	int need_movement = 0;
 	struct obj_data *vehicle = find_vehicle_by_vnum(GET_OBJ_VAL(obj, VAL_HATCH_DEST));
