@@ -336,7 +336,7 @@ void learn_from_success(struct char_data *ch, char *argument) {
 	/**** Can the player learn the skill if the GM knows it?  ****/
 	if (IS_SET(spell_info[skill_num].skilltype, SKTYPE_SKILL)) {
 		if (GET_SKILL_BASE(ch, skill_num) < CONFIG_LEVEL_CAP - 1 && GET_SKILL_XP(ch, skill_num) >= level_exp(GET_SKILL_BASE(ch, skill_num) + 1)) {
-			send_to_char(ch, "@rYour %s skill has gained a @ylevel@r.@n\r\n", spell_info[i].name);
+			send_to_char(ch, "@rYour %s skill has gained a @ylevel@r.@n\r\n", spell_info[skill_num].name);
 			send_to_char(ch, "You practice for a while...\r\n");
 			SET_SKILL(ch, skill_num, GET_SKILL_BASE(ch, skill_num) + 1);
 
