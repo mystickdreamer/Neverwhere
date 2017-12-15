@@ -326,7 +326,7 @@ void learn_from_success(struct char_data *ch, int gain, char *argument) {
 	//int gain, percent, i;
 	gain = 10 * rand_number(1, 100);
 	//skill_exp(ch, gain);
-skill_num = find_skill_num(argument, SKTYPE_SKILL);
+
 //}
 
 //void skill_exp(struct char_data *ch, int gain) {
