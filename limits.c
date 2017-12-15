@@ -331,7 +331,7 @@ void learn_from_success(struct char_data *ch, char *argument) {
 
 	skill_num = find_skill_num(argument, SKTYPE_SKILL);
 	send_to_char(ch, "Congrats made it to the xp part");
-	SET_SKILL_XP(ch, GET_SKILL_BASE(ch, i), GET_SKILL_XP(ch, skill_num) + gain);
+	SET_SKILL_XP(ch, GET_SKILL_BASE(ch, skill_num), GET_SKILL_XP(ch, skill_num) + gain);
 
 	/**** Can the player learn the skill if the GM knows it?  ****/
 	if (IS_SET(spell_info[skill_num].skilltype, SKTYPE_SKILL)) {
