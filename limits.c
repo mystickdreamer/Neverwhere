@@ -331,6 +331,7 @@ void learn_from_success(const struct char_data *ch, int i) {
 
 //void skill_exp(struct char_data *ch, int gain) {
 //	int i;
+	int gain;
 	gain = (gain * CONFIG_EXP_MULTIPLIER);
 	if (IS_NPC(ch)) {
 		return;
