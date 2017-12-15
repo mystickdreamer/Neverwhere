@@ -354,7 +354,7 @@ void learn_from_success(const struct char_data *ch, int i) {
 		gain = MAX(-CONFIG_MAX_EXP_LOSS, gain); /* Cap max exp lost per death */
 		GET_SKILL_XP(ch, rand_number(1, 64)) += gain;
 		if (GET_SKILL_XP(ch, i) < 0)
-			GET_SKILL_XP(ch, i) = 0;
+			GET_SKILL_XP(ch, i) += 0;
 	}
 }
 
