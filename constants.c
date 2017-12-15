@@ -538,6 +538,7 @@ const char *item_types[NUM_ITEM_TYPES+1] = {
   "PORTAL",
   "SPELLBOOK",
   "BOARD",
+  "LOCKPICK",
   "\n"
 };
 
