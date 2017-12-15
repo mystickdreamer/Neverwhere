@@ -504,7 +504,7 @@ int has_key(struct char_data *ch, obj_vnum key) {
 
 	return (0);
 }
-
+/* don't think I need this anymore but keeping it just in case 
 int has_lockpick(struct char_data *ch) {
 	struct obj_data *o;
 	int i;
@@ -520,7 +520,7 @@ int has_lockpick(struct char_data *ch) {
 
 	return (0);
 }
-
+*/
 #define NEED_OPEN	(1 << 0)
 #define NEED_CLOSED	(1 << 1)
 #define NEED_UNLOCKED	(1 << 2)
