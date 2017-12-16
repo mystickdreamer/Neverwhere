@@ -392,11 +392,17 @@ void look_at_char(struct char_data *i, struct char_data *ch) {
 
 	if (AFF_FLAGGED(i, AFF_HIDE)) {
 		seechar = roll_resisted(ch, SKILL_PERCEPTION, i, SKILL_STEALTH);
-		if (!seechar)
+		if (!seechar) {
+			learn_from_success(i, "stealth");
+			learn_from_failure(ch, "perception");
 			send_to_char(ch, "You do not see that here!\r\n");
-		return;
+			return;
+		}
 	}
-
+	if (AFF_FLAGGED(i, AFF_HIDE)) {
+		learn_from_success(ch, "perception");
+		learn_from_failure(i, "stealth");
+	}
 	if (!ch->desc)
 		return;
 
@@ -2000,7 +2006,7 @@ ACMD(do_who) {
 
 			if (short_list) {
 				send_to_char(ch, "@B[@Y%s @B]@W %-12.12s@n%s@n\r\n",
-					 RACE_ABBR(tch), GET_NAME(tch),
+					RACE_ABBR(tch), GET_NAME(tch),
 					((!(++num_can_see % 4)) ? "\r\n" : ""));
 			} else {
 				num_can_see++;
