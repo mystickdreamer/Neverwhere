@@ -350,7 +350,7 @@ void learn_from_success(struct char_data *ch, char *argument) {
 void learn_from_failure(struct char_data *ch, char *argument) {
 	int skill_num, gain;
 	char buf[MAX_STRING_LENGTH];
-	gain = rand_number(1, 75);
+	gain = rand_number(1, 30);
 	gain = (gain * CONFIG_EXP_MULTIPLIER);
 
 
