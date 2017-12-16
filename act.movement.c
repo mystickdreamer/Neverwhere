@@ -520,7 +520,7 @@ int has_lockpick(struct char_data *ch) {
 
 	return (0);
 }
-*/
+ */
 #define NEED_OPEN	(1 << 0)
 #define NEED_CLOSED	(1 << 1)
 #define NEED_UNLOCKED	(1 << 2)
@@ -672,6 +672,7 @@ int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int dclock, in
 		 */
 	else if (dclock > (skill_lvl))
 		send_to_char(ch, "You failed to pick the lock. [%d vs. %d]\r\n", dclock, skill_lvl);
+	learn_from_failure(ch, "lockpick");
 	else
 		return (1);
 
