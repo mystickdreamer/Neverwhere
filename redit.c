@@ -421,20 +421,6 @@ void redit_disp_sector_menu(struct descriptor_data *d)
   OLC_MODE(d) = REDIT_SECTOR;
 }
 
-/* For exit skill. */
-void redit_disp_exit_skill_menu(struct descriptor_data *d)
-{
-  int counter, columns = 0;
-
-  clear_screen(d);
-  for (counter = 0; counter < SKILL_TABLE_SIZE; counter++) {
-    write_to_output(d, "@g%2d@n) %-20.20s%s", counter,
-		spell_info[counter].name, !(++columns % 3) ? "\r\n" : "");
-  }
-  write_to_output(d, "\r\nEnter skill needed : ");
-  OLC_MODE(d) = REDIT_EXIT_DCSKILL;
-}
-
 /* The main menu. */
 void redit_disp_menu(struct descriptor_data *d)
 {
@@ -748,8 +734,7 @@ void redit_parse(struct descriptor_data *d, char *arg)
       return;
     case '9':
       OLC_MODE(d) = REDIT_EXIT_DCSKILL;
-      redit_disp_exit_skill_menu(d);
-      //write_to_output(d, "Enter skill to be checked to pass through exit : ");
+      write_to_output(d, "Enter skill to be checked to pass through exit : ");
       return;
     case 'a':
     case 'A':
