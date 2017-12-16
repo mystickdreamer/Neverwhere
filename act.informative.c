@@ -458,6 +458,8 @@ void look_at_char(struct char_data *i, struct char_data *ch) {
 				show_obj_to_char(tmp_obj, ch, SHOW_OBJ_SHORT);
 				found = TRUE;
 			} else if (seeinv) {
+				learn_from_success(ch, "perception");
+				learn_from_failure(i, "stealth");
 				if (CAN_SEE_OBJ(ch, tmp_obj)) {
 					show_obj_to_char(tmp_obj, ch, SHOW_OBJ_SHORT);
 					found = TRUE;
@@ -1061,12 +1063,16 @@ static void look_at_target(struct char_data *ch, char *arg, int cmread) {
 		if (found_char != NULL) {
 			look_at_char(found_char, ch);
 			if (ch != found_char) {
-				if (AFF_FLAGGED(ch, AFF_HIDE))
+				if (AFF_FLAGGED(ch, AFF_HIDE)) {
 					hidelooker = roll_resisted(ch, SKILL_STEALTH, found_char, SKILL_PERCEPTION);
-				else
+					learn_from_success(ch, "stealth");
+				} else
 					hidelooker = 0;
 				if (!hidelooker) {
 					if (CAN_SEE(found_char, ch))
+						if (AFF_FLAGGED(ch, AFF_HIDE)){
+							learn_from_success(found_char, "perception");
+						}
 						act("$n looks at you.", TRUE, ch, 0, found_char, TO_VICT);
 					act("$n looks at $N.", TRUE, ch, 0, found_char, TO_NOTVICT);
 				}
