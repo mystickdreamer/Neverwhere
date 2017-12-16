@@ -1241,7 +1241,7 @@ void do_start(struct char_data *ch) {
 	}
 
 	set_title(ch, NULL);
-	 roll_real_abils(ch);
+	/* roll_real_abils(ch); */
 
 	GET_MAX_HIT(ch) = class_hit_die_size[GET_CLASS(ch)];
 	GET_MAX_MANA(ch) = 100;
