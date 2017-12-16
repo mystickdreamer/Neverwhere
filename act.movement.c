@@ -613,7 +613,7 @@ void do_doorcmd(struct char_data *ch, struct obj_data *obj, int door, int scmd) 
 				TOGGLE_LOCK(other_room, obj, rev_dir[door]);
 			send_to_char(ch, "The lock quickly yields to your skills.\r\n");
 			len = strlcpy(buf, "$n skillfully picks the lock on ", sizeof (buf));
-			learn_from_success(ch, "lockpick", 1);
+			//learn_from_success(ch, "lockpick", 1);
 			break;
 	}
 
@@ -674,6 +674,7 @@ int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int dclock, in
 		send_to_char(ch, "You failed to pick the lock. [%d vs. %d]\r\n", dclock, skill_lvl);
 		learn_from_failure(ch, "lockpick");
 	} else
+		learn_from_success(ch, "lockpick", dclock)
 		return (1);
 
 	return (0);
