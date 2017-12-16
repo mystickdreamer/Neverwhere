@@ -3176,8 +3176,10 @@ void search_in_direction(struct char_data * ch, int dir) {
 	if (EXIT(ch, dir))
 		dchide = DOOR_DCHIDE(ch, dir);
 
-	if (skill_lvl > dchide)
+	if (skill_lvl > dchide) {
+		learn_from_success(ch, "perception");
 		check = TRUE;
+	}
 
 	if (EXIT(ch, dir)) {
 		if (EXIT(ch, dir)->general_description &&
@@ -3191,7 +3193,6 @@ void search_in_direction(struct char_data * ch, int dir) {
 			send_to_char(ch, "There is a hidden door keyword: '%s' %sthere.\r\n",
 			fname(EXIT(ch, dir)->keyword),
 			(EXIT_FLAGGED(EXIT(ch, dir), EX_CLOSED)) ? "" : "open ");
-		learn_from_success(ch, "perception");
 		else
 			send_to_char(ch, "There is no exit there.\r\n");
 	} else
