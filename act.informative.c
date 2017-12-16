@@ -394,14 +394,14 @@ void look_at_char(struct char_data *i, struct char_data *ch) {
 		seechar = roll_resisted(ch, SKILL_PERCEPTION, i, SKILL_STEALTH);
 		if (!seechar) {
 			learn_from_success(i, "stealth", GET_SKILL_BASE(ch, SKILL_PERCEPTION));
-			learn_from_failure(ch, "perception", GET_SKILL_BASE(i, SKILL_STEALTH));
+			learn_from_failure(ch, "perception");
 			send_to_char(ch, "You do not see that here!\r\n");
 			return;
 		}
 	}
 	if (AFF_FLAGGED(i, AFF_HIDE)) {
 		learn_from_success(ch, "perception", GET_SKILL_BASE(i, SKILL_STEALTH));
-		learn_from_failure(i, "stealth", GET_SKILL_BASE(ch, SKILL_PERCEPTION));
+		learn_from_failure(i, "stealth");
 	}
 	if (!ch->desc)
 		return;
