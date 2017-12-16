@@ -1017,7 +1017,7 @@ void save_char(struct char_data * ch) {
 		for (i = 1; i <= MAX_LANGUAGES; i++) {
 			for (i = 1; i <= SKILL_TABLE_SIZE; i++) {
 				if (IS_SET(skill_type(i), SKTYPE_SKILL)) {
-					fprintf(fl, "%d %d %d\n", i, GET_SKILL_BASE(ch, i), GET_SKILL_CLASS(ch, i));
+					fprintf(fl, "%d %d %d\n", i, GET_SKILL_BASE(ch, i), GET_SKILL_XP(ch, i));
 				}
 			}
 			fprintf(fl, "0 0\n");
@@ -1218,7 +1218,7 @@ void load_skills(FILE *fl, struct char_data *ch, bool mods) {
 				SET_SKILL_BONUS(ch, num, num2);
 			} else {
 				SET_SKILL(ch, num, num2);
-				SET_SKILL_CLASS(ch, num, num3);
+				SET_SKILL_XP(ch, num, num3);
 			}
 		}
 	} while (num != 0);
