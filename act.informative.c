@@ -393,15 +393,15 @@ void look_at_char(struct char_data *i, struct char_data *ch) {
 	if (AFF_FLAGGED(i, AFF_HIDE)) {
 		seechar = roll_resisted(ch, SKILL_PERCEPTION, i, SKILL_STEALTH);
 		if (!seechar) {
-			learn_from_success(i, "stealth");
-			learn_from_failure(ch, "perception");
+			learn_from_success(i, "stealth", GET_SKILL_BASE(ch, SKILL_PERCEPTION));
+			learn_from_failure(ch, "perception", GET_SKILL_BASE(i, SKILL_STEALTH));
 			send_to_char(ch, "You do not see that here!\r\n");
 			return;
 		}
 	}
 	if (AFF_FLAGGED(i, AFF_HIDE)) {
-		learn_from_success(ch, "perception");
-		learn_from_failure(i, "stealth");
+		learn_from_success(ch, "perception", GET_SKILL_BASE(i, SKILL_STEALTH));
+		learn_from_failure(i, "stealth", GET_SKILL_BASE(ch, SKILL_PERCEPTION));
 	}
 	if (!ch->desc)
 		return;
@@ -1063,13 +1063,13 @@ static void look_at_target(struct char_data *ch, char *arg, int cmread) {
 			if (ch != found_char) {
 				if (AFF_FLAGGED(ch, AFF_HIDE)) {
 					hidelooker = roll_resisted(ch, SKILL_STEALTH, found_char, SKILL_PERCEPTION);
-					learn_from_success(ch, "stealth");
+					learn_from_success(ch, "stealth", GET_SKILL_BASE(found_char, SKILL_PERCEPTION));
 				} else
 					hidelooker = 0;
 				if (!hidelooker) {
 					if (CAN_SEE(found_char, ch))
 						if (AFF_FLAGGED(ch, AFF_HIDE)) {
-							learn_from_success(found_char, "perception");
+							learn_from_success(found_char, "perception", GET_SKILL_BASE(ch, SKILL_STEALTH));
 						}
 					act("$n looks at you.", TRUE, ch, 0, found_char, TO_VICT);
 					act("$n looks at $N.", TRUE, ch, 0, found_char, TO_NOTVICT);
