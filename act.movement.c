@@ -565,6 +565,8 @@ void do_doorcmd(struct char_data *ch, struct obj_data *obj, int door, int scmd) 
 	size_t len;
 	room_rnum other_room = NOWHERE;
 	struct room_direction_data *back = NULL;
+	int i;
+	struct room_data *rm = &world[IN_ROOM(ch)];
 
 	if (!door_mtrigger(ch, scmd, door))
 		return;
