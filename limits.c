@@ -322,10 +322,10 @@ void gain_exp_regardless(struct char_data *ch, int gain) {
 	}
 }
 
-void learn_from_success(struct char_data *ch, char *argument, int dc) {
+void learn_from_success(struct char_data *ch, char *argument) {
 	int skill_num, gain;
 	char buf[MAX_STRING_LENGTH];
-	gain = dc * rand_number(1, 50);
+	gain = rand_number(1, 1000);
 	gain = (gain * CONFIG_EXP_MULTIPLIER);
 
 
