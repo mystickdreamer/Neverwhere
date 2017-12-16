@@ -325,7 +325,7 @@ void gain_exp_regardless(struct char_data *ch, int gain) {
 void learn_from_success(struct char_data *ch, char *argument, int dc) {
 	int skill_num, gain;
 	char buf[MAX_STRING_LENGTH];
-	gain = dc * rand_number(1, 50);
+	gain = dc * rand_number(1, 70);
 	gain = (gain * CONFIG_EXP_MULTIPLIER);
 
 
