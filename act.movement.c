@@ -670,10 +670,10 @@ int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int dclock, in
 		 * thieves' tools. If the player has them, that modifier will be accounted
 		 * for in roll_skill, and negate (or surpass) this. 
 		 */
-	else if (dclock > (skill_lvl))
+	else if (dclock > (skill_lvl)) {
 		send_to_char(ch, "You failed to pick the lock. [%d vs. %d]\r\n", dclock, skill_lvl);
-	learn_from_failure(ch, "lockpick");
-	else
+		learn_from_failure(ch, "lockpick");
+	} else
 		return (1);
 
 	return (0);
