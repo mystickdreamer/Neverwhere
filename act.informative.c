@@ -3177,7 +3177,7 @@ void search_in_direction(struct char_data * ch, int dir) {
 		dchide = DOOR_DCHIDE(ch, dir);
 
 	if (skill_lvl > dchide) {
-		learn_from_success(ch, "perception");
+		learn_from_success(ch, "perception", dchide);
 		check = TRUE;
 	}
 
