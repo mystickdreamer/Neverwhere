@@ -23,6 +23,7 @@ CVSHEADER("$CVSHeader: cwg/rasputin/src/act.movement.c,v 1.5 2004/12/22 20:29:59
 #include "house.h"
 #include "constants.h"
 #include "dg_scripts.h"
+#include "oasis.h"
 
 /* external functions */
 int special(struct char_data *ch, int cmd, char *arg);
