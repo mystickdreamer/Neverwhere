@@ -673,10 +673,10 @@ int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int dclock, in
 	else if (dclock > (skill_lvl)) {
 		send_to_char(ch, "You failed to pick the lock. [%d vs. %d]\r\n", dclock, skill_lvl);
 		learn_from_failure(ch, "lockpick");
-	} else
+	} else{
 		learn_from_success(ch, "lockpick", dclock);
 		return (1);
-
+	}
 	return (0);
 }
 
