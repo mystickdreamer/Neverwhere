@@ -96,7 +96,7 @@ void	advance_level(struct char_data *ch, int whichclass);
 void	set_title(struct char_data *ch, char *title);
 void	gain_exp(struct char_data *ch, int gain);
 void	gain_exp_regardless(struct char_data *ch, int gain);
-void	learn_from_success(struct char_data *ch, char *argument, int dc);
+void	learn_from_success(struct char_data *ch, char *argument);
 void	gain_condition(struct char_data *ch, int condition, int value);
 void	check_idling(struct char_data *ch);
 void	point_update(void);
