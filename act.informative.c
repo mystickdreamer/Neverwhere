@@ -3188,10 +3188,10 @@ void search_in_direction(struct char_data * ch, int dir) {
 		else if (EXIT_FLAGGED(EXIT(ch, dir), EX_ISDOOR) &&
 			EXIT_FLAGGED(EXIT(ch, dir), EX_SECRET) &&
 			EXIT(ch, dir)->keyword && (check == TRUE))
-			learn_from_success(ch, "perception");
 			send_to_char(ch, "There is a hidden door keyword: '%s' %sthere.\r\n",
 			fname(EXIT(ch, dir)->keyword),
 			(EXIT_FLAGGED(EXIT(ch, dir), EX_CLOSED)) ? "" : "open ");
+		learn_from_success(ch, "perception");
 		else
 			send_to_char(ch, "There is no exit there.\r\n");
 	} else
