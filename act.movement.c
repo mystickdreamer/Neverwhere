@@ -24,7 +24,6 @@ CVSHEADER("$CVSHeader: cwg/rasputin/src/act.movement.c,v 1.5 2004/12/22 20:29:59
 #include "constants.h"
 #include "dg_scripts.h"
 
-
 /* external functions */
 int special(struct char_data *ch, int cmd, char *arg);
 void death_cry(struct char_data *ch);
@@ -566,8 +565,6 @@ void do_doorcmd(struct char_data *ch, struct obj_data *obj, int door, int scmd) 
 	size_t len;
 	room_rnum other_room = NOWHERE;
 	struct room_direction_data *back = NULL;
-	int i, dclock;
-	struct room_data *rm = &world[IN_ROOM(ch)];
 
 	if (!door_mtrigger(ch, scmd, door))
 		return;
@@ -614,10 +611,9 @@ void do_doorcmd(struct char_data *ch, struct obj_data *obj, int door, int scmd) 
 			TOGGLE_LOCK(IN_ROOM(ch), obj, door);
 			if (back)
 				TOGGLE_LOCK(other_room, obj, rev_dir[door]);
-			dclock = rm->dir_option[i]->dclock;
 			send_to_char(ch, "The lock quickly yields to your skills.\r\n");
 			len = strlcpy(buf, "$n skillfully picks the lock on ", sizeof (buf));
-			learn_from_success(ch, "lockpick", dclock);
+			learn_from_success(ch, "lockpick");
 			break;
 	}
 
