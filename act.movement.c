@@ -1329,6 +1329,7 @@ ACMD(do_tame) {
 	} else if (!IS_NPC(vict) && GET_ADMLEVEL(ch) < ADMLVL_IMMORT) {
 		send_to_char(ch, "You can't do that.\r\n");
 	} else if (roll_skill(ch, SKILL_HANDLE_ANIMAL) <= (GET_LEVEL(vict) + 15)) {
+		learn_from_failure(ch, "handle animal");
 		send_to_char(ch, "You fail to tame it.\r\n");
 	} else {
 		af.type = SKILL_HANDLE_ANIMAL;
@@ -1337,7 +1338,7 @@ ACMD(do_tame) {
 		af.location = APPLY_NONE;
 		af.bitvector = AFF_TAMED;
 		affect_join(vict, &af, FALSE, FALSE, FALSE, FALSE);
-
+		learn_from_success(ch, "handle animal", GET_LEVEL(vict));
 		act("You tame $N.", FALSE, ch, 0, vict, TO_CHAR);
 		act("$n tames you.", FALSE, ch, 0, vict, TO_VICT);
 		act("$n tames $N.", FALSE, ch, 0, vict, TO_NOTVICT);
