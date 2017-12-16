@@ -451,6 +451,7 @@ void look_at_char(struct char_data *i, struct char_data *ch) {
 	if (ch != i && (GET_SKILL_BASE(ch, SKILL_PERCEPTION) > 20 || GET_ADMLEVEL(ch))) {
 		seeinv = roll_resisted(ch, SKILL_PERCEPTION, i, SKILL_STEALTH);
 		found = FALSE;
+
 		act("\r\nYou attempt to peek at $s inventory:", FALSE, i, 0, ch, TO_VICT);
 		for (tmp_obj = i->carrying; tmp_obj; tmp_obj = tmp_obj->next_content) {
 			if (CAN_SEE_OBJ(ch, tmp_obj) &&
@@ -458,17 +459,20 @@ void look_at_char(struct char_data *i, struct char_data *ch) {
 				show_obj_to_char(tmp_obj, ch, SHOW_OBJ_SHORT);
 				found = TRUE;
 			} else if (seeinv) {
-				learn_from_success(ch, "perception");
-				learn_from_failure(i, "stealth");
 				if (CAN_SEE_OBJ(ch, tmp_obj)) {
 					show_obj_to_char(tmp_obj, ch, SHOW_OBJ_SHORT);
 					found = TRUE;
 				}
 			}
 		}
+		learn_from_success(ch, "perception");
+		learn_from_failure(i, "stealth");
 
-		if (!found)
+		if (!found) {
+			learn_from_failure(ch, "perception");
+			learn_from_success(i, "stealth");
 			send_to_char(ch, "You can't see anything.\r\n");
+		}
 	}
 }
 
@@ -1070,10 +1074,10 @@ static void look_at_target(struct char_data *ch, char *arg, int cmread) {
 					hidelooker = 0;
 				if (!hidelooker) {
 					if (CAN_SEE(found_char, ch))
-						if (AFF_FLAGGED(ch, AFF_HIDE)){
+						if (AFF_FLAGGED(ch, AFF_HIDE)) {
 							learn_from_success(found_char, "perception");
 						}
-						act("$n looks at you.", TRUE, ch, 0, found_char, TO_VICT);
+					act("$n looks at you.", TRUE, ch, 0, found_char, TO_VICT);
 					act("$n looks at $N.", TRUE, ch, 0, found_char, TO_NOTVICT);
 				}
 			}
