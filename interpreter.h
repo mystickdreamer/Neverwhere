@@ -8,8 +8,10 @@
 *  CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.               *
 ************************************************************************ */
 
-#define ACMD(name)  \
-   void name(struct char_data *ch, char *argument, int cmd, int subcmd)
+#define ACMD(name) void name(struct char_data *ch, char *argument, int cmd, int subcmd)
+
+#define DO_FUN args void (char_data *ch, char *argument))
+
 
 ACMD(do_move);
 
