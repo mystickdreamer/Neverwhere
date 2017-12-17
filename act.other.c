@@ -1611,10 +1611,52 @@ ACMD(do_heal) {
 	if (!(vict = get_char_vis(ch, arg, NULL, FIND_CHAR_ROOM))) {
 		send_to_char(ch, "Heal who?\r\n");
 		return;
-	} else if (vict == ch) {
-		send_to_char(ch, "Come on now, that's rather stupid!\r\n");
+	} 
+
+	if (GET_POS(vict) > POS_DEAD {
+		send_to_char(ch, "You attempt to heal %s.\r\n", GET_NAME(vict));
+		dc -= GET_HIT(vict);
+		heal = roll_skill(ch, SKILL_MAGIC_HEALING);
+		if (heal > dc) {
+			send_to_char(ch, "You heal %s's wounds.\r\n", GET_NAME(vict));
+			GET_HIT(vict) += (heal / 5);
+			update_pos(vict);
+			send_to_char(vict, "Your wounds are healed by %s!\r\n", GET_NAME(ch));
+			act("$n's wounds are healed by $N!", TRUE, vict, 0, ch, TO_ROOM);
+		} else {
+			send_to_char(ch, "Maybe you should tend their wounds first!\r\n");
+		}
+	} else if (AFF_FLAGGED(vict, AFF_POISON)) {
+		if (roll_skill(ch, SKILL_MAGIC_HEALING) >= dc) {
+			affect_from_char(vict, AFF_POISON);
+			send_to_char(ch, "You draw the poison out of %s's body!\r\n", GET_NAME(vict));
+			act("$N draws the poison out of your body!", FALSE, vict, 0, ch, TO_CHAR);
+			act("$N draws the poison out of $n's body!", TRUE, vict, 0, ch, TO_ROOM);
+		}
+	} else {
+		send_to_char(ch, "But your healing skills cannot currently help.\r\n");
+	}
+}
+
+ACMD(do_tend) {
+	struct char_data *vict;
+	char arg[MAX_INPUT_LENGTH];
+	int dc = 15;
+
+	if (IS_NPC(ch))
+		return;
+
+	one_argument(argument, arg);
+
+	if (!*arg) {
+		send_to_char(ch, "You have to try and tend SOMEONE.\r\n");
 		return;
 	}
+
+	if (!(vict = get_char_vis(ch, arg, NULL, FIND_CHAR_ROOM))) {
+		send_to_char(ch, "Tend who?\r\n");
+		return;
+	} 
 
 	if (GET_POS(vict) > POS_DEAD && GET_POS(vict) < POS_STUNNED) {
 		send_to_char(ch, "You attempt to lend first aid to %s.\r\n", GET_NAME(vict));
@@ -1628,15 +1670,8 @@ ACMD(do_heal) {
 		} else {
 			send_to_char(ch, "Their wounds are beyond your ability!\r\n");
 		}
-	} else if (AFF_FLAGGED(vict, AFF_POISON)) {
-		if (roll_skill(ch, SKILL_MAGIC_HEALING) >= dc) {
-			affect_from_char(vict, AFF_POISON);
-			send_to_char(ch, "You draw the poison out of %s's body!\r\n", GET_NAME(vict));
-			act("$N draws the poison out of your body!", FALSE, vict, 0, ch, TO_CHAR);
-			act("$N draws the poison out of $n's body!", TRUE, vict, 0, ch, TO_ROOM);
-		}
 	} else {
-		send_to_char(ch, "But your healing skills cannot currently help.\r\n");
+		send_to_char(ch, "But your first aid skills cannot currently help.\r\n");
 	}
 }
 
