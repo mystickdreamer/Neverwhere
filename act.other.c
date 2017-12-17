@@ -1452,7 +1452,7 @@ void add_innate_timer(struct char_data *ch, int spellnum, int sktype) {
    cause them to wear off (ie. removing eq with a perm affect).
  */
 void add_innate_affects(struct char_data *ch) {
-	/*switch(GET_RACE(ch)) {
+	switch(GET_RACE(ch)) {
 	case RACE_ELF:
 	case RACE_DROW_ELF:
 	case RACE_DWARF:
@@ -1461,7 +1461,7 @@ void add_innate_affects(struct char_data *ch) {
 	case RACE_HALFLING:
 	  affect_modify(ch, APPLY_NONE, 0, 0, AFF_INFRAVISION, TRUE);
 	  break;
-	} */
+	} 
 	affect_total(ch);
 }
 
