@@ -799,7 +799,7 @@ ACMD(do_display) {
 	if (!str_cmp(argument, "on") || !str_cmp(argument, "all")) {
 		SET_BIT_AR(PRF_FLAGS(ch), PRF_DISPHP);
 		SET_BIT_AR(PRF_FLAGS(ch), PRF_DISPMOVE);
-		SET_BIT_AR(PF_FLAGS(ch),  PRF_DISPMANA);
+		SET_BIT_AR(PRF_FLAGS(ch), PRF_DISPMANA);
 		SET_BIT_AR(PRF_FLAGS(ch), PRF_DISPEXP);
 		SET_BIT_AR(PRF_FLAGS(ch), PRF_DISPTNL);
 
