@@ -1217,3 +1217,30 @@ char *strpaste(char *str1, char *str2, char *joiner)
   return ret;
 }
 
+/*
+ * Add a timer to ch						-Thoric
+ * Support for "call back" time delayed commands
+ */
+void add_timer( CHAR_DATA * ch, sh_int type, sh_int count, DO_FUN * fun, int value )
+{
+   TIMER *timer;
+
+   for( timer = ch->first_timer; timer; timer = timer->next )
+      if( timer->type == type )
+      {
+         timer->count = count;
+         timer->do_fun = fun;
+         timer->value = value;
+         break;
+      }
+   if( !timer )
+   {
+      CREATE( timer, TIMER, 1 );
+      timer->count = count;
+      timer->type = type;
+      timer->do_fun = fun;
+      timer->value = value;
+      LINK( timer, ch->first_timer, ch->last_timer, next, prev );
+   }
+}
+
