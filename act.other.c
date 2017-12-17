@@ -1596,7 +1596,7 @@ ACMD(do_pagelength) {
 ACMD(do_heal) {
 	struct char_data *vict;
 	char arg[MAX_INPUT_LENGTH];
-	int dc = 15;
+	int dc = 15, heal;
 
 	if (IS_NPC(ch))
 		return;
