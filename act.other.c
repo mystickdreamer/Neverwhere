@@ -183,7 +183,7 @@ ACMD(do_steal) {
 	
 	}
 	roll = roll_skill(ch, SKILL_STEAL);
-
+	send_to_char(ch, "Your roll is %d\r\n", roll);
 	/* Can also add +2 synergy bonus for bluff of 5 or more */
 	// Need a better way to calculate this 
 	if (GET_SKILL(ch, SKILL_STEALTH) > 20)
