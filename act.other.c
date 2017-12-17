@@ -258,9 +258,9 @@ ACMD(do_steal) {
 					act("$n tried to steal something from you!", FALSE, ch, 0, vict, TO_VICT);
 					act("$n tries to steal something from $N.", TRUE, ch, 0, vict, TO_NOTVICT);
 				}
-			} else 
+			}
 				learn_from_success(ch, "stealth", detect);
-			
+		
 		} else { /* Steal some coins */
 			diffc += 5; /* People take care of their money */
 			if (roll >= diffc) {
