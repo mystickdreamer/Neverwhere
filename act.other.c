@@ -786,7 +786,7 @@ ACMD(do_display) {
 	skip_spaces(&argument);
 
 	if (!*argument) {
-		send_to_char(ch, "Usage: prompt { E | H | K | T | V | all | auto | none }\r\n");
+		send_to_char(ch, "Usage: prompt { E | H | M | T | V | all | auto | none }\r\n");
 		return;
 	}
 
@@ -799,24 +799,25 @@ ACMD(do_display) {
 	if (!str_cmp(argument, "on") || !str_cmp(argument, "all")) {
 		SET_BIT_AR(PRF_FLAGS(ch), PRF_DISPHP);
 		SET_BIT_AR(PRF_FLAGS(ch), PRF_DISPMOVE);
+		SET_BIT_AR(PF_FLAGS(ch),  PRF_DISPMANA);
 		SET_BIT_AR(PRF_FLAGS(ch), PRF_DISPEXP);
 		SET_BIT_AR(PRF_FLAGS(ch), PRF_DISPTNL);
-		if (GET_CLASS_RANKS(ch, CLASS_MONK)) {
-			SET_BIT_AR(PRF_FLAGS(ch), PRF_DISPKI);
-		}
+
 	} else if (!str_cmp(argument, "off") || !str_cmp(argument, "none")) {
 		REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_DISPHP);
 		REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_DISPMANA);
 		REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_DISPMOVE);
+		REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_DISPMANA);
 		REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_DISPEXP);
 		REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_DISPTNL);
-		REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_DISPKI);
+
 	} else {
 		REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_DISPHP);
 		REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_DISPMOVE);
+		REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_DISPMANA);
 		REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_DISPEXP);
 		REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_DISPTNL);
-		REMOVE_BIT_AR(PRF_FLAGS(ch), PRF_DISPKI);
+
 
 		for (i = 0; i < strlen(argument); i++) {
 			switch (LOWER(argument[i])) {
@@ -826,8 +827,8 @@ ACMD(do_display) {
 				case 'v':
 					SET_BIT_AR(PRF_FLAGS(ch), PRF_DISPMOVE);
 					break;
-				case 'k':
-					SET_BIT_AR(PRF_FLAGS(ch), PRF_DISPKI);
+				case 'm':
+					SET_BIT_AR(PRF_FLAGS(ch), PRF_DISPMANA);
 					break;
 				case 'e':
 					SET_BIT_AR(PRF_FLAGS(ch), PRF_DISPEXP);
@@ -836,7 +837,7 @@ ACMD(do_display) {
 					SET_BIT_AR(PRF_FLAGS(ch), PRF_DISPTNL);
 					break;
 				default:
-					send_to_char(ch, "Usage: prompt { E | H | K | T | V | all | auto | none }\r\n");
+					send_to_char(ch, "Usage: prompt { E | H | M | T | V | all | auto | none }\r\n");
 					return;
 			}
 		}
