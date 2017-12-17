@@ -1613,7 +1613,7 @@ ACMD(do_heal) {
 		return;
 	} 
 
-	if (GET_POS(vict) > POS_DEAD {
+	if (GET_POS(vict) > POS_DEAD) {
 		send_to_char(ch, "You attempt to heal %s.\r\n", GET_NAME(vict));
 		dc -= GET_HIT(vict);
 		heal = roll_skill(ch, SKILL_MAGIC_HEALING);
