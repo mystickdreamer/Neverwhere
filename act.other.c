@@ -176,7 +176,12 @@ ACMD(do_steal) {
 		send_to_char(ch, "That isn't such a good idea...\r\n");
 		return;
 	}
-
+	
+	if (!AFF_FLAGGED(ch, AFF_HIDE)) {
+		send_to_char(ch, "You must be hidden to steal.\r\n");
+		return;
+	
+	}
 	roll = roll_skill(ch, SKILL_STEAL);
 
 	/* Can also add +2 synergy bonus for bluff of 5 or more */
