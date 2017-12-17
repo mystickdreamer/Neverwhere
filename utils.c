@@ -1221,7 +1221,7 @@ char *strpaste(char *str1, char *str2, char *joiner)
  * Add a timer to ch						-Thoric
  * Support for "call back" time delayed commands
  */
-void add_timer( CHAR_DATA * ch, sh_int type, sh_int count, DO_FUN * fun, int value )
+void add_timer( CHAR_DATA * ch, sh_int type, sh_int count, ACMD * fun, int value )
 {
    TIMER *timer;
 
