@@ -1,19 +1,16 @@
 /* ************************************************************************
- *   File: interpreter.h                                 Part of CircleMUD *
- *  Usage: header file: public procs, macro defs, subcommand defines       *
- *                                                                         *
- *  All rights reserved.  See license.doc for complete information.        *
- *                                                                         *
- *  Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University *
- *  CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.               *
- ************************************************************************ */
+*   File: interpreter.h                                 Part of CircleMUD *
+*  Usage: header file: public procs, macro defs, subcommand defines       *
+*                                                                         *
+*  All rights reserved.  See license.doc for complete information.        *
+*                                                                         *
+*  Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University *
+*  CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.               *
+************************************************************************ */
 
 #define ACMD(name)  \
    void name(struct char_data *ch, char *argument, int cmd, int subcmd)
 
-#define DO_FUN(args) \
-	void args (char_data *ch, char *argument))
-//typedef void DO_FUN args((CHAR_DATA * ch, char *argument));
 
 ACMD(do_move);
 
@@ -21,21 +18,21 @@ ACMD(do_move);
 #define CMD_IS(cmd_name) (!strcmp(cmd_name, complete_cmd_info[cmd].command))
 #define IS_MOVE(cmdnum) (complete_cmd_info[cmdnum].command_pointer == do_move)
 
-void command_interpreter(struct char_data *ch, char *argument);
-int search_block(char *arg, const char **list, int exact);
-char lower(char c);
-char *one_argument(char *argument, char *first_arg);
-char *one_word(char *argument, char *first_arg);
-char *any_one_arg(char *argument, char *first_arg);
-char *two_arguments(char *argument, char *first_arg, char *second_arg);
-int fill_word(char *argument);
-void half_chop(char *string, char *arg1, char *arg2);
-void nanny(struct descriptor_data *d, char *arg);
-int is_abbrev(const char *arg1, const char *arg2);
-int is_number(const char *str);
-int find_command(const char *command);
-void skip_spaces(char **string);
-char *delete_doubledollar(char *string);
+void	command_interpreter(struct char_data *ch, char *argument);
+int	search_block(char *arg, const char **list, int exact);
+char	lower( char c );
+char	*one_argument(char *argument, char *first_arg);
+char	*one_word(char *argument, char *first_arg);
+char	*any_one_arg(char *argument, char *first_arg);
+char	*two_arguments(char *argument, char *first_arg, char *second_arg);
+int	fill_word(char *argument);
+void	half_chop(char *string, char *arg1, char *arg2);
+void	nanny(struct descriptor_data *d, char *arg);
+int	is_abbrev(const char *arg1, const char *arg2);
+int	is_number(const char *str);
+int	find_command(const char *command);
+void	skip_spaces(char **string);
+char	*delete_doubledollar(char *string);
 
 /* WARNING: if you have added diagonal directions and have them at the
  * beginning of the command list.. change this value to 11 or 15 (depending) */
@@ -46,15 +43,16 @@ char *delete_doubledollar(char *string);
 /* for compatibility with 2.20: */
 #define argument_interpreter(a, b, c) two_arguments(a, b, c)
 
+
 struct command_info {
-	const char *command;
-	const char *sort_as;
-	cl_sint8 minimum_position;
-	void (*command_pointer)
-	(struct char_data *ch, char *argument, int cmd, int subcmd);
-	cl_sint16 minimum_level;
-	cl_sint16 minimum_admlevel;
-	int subcmd;
+   const char *command;
+   const char *sort_as;
+   cl_sint8 minimum_position;
+   void	(*command_pointer)
+	   (struct char_data *ch, char *argument, int cmd, int subcmd);
+   cl_sint16 minimum_level;
+   cl_sint16 minimum_admlevel;
+   int	subcmd;
 };
 
 /*
@@ -69,10 +67,10 @@ extern struct command_info *complete_cmd_info;
  * named member.
  */
 struct alias_data {
-	char *alias;
-	char *replacement;
-	int type;
-	struct alias_data *next;
+  char *alias;
+  char *replacement;
+  int type;
+  struct alias_data *next;
 };
 
 #define ALIAS_SIMPLE	0
