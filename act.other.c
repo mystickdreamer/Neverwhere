@@ -176,14 +176,14 @@ ACMD(do_steal) {
 		send_to_char(ch, "That isn't such a good idea...\r\n");
 		return;
 	}
-	
+
 	if (!AFF_FLAGGED(ch, AFF_HIDE)) {
 		send_to_char(ch, "You must be hidden to steal.\r\n");
 		return;
-	
+
 	}
 	roll = roll_skill(ch, SKILL_STEAL);
-	
+
 	/* Can also add +2 synergy bonus for bluff of 5 or more */
 	// Need a better way to calculate this 
 	if (GET_SKILL(ch, SKILL_STEALTH) > 20)
@@ -195,8 +195,11 @@ ACMD(do_steal) {
 	if (GET_POS(vict) < POS_SLEEPING)
 		detect = 0;
 	else
-		detect = (roll_skill(vict, SKILL_PERCEPTION) > roll);
-
+		if (IS_NPC) {
+		detect = (roll_skill(vict, SKILL_SPOT) > roll);
+	}else {
+			detect = (roll_skill(vict, SKILL_PERCEPTION) > roll);
+	}
 	if (!CONFIG_PT_ALLOWED && !IS_NPC(vict))
 		pcsteal = 1;
 
@@ -263,7 +266,7 @@ ACMD(do_steal) {
 					act("$n tried to steal something from you!", FALSE, ch, 0, vict, TO_VICT);
 					act("$n tries to steal something from $N.", TRUE, ch, 0, vict, TO_NOTVICT);
 				}
-			} 
+			}
 		}
 	} else { /* Steal some coins */
 		diffc += 5; /* People take care of their money */
