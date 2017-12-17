@@ -45,7 +45,7 @@ void perform_remove(struct char_data * ch, int pos);
 int find_eq_pos(struct char_data *ch, struct obj_data *obj, char *arg);
 SPECIAL(shop_keeper);
 
-void add_timer( CHAR_DATA * ch, sh_int type, sh_int count, DO_FUN * fun, int value )
+void add_timer( char_data * ch, sh_int type, sh_int count, DO_FUN * fun, int value )
 
 char *fname(const char *namelist)
 {
