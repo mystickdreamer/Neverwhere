@@ -259,7 +259,7 @@ ACMD(do_steal) {
 					act("$n tries to steal something from $N.", TRUE, ch, 0, vict, TO_NOTVICT);
 				}
 			} else {
-				learn_from_success{ch, "stealth", detect);
+				learn_from_success(ch, "stealth", detect);
 			}
 		} else { /* Steal some coins */
 			diffc += 5; /* People take care of their money */
