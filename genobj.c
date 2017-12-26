@@ -298,6 +298,7 @@ int save_objects(zone_rnum zone_num)
       script_save_to_disk(fp, obj, OBJ_TRIGGER);
       
       fprintf(fp, "Z\n%d\n", GET_OBJ_SIZE(obj));
+      fprintf(fp, "%d %d %d\n", GET_OBJ_TRAP(obj), GET_OBJ_TRAP_DC(obj), GET_OBJ_LOCK_DC(obj));
       /*
        * Do we have extra descriptions? 
        */
@@ -335,7 +336,6 @@ int save_objects(zone_rnum zone_num)
             continue;
           }
         }
-      fprintf(fp, "%d %d %d\n", GET_OBJ_TRAP(obj), GET_OBJ_TRAP_DC(obj), GET_OBJ_LOCK_DC(obj));
     }
   }
 
