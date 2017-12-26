@@ -546,6 +546,7 @@ int wield_type(int chsize, const struct obj_data *weap);
 #define GET_OBJ_SHORT(obj)	((obj)->short_description)
 #define GET_OBJ_TRAP(obj)	((obj)->value[8])
 #define GET_OBJ_TRAP_DC(obj)	((obj)->value[9])
+#define GET_OBJ_LOCK_DC(obj)	((obj)->value[10])
 
 /* compound utilities and other macros **********************************/
 
