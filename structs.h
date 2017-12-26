@@ -1427,9 +1427,7 @@ struct obj_data {
 	int timer; /* Timer for object                    */
 	int bitvector[AF_ARRAY_MAX]; /* To set chars bits          */
 	int size; /* Size class of object                */
-	cl_sint8 trap;
-	int trap_dc;
-	int dclock;
+
 
 	struct obj_affected_type affected[MAX_OBJ_AFFECT]; /* affects */
 
