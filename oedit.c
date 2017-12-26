@@ -1137,6 +1137,7 @@ void oedit_parse(struct descriptor_data *d, char *arg) {
 				case 'U':
 					write_to_output(d, "What is the trap DC? ");
 					OLC_MODE(d) = OEDIT_TRAP_DC;
+					break;
 				case 'w':
 				case 'W':
 					write_to_output(d, "Copy what object? ");
