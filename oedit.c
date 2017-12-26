@@ -547,7 +547,7 @@ void oedit_disp_trap_menu(struct descriptor_data *d)
 
   clear_screen(d);
 
-  for (counter = 0; counter < NUM_TRAPSS; counter++) {
+  for (counter = 0; counter < NUM_TRAPS; counter++) {
     write_to_output(d, "@g%2d@n) %-20.20s%s", counter,
                 trap_names[counter],
                 !(++columns % 3) ? "\r\n" : "");
