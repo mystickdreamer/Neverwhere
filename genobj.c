@@ -277,7 +277,7 @@ int save_objects(zone_rnum zone_num)
       fprintf(fp,
                 "%d %s %s %s %s %s %s %s %s %s %s %s %s\n"
                 "%d %d %d %d %d %d %d %d %d %d %d %d %d %d %d %d\n"
-	        "%d %d %d %d %d %d %d\n",
+	        "%d %d %d %d\n",
 
 	      GET_OBJ_TYPE(obj), 
               ebuf1, ebuf2, ebuf3, ebuf4,
@@ -289,10 +289,8 @@ int save_objects(zone_rnum zone_num)
               GET_OBJ_VAL(obj, 9), GET_OBJ_VAL(obj, 10), GET_OBJ_VAL(obj, 11),
               GET_OBJ_VAL(obj, 12), GET_OBJ_VAL(obj, 13), GET_OBJ_VAL(obj, 14),
               GET_OBJ_VAL(obj, 15),
-	      GET_OBJ_WEIGHT(obj), GET_OBJ_COST(obj), GET_OBJ_RENT(obj), GET_OBJ_LEVEL(obj), 
-	      GET_OBJ_TRAP(obj), GET_OBJ_TRAP_DC(obj), GET_OBJ_LOCK_DC(obj)
+	      GET_OBJ_WEIGHT(obj), GET_OBJ_COST(obj), GET_OBJ_RENT(obj), GET_OBJ_LEVEL(obj)
       );
-      
 
       /*
        * Do we have script(s) attached ? 
@@ -300,7 +298,6 @@ int save_objects(zone_rnum zone_num)
       script_save_to_disk(fp, obj, OBJ_TRIGGER);
       
       fprintf(fp, "Z\n%d\n", GET_OBJ_SIZE(obj));
-      
       /*
        * Do we have extra descriptions? 
        */
