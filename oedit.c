@@ -1253,7 +1253,7 @@ void oedit_parse(struct descriptor_data *d, char *arg) {
 			break;
 
 		case OEDIT_TRAP:
-			GET_OBJ_TRAP(OLC_OBJ(d)) = LIMIT(atoir(arg), 0, NUM_TRAPS);
+			GET_OBJ_TRAP(OLC_OBJ(d)) = LIMIT(atoi(arg), 0, NUM_TRAPS);
 			break;
 
 		case OEDIT_PERM:
