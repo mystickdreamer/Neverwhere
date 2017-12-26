@@ -229,7 +229,7 @@ struct oasis_olc_data {
 #define OEDIT_DELETE			45
 #define OEDIT_TRAP			46
 #define OEDIT_TRAP_DC			47
-#defome OEDIT_LOCK_DC			48
+#define OEDIT_LOCK_DC			48
 
 /*
  * Submodes of REDIT connectedness.
