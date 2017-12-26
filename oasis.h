@@ -228,6 +228,7 @@ struct oasis_olc_data {
 #define OEDIT_COPY			44
 #define OEDIT_DELETE			45
 #define OEDIT_TRAP			46
+#define OEDIT_TRAP_DC			47
 
 
 /*
