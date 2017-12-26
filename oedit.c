@@ -552,7 +552,8 @@ void oedit_disp_trap_menu(struct descriptor_data *d)
                 trap_names[counter],
                 !(++columns % 3) ? "\r\n" : "");
   }
-  write_to_output(d, "\r\n@nEnter trap type\r\n 0 to quit : ");
+  write_to_output(d, "\r\n@gEnter trap type @n:\r\n"
+	  "@g0 to quit@n ");
 }
 
 /* Object value #1 */
