@@ -553,7 +553,7 @@ void oedit_disp_trap_menu(struct descriptor_data *d)
                 !(++columns % 3) ? "\r\n" : "");
   }
   write_to_output(d, "\r\n@gEnter trap type @n:\r\n"
-	  "@g0 to quit@n ");
+	  "@y0 @nto quit@n ");
 }
 
 /* Object value #1 */
