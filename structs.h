@@ -641,6 +641,21 @@ typedef unsigned int ush_int;
 
 #define SFEAT_MAX				1
 
+
+#define TRAP_UNDEFINED		0
+#define TRAP_FIRE		1
+#define TRAP_POISON_DART	2
+#define TRAP_SLEEPING_GAS	3
+#define TRAP_EXPLOSION		4
+#define TRAP_ACID		5
+#define TRAP_RAZER		6
+#define TRAP_SHOCK		7
+#define TRAP_MANA		8
+#define TRAP_TELEPORTER		9
+
+#define TRAP_MAX		10
+
+
 /* object-related defines ********************************************/
 
 
@@ -1412,6 +1427,8 @@ struct obj_data {
 	int timer; /* Timer for object                    */
 	int bitvector[AF_ARRAY_MAX]; /* To set chars bits          */
 	int size; /* Size class of object                */
+	cl_sint8 trap;
+	int trap_dc;
 
 	struct obj_affected_type affected[MAX_OBJ_AFFECT]; /* affects */
 
