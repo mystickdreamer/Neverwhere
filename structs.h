@@ -653,7 +653,7 @@ typedef unsigned int ush_int;
 #define TRAP_MANA		8
 #define TRAP_TELEPORTER		9
 
-#define TRAP_MAX		10
+#define NUM_TRAPS		10
 
 
 /* object-related defines ********************************************/
