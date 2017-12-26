@@ -887,6 +887,7 @@ void oedit_disp_menu(struct descriptor_data *d) {
 		"@gP@n) Perm Affects: @c%s@n\r\n"
 		"@gS@n) Script      : @c%s@n\r\n"
 		"@gT@n) Trap menu\r\n"
+		"@gU@n) Trap DC: %d\r\n"
 		"@gW@n) Copy object        ,	@gX@n) Delete object\r\n"
 		"@gZ@n) Size        : @c%s@n\r\n"
 		"@gQ@n) Quit\r\n"
@@ -900,7 +901,7 @@ void oedit_disp_menu(struct descriptor_data *d) {
 		GET_OBJ_VAL(obj, 11), GET_OBJ_VAL(obj, 12), GET_OBJ_VAL(obj, 13),
 		GET_OBJ_VAL(obj, 14), GET_OBJ_VAL(obj, 15), GET_OBJ_EXTRA(obj) ? "Set." : "Not Set.",
 		GET_OBJ_LEVEL(obj), material_names[(int) GET_OBJ_MATERIAL(obj)],
-		ebitbuf, OLC_SCRIPT(d) ? "Set." : "Not Set.",
+		ebitbuf, OLC_SCRIPT(d) ? "Set." : "Not Set.", GET_OBJ_TRAP_DC(obj),
 		size_names[GET_OBJ_SIZE(obj)]
 		);
 	OLC_MODE(d) = OEDIT_MAIN_MENU;
@@ -1132,6 +1133,10 @@ void oedit_parse(struct descriptor_data *d, char *arg) {
 					OLC_MODE(d) = OEDIT_TRAP;
 					oedit_disp_trap_menu(d);
 					break;
+				case 'u':
+				case 'U':
+					write_to_output(d, "What is the trap DC? ");
+					OLC_MODE(d) = OEDIT_TRAP_DC;
 				case 'w':
 				case 'W':
 					write_to_output(d, "Copy what object? ");
@@ -1254,6 +1259,9 @@ void oedit_parse(struct descriptor_data *d, char *arg) {
 
 		case OEDIT_TRAP:
 			GET_OBJ_TRAP(OLC_OBJ(d)) = LIMIT(atoi(arg), 0, NUM_TRAPS);
+			break;
+		case OEDIT_TRAP_DC:
+			GET_OBJ_TRAP_DC(OLC_OBJ(d)) = LIMIT(atoi(arg), 0, NUM_TRAPS);
 			break;
 
 		case OEDIT_PERM:
