@@ -888,7 +888,7 @@ void oedit_disp_menu(struct descriptor_data *d) {
 		"@gS@n) Script      : @c%s@n\r\n"
 		"@gT@n) Trap menu\r\n"
 		"@gU@n) Trap DC: %d\r\n"
-		"@gU@n) Lock DC: %d\r\n"
+		"@gV@n) Lock DC: %d\r\n"
 		"@gW@n) Copy object        ,	@gX@n) Delete object\r\n"
 		"@gZ@n) Size        : @c%s@n\r\n"
 		"@gQ@n) Quit\r\n"
