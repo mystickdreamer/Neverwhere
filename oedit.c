@@ -887,7 +887,7 @@ void oedit_disp_menu(struct descriptor_data *d) {
 		"@gP@n) Perm Affects: @c%s@n\r\n"
 		"@gS@n) Script      : @c%s@n\r\n"
 		"@gT@n) Trap        : @c%s@n\r\n"
-		"@gU@n) Trap DC	    : @c%d@n\r\n"
+		"@gU@n) Trap DC	   :  @c%d@n\r\n"
 		"@gV@n) Lock DC     : @c%d@n\r\n"
 		"@gW@n) Copy object"
 		"@gX@n) Delete object\r\n"
