@@ -540,6 +540,21 @@ void oedit_disp_material_menu(struct descriptor_data *d)
   write_to_output(d, "\r\n@nEnter material type : ");
 }
 
+/* Trap type. */
+void oedit_disp_trap_menu(struct descriptor_data *d)
+{
+  int counter, columns = 0;
+
+  clear_screen(d);
+
+  for (counter = 0; counter < NUM_TRAPSS; counter++) {
+    write_to_output(d, "@g%2d@n) %-20.20s%s", counter,
+                trap_names[counter],
+                !(++columns % 3) ? "\r\n" : "");
+  }
+  write_to_output(d, "\r\n@nEnter trap type : ");
+}
+
 /* Object value #1 */
 void oedit_disp_val1_menu(struct descriptor_data *d)
 {
@@ -903,7 +918,7 @@ void oedit_disp_menu(struct descriptor_data *d)
           "@gN@n) Material    : @c%s@n\r\n"
           "@gP@n) Perm Affects: @c%s@n\r\n"
           "@gS@n) Script      : @c%s@n\r\n"
-          "@gT@n) Spellbook menu\r\n"
+          "@gT@n) Trap menu\r\n"
           "@gW@n) Copy object        ,	@gX@n) Delete object\r\n"
           "@gZ@n) Size        : @c%s@n\r\n"
 	  "@gQ@n) Quit\r\n"
@@ -1147,7 +1162,7 @@ void oedit_parse(struct descriptor_data *d, char *arg)
       return;
     case 't':
     case 'T':
-      oedit_disp_prompt_spellbook_menu(d);
+      oedit_disp_trap_menu(d);
       break;
     case 'w':
     case 'W':
