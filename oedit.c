@@ -1138,6 +1138,12 @@ void oedit_parse(struct descriptor_data *d, char *arg) {
 					write_to_output(d, "What is the trap DC? ");
 					OLC_MODE(d) = OEDIT_TRAP_DC;
 					break;
+				case 'v':
+				case 'V':
+					write_to_output(d, "What is the lock DC? ");
+					OLC_MODE(d) = OEDIT_LOCK_DC;
+					break;
+					break;
 				case 'w':
 				case 'W':
 					write_to_output(d, "Copy what object? ");
@@ -1262,7 +1268,10 @@ void oedit_parse(struct descriptor_data *d, char *arg) {
 			GET_OBJ_TRAP(OLC_OBJ(d)) = LIMIT(atoi(arg), 0, NUM_TRAPS);
 			break;
 		case OEDIT_TRAP_DC:
-			GET_OBJ_TRAP_DC(OLC_OBJ(d)) = LIMIT(atoi(arg), 0, NUM_TRAPS);
+			GET_OBJ_TRAP_DC(OLC_OBJ(d)) = MAX(atoi(arg), 0);
+			break;
+			case OEDIT_LOCK_DC:
+			GET_OBJ_LOCK_DC(OLC_OBJ(d)) = MAX(atoi(arg), 0);
 			break;
 
 		case OEDIT_PERM:
