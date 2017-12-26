@@ -544,9 +544,9 @@ int wield_type(int chsize, const struct obj_data *weap);
 #define CAN_WEAR(obj, part)	OBJWEAR_FLAGGED((obj), (part))
 #define GET_OBJ_MATERIAL(obj)   ((obj)->value[7])
 #define GET_OBJ_SHORT(obj)	((obj)->short_description)
-#define GET_OBJ_TRAP(obj)	((obj)->value[8])
-#define GET_OBJ_TRAP_DC(obj)	((obj)->value[9])
-#define GET_OBJ_LOCK_DC(obj)	((obj)->value[10])
+#define GET_OBJ_TRAP(obj)	((obj)->value[13])
+#define GET_OBJ_TRAP_DC(obj)	((obj)->value[14])
+#define GET_OBJ_LOCK_DC(obj)	((obj)->value[15])
 
 /* compound utilities and other macros **********************************/
 
