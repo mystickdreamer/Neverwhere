@@ -93,7 +93,7 @@ void update_timer(struct char_data *ch, int skill_num) {
 }
 
 /* remove a spell from a character's memorize(in progress) linked list */
-void memorize_remove(struct char_data * ch, struct memorize_node * mem) {
+/*(void memorize_remove(struct char_data * ch, struct memorize_node * mem) {
 	struct memorize_node *temp;
 
 	if (ch->memorized == NULL) {
@@ -103,7 +103,7 @@ void memorize_remove(struct char_data * ch, struct memorize_node * mem) {
 
 	REMOVE_FROM_LIST(mem, ch->memorized, next, temp);
 	free(mem);
-}
+}*/
 
 /* add a spell to a character's memorize(in progress) linked list */
 void timer_add(struct char_data * ch, char *argument, int timer) {
