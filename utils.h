@@ -701,6 +701,14 @@ int wield_type(int chsize, const struct obj_data *weap);
 
 #define SPEAKING(ch)     ((ch)->player_specials->speaking)
 
+
+
+// Stuff I add
+#define TOGGLE_LOCK(room, obj, door)	((obj) ?\
+		(TOGGLE_BIT(GET_OBJ_VAL(obj, VAL_CONTAINER_FLAGS), CONT_LOCKED)) :\
+		(TOGGLE_BIT(EXITN(room, door)->exit_info, EX_LOCKED)))
+
+
 /* OS compatibility ******************************************************/
 
 
