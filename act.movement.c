@@ -608,7 +608,6 @@ void do_doorcmd(struct char_data *ch, struct obj_data *obj, int door, int scmd) 
 			break;
 
 		case SCMD_PICK:
-			timer_add(ch, "lockpick", dclock);
 			TOGGLE_LOCK(IN_ROOM(ch), obj, door);
 			if (back)
 				TOGGLE_LOCK(other_room, obj, rev_dir[door]);
@@ -660,7 +659,7 @@ int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int dclock, in
 		send_to_char(ch, "You need a lockpick to do that!\r\n");
 		return (0);
 	}
-
+	timer_add(ch, "lockpick", dclock);
 	skill_lvl = roll_skill(ch, SKILL_LOCKPICK);
 
 	if (keynum == NOTHING)
@@ -675,8 +674,7 @@ int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int dclock, in
 		memorize_add(ch, GET_SKILL_BASE(ch, 425), dclock);
 		send_to_char(ch, "You failed to pick the lock. [%d vs. %d]\r\n", dclock, skill_lvl);
 		learn_from_failure(ch, "lockpick");
-	} else{
-		timer_add(ch, "lockpick", dclock);
+	} else {
 		learn_from_success(ch, "lockpick", dclock);
 		return (1);
 	}
