@@ -659,7 +659,7 @@ int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int dclock, in
 		send_to_char(ch, "You need a lockpick to do that!\r\n");
 		return (0);
 	}
-	timer_add(ch, "lockpick", dclock);
+
 	skill_lvl = roll_skill(ch, SKILL_LOCKPICK);
 
 	if (keynum == NOTHING)
@@ -671,10 +671,9 @@ int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int dclock, in
 		 * for in roll_skill, and negate (or surpass) this. 
 		 */
 	else if (dclock > (skill_lvl)) {
-		memorize_add(ch, GET_SKILL_BASE(ch, 425), dclock);
 		send_to_char(ch, "You failed to pick the lock. [%d vs. %d]\r\n", dclock, skill_lvl);
 		learn_from_failure(ch, "lockpick");
-	} else {
+	} else{
 		learn_from_success(ch, "lockpick", dclock);
 		return (1);
 	}
