@@ -556,9 +556,7 @@ const int flags_door[] = {
 #define UNLOCK_DOOR(room, obj, door)	((obj) ?\
 		(REMOVE_BIT(GET_OBJ_VAL(obj, VAL_CONTAINER_FLAGS), CONT_LOCKED)) :\
 		(REMOVE_BIT(EXITN(room, door)->exit_info, EX_LOCKED)))
-#define TOGGLE_LOCK(room, obj, door)	((obj) ?\
-		(TOGGLE_BIT(GET_OBJ_VAL(obj, VAL_CONTAINER_FLAGS), CONT_LOCKED)) :\
-		(TOGGLE_BIT(EXITN(room, door)->exit_info, EX_LOCKED)))
+
 
 void do_doorcmd(struct char_data *ch, struct obj_data *obj, int door, int scmd) {
 	char buf[MAX_STRING_LENGTH];
