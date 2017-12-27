@@ -708,6 +708,8 @@ int wield_type(int chsize, const struct obj_data *weap);
 		(TOGGLE_BIT(GET_OBJ_VAL(obj, VAL_CONTAINER_FLAGS), CONT_LOCKED)) :\
 		(TOGGLE_BIT(EXITN(room, door)->exit_info, EX_LOCKED)))
 #define DOOR_DCLOCK(ch, obj, door)	((obj) ? (GET_OBJ_LOCK_DC(obj)) : EXIT(ch, door)->dclock)
+
+//act.movement.c defines
 #define DOOR_IS_OPENABLE(ch, obj, door)	((obj) ? \
 			((GET_OBJ_TYPE(obj) == ITEM_CONTAINER) && \
 			OBJVAL_FLAGGED(obj, CONT_CLOSEABLE))   || \
