@@ -707,6 +707,7 @@ int wield_type(int chsize, const struct obj_data *weap);
 #define TOGGLE_LOCK(room, obj, door)	((obj) ?\
 		(TOGGLE_BIT(GET_OBJ_VAL(obj, VAL_CONTAINER_FLAGS), CONT_LOCKED)) :\
 		(TOGGLE_BIT(EXITN(room, door)->exit_info, EX_LOCKED)))
+#define DOOR_DCLOCK(ch, obj, door)	((obj) ? (GET_OBJ_LOCK_DC(obj)) : EXIT(ch, door)->dclock)
 
 
 /* OS compatibility ******************************************************/
