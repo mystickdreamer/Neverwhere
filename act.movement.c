@@ -708,7 +708,7 @@ int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int dclock, in
 #define DOOR_IS_LOCKED(ch, obj, door)	(!(DOOR_IS_UNLOCKED(ch, obj, door)))
 #define DOOR_KEY(ch, obj, door)		((obj) ? (GET_OBJ_VAL(obj, VAL_KEY_KEYCODE)) : \
 					(EXIT(ch, door)->key))
-#define DOOR_DCLOCK(ch, obj, door)	((obj) ? (GET_OBJ_LOCK_DC(obj)) : EXIT(ch, door)->dclock)
+
 
 ACMD(do_gen_door) {
 	int door = -1;
