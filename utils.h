@@ -710,6 +710,12 @@ int wield_type(int chsize, const struct obj_data *weap);
 #define DOOR_DCLOCK(ch, obj, door)	((obj) ? (GET_OBJ_LOCK_DC(obj)) : EXIT(ch, door)->dclock)
 
 //act.movement.c defines
+
+#define NEED_OPEN	(1 << 0)
+#define NEED_CLOSED	(1 << 1)
+#define NEED_UNLOCKED	(1 << 2)
+#define NEED_LOCKED	(1 << 3)
+
 #define DOOR_IS_OPENABLE(ch, obj, door)	((obj) ? \
 			((GET_OBJ_TYPE(obj) == ITEM_CONTAINER) && \
 			OBJVAL_FLAGGED(obj, CONT_CLOSEABLE))   || \
@@ -739,6 +745,23 @@ int wield_type(int chsize, const struct obj_data *weap);
 #define DOOR_IS_LOCKED(ch, obj, door)	(!(DOOR_IS_UNLOCKED(ch, obj, door)))
 #define DOOR_KEY(ch, obj, door)		((obj) ? (GET_OBJ_VAL(obj, VAL_KEY_KEYCODE)) : \
 					(EXIT(ch, door)->key))
+
+#define EXITN(room, door)		(world[room].dir_option[door])
+#define OPEN_DOOR(room, obj, door)	((obj) ?\
+		(REMOVE_BIT(GET_OBJ_VAL(obj, VAL_CONTAINER_FLAGS), CONT_CLOSED)) :\
+		(REMOVE_BIT(EXITN(room, door)->exit_info, EX_CLOSED)))
+#define CLOSE_DOOR(room, obj, door)	((obj) ?\
+		(SET_BIT(GET_OBJ_VAL(obj, VAL_CONTAINER_FLAGS), CONT_CLOSED)) :\
+		(SET_BIT(EXITN(room, door)->exit_info, EX_CLOSED)))
+#define LOCK_DOOR(room, obj, door)	((obj) ?\
+		(SET_BIT(GET_OBJ_VAL(obj, VAL_CONTAINER_FLAGS), CONT_LOCKED)) :\
+		(SET_BIT(EXITN(room, door)->exit_info, EX_LOCKED)))
+#define UNLOCK_DOOR(room, obj, door)	((obj) ?\
+		(REMOVE_BIT(GET_OBJ_VAL(obj, VAL_CONTAINER_FLAGS), CONT_LOCKED)) :\
+		(REMOVE_BIT(EXITN(room, door)->exit_info, EX_LOCKED)))
+
+
+
 
 /* OS compatibility ******************************************************/
 
