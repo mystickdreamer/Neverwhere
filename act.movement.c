@@ -521,10 +521,6 @@ int has_lockpick(struct char_data *ch) {
 	return (0);
 }
  */
-#define NEED_OPEN	(1 << 0)
-#define NEED_CLOSED	(1 << 1)
-#define NEED_UNLOCKED	(1 << 2)
-#define NEED_LOCKED	(1 << 3)
 
 const char *cmd_door[NUM_DOOR_CMD] = {
 	"open",
@@ -541,22 +537,6 @@ const int flags_door[] = {
 	NEED_CLOSED | NEED_UNLOCKED,
 	NEED_CLOSED | NEED_LOCKED
 };
-
-
-#define EXITN(room, door)		(world[room].dir_option[door])
-#define OPEN_DOOR(room, obj, door)	((obj) ?\
-		(REMOVE_BIT(GET_OBJ_VAL(obj, VAL_CONTAINER_FLAGS), CONT_CLOSED)) :\
-		(REMOVE_BIT(EXITN(room, door)->exit_info, EX_CLOSED)))
-#define CLOSE_DOOR(room, obj, door)	((obj) ?\
-		(SET_BIT(GET_OBJ_VAL(obj, VAL_CONTAINER_FLAGS), CONT_CLOSED)) :\
-		(SET_BIT(EXITN(room, door)->exit_info, EX_CLOSED)))
-#define LOCK_DOOR(room, obj, door)	((obj) ?\
-		(SET_BIT(GET_OBJ_VAL(obj, VAL_CONTAINER_FLAGS), CONT_LOCKED)) :\
-		(SET_BIT(EXITN(room, door)->exit_info, EX_LOCKED)))
-#define UNLOCK_DOOR(room, obj, door)	((obj) ?\
-		(REMOVE_BIT(GET_OBJ_VAL(obj, VAL_CONTAINER_FLAGS), CONT_LOCKED)) :\
-		(REMOVE_BIT(EXITN(room, door)->exit_info, EX_LOCKED)))
-
 
 void do_doorcmd(struct char_data *ch, struct obj_data *obj, int door, int scmd) {
 	char buf[MAX_STRING_LENGTH];
