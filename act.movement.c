@@ -608,6 +608,7 @@ void do_doorcmd(struct char_data *ch, struct obj_data *obj, int door, int scmd) 
 			break;
 
 		case SCMD_PICK:
+			timer_add(ch, "lockpick", dclock);
 			TOGGLE_LOCK(IN_ROOM(ch), obj, door);
 			if (back)
 				TOGGLE_LOCK(other_room, obj, rev_dir[door]);
