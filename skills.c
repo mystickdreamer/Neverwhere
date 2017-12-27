@@ -40,10 +40,10 @@ CVSHEADER("$CVSHeader: cwg/rasputin/src/act.movement.c,v 1.5 2004/12/22 20:29:59
    "standing time" which is one hour of "sitting time" from the timer.
    
  ******************************************************************************/
-int find_timerspeed(struct char_data *ch, char *argument, bool display) {
-	int speedfx = 1, skill_num;
+int find_timerspeed(struct char_data *ch, int skill_num, bool display) {
+	int speedfx = 1;
 
-	skill_num = find_skill_num(argument, SKTYPE_SKILL);
+	
 
 	if (GET_SKILL_BASE(ch, skill_num) < 100) {
 		speedfx = 5;
@@ -67,7 +67,7 @@ int find_timerspeed(struct char_data *ch, char *argument, bool display) {
 
 /********************************************/
 
-void update_timer(struct char_data *ch) {
+void update_timer(struct char_data *ch, int skill_num) {
 	struct memorize_node *mem, *next_mem;
 	struct descriptor_data *d;
 	struct char_data *i;
@@ -80,7 +80,7 @@ void update_timer(struct char_data *ch) {
 			i = d->original; 
 		else if (!(i = d->character))
 			continue;
-		speedfx = find_timerspeed(i, FALSE);
+		speedfx = find_timerspeed(i, skill_num, FALSE);
 		
 			if (speedfx < mem->timer) {
 				mem->timer -= speedfx;
@@ -106,9 +106,12 @@ void memorize_remove(struct char_data * ch, struct memorize_node * mem) {
 }
 
 /* add a spell to a character's memorize(in progress) linked list */
-void timer_add(struct char_data * ch, int timer) {
+void timer_add(struct char_data * ch, char *argument, int timer) {
 	struct memorize_node * mem;
+	int skill_num;
 
+	skill_num = find_skill_num(argument, SKTYPE_SKILL);
+	
 	CREATE(mem, struct memorize_node, 1);
 	mem->timer = timer;
 }
