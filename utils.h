@@ -708,7 +708,35 @@ int wield_type(int chsize, const struct obj_data *weap);
 		(TOGGLE_BIT(GET_OBJ_VAL(obj, VAL_CONTAINER_FLAGS), CONT_LOCKED)) :\
 		(TOGGLE_BIT(EXITN(room, door)->exit_info, EX_LOCKED)))
 #define DOOR_DCLOCK(ch, obj, door)	((obj) ? (GET_OBJ_LOCK_DC(obj)) : EXIT(ch, door)->dclock)
+#define DOOR_IS_OPENABLE(ch, obj, door)	((obj) ? \
+			((GET_OBJ_TYPE(obj) == ITEM_CONTAINER) && \
+			OBJVAL_FLAGGED(obj, CONT_CLOSEABLE))   || \
+                        ((GET_OBJ_TYPE(obj) == ITEM_VEHICLE)   && \
+                        OBJVAL_FLAGGED(obj, CONT_CLOSEABLE))   || \
+                        ((GET_OBJ_TYPE(obj) == ITEM_HATCH)     && \
+                        OBJVAL_FLAGGED(obj, CONT_CLOSEABLE))   || \
+                        ((GET_OBJ_TYPE(obj) == ITEM_WINDOW)    && \
+                        OBJVAL_FLAGGED(obj, CONT_CLOSEABLE))   || \
+                        ((GET_OBJ_TYPE(obj) == ITEM_PORTAL)    && \
+			OBJVAL_FLAGGED(obj, CONT_CLOSEABLE)) :\
+			(EXIT_FLAGGED(EXIT(ch, door), EX_ISDOOR)))
+#define DOOR_IS_OPEN(ch, obj, door)	((obj) ? \
+			(!OBJVAL_FLAGGED(obj, CONT_CLOSED)) :\
+			(!EXIT_FLAGGED(EXIT(ch, door), EX_CLOSED)))
+#define DOOR_IS_UNLOCKED(ch, obj, door)	((obj) ? \
+			(!OBJVAL_FLAGGED(obj, CONT_LOCKED)) :\
+			(!EXIT_FLAGGED(EXIT(ch, door), EX_LOCKED)))
+#define DOOR_IS_PICKPROOF(ch, obj, door) ((obj) ? \
+			(OBJVAL_FLAGGED(obj, CONT_PICKPROOF)) : \
+			(EXIT_FLAGGED(EXIT(ch, door), EX_PICKPROOF)))
+#define DOOR_IS_SECRET(ch, obj, door) ((obj) ? \
+                        (OBJVAL_FLAGGED(obj, CONT_SECRET)) : \
+                        (EXIT_FLAGGED(EXIT(ch, door), EX_SECRET)))
 
+#define DOOR_IS_CLOSED(ch, obj, door)	(!(DOOR_IS_OPEN(ch, obj, door)))
+#define DOOR_IS_LOCKED(ch, obj, door)	(!(DOOR_IS_UNLOCKED(ch, obj, door)))
+#define DOOR_KEY(ch, obj, door)		((obj) ? (GET_OBJ_VAL(obj, VAL_KEY_KEYCODE)) : \
+					(EXIT(ch, door)->key))
 
 /* OS compatibility ******************************************************/
 
