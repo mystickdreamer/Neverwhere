@@ -306,18 +306,20 @@ void oedit_disp_container_flags_menu(struct descriptor_data *d) {
 		" @g2@n) PICKPROOF\r\n"
 		" @g3@n) CLOSED\r\n"
 		" @g4@n) LOCKED\r\n"
-		" @g5@n) fire\r\n"
-		" @g6@n) crossbow bolt\r\n"
-		" @g7@n) poison dart\r\n"
-		" @g8@n) sleeping gas\r\n"
-		" @g9@n) explosion\r\n"
-		"@g10@n) acid\r\n"
-		"@g11@n) razer\r\n"
-		"@g12@n) shock\r\n"
-		"@g13@n) mana\r\n"
-		"@g14@n) frog\r\n"
-		"@g15@n) gibberish\r\n"
-		"@g16@n) teleporter\r\n"
+		" @g5@n) TRAPPED\r\n"
+		" @g6@n) RESET TRAP\r\n"
+		" @g7@n) fire\r\n"
+		" @g8@n) crossbow bolt\r\n"
+		" @g9@n) poison dart\r\n"
+		"@g10@n) sleeping gas\r\n"
+		"@g11@n) explosion\r\n"
+		"@g12@n) acid\r\n"
+		"@g13@n) razer\r\n"
+		"@g14@n) shock\r\n"
+		"@g15@n) mana\r\n"
+		"@g16@n) frog\r\n"
+		"@g17@n) gibberish\r\n"
+		"@g18@n) teleporter\r\n"
 		"Container flags: @c%s@n\r\n"
 		"Enter flag, 0 to quit : ",
 		bits);
@@ -1340,7 +1342,7 @@ void oedit_parse(struct descriptor_data *d, char *arg) {
 				case ITEM_PORTAL:
 					/* Needs some special handling since we are dealing with flag values
 					 * here. */
-					if (number < 0 || number > NUM_TRAPS)
+					if (number < 0 || number > NUM_CONT_FLAGS)
 						oedit_disp_container_flags_menu(d);
 					else if (number != 0) {
 						TOGGLE_BIT(GET_OBJ_VAL(OLC_OBJ(d), 1), 1 << (number - 1));
