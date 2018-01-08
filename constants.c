@@ -200,6 +200,20 @@ const char *exit_bits[NUM_EXIT_FLAGS + 1] = {
 	"LOCKED",
 	"PICKPROOF",
 	"SECRET",
+	"TRAPPED",
+	"TRAP RESET",
+	"fire",
+	"crossbow bolt",
+	"poison dart",
+	"sleeping gas",
+	"explosion",
+	"acid",
+	"razer",
+	"shock",
+	"mana",
+	"frog",
+	"gibberish",
+	"teleporter",
 	"\n"
 };
 
