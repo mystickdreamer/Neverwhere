@@ -689,6 +689,18 @@ const char *container_bits[NUM_CONT_FLAGS + 1] = {
 	"PICKPROOF",
 	"CLOSED",
 	"LOCKED",
+	"fire",
+	"crossbow bolt",
+	"poison dart",
+	"sleeping gas",
+	"explosion",
+	"acid",
+	"razer",
+	"shock",
+	"mana",
+	"frog",
+	"gibberish",
+	"teleporter",
 	"\n",
 };
 
