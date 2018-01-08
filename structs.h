@@ -158,20 +158,20 @@ typedef unsigned int ush_int;
 #define EX_LOCKED		(1 << 2)   /* The door is locked	*/
 #define EX_PICKPROOF		(1 << 3)   /* Lock can't be picked	*/
 #define EX_SECRET		(1 << 4)   /* The door is hidden        */
-#define CONT_TRAPPED		(1 << 5) // The container is trapped
-#define CONT_TRAPRESET		(1 << 6)
-#define CONT_TRAP_FIRE		(1 << 7)
-#define CONT_TRAP_CROSSBOLT	(1 << 8)
-#define CONT_TRAP_POISNDART	(1 << 9)
-#define CONT_TRAP_SLEEP		(1 << 10)
-#define CONT_TRAP_EXPLOD	(1 << 11)
-#define CONT_TRAP_ACID		(1 << 12)
-#define CONT_TRAP_RAZOR		(1 << 13)
-#define CONT_TRAP_SHOCK		(1 << 14)
-#define CONT_TRAP_MANA		(1 << 15)
-#define CONT_TRAP_FROG		(1 << 16)
-#define CONT_TRAP_GIBBERISH	(1 << 17)
-#define CONT_TRAP_TELEPORT	(1 << 18)
+#define EX_TRAPPED		(1 << 5) // The container is trapped
+#define EX_TRAPRESET		(1 << 6)
+#define EX_TRAP_FIRE		(1 << 7)
+#define EX_TRAP_CROSSBOLT	(1 << 8)
+#define EX_TRAP_POISNDART	(1 << 9)
+#define EX_TRAP_SLEEP		(1 << 10)
+#define EX_TRAP_EXPLOD	(1 << 11)
+#define EX_TRAP_ACID		(1 << 12)
+#define EX_TRAP_RAZOR		(1 << 13)
+#define EX_TRAP_SHOCK		(1 << 14)
+#define EX_TRAP_MANA		(1 << 15)
+#define EX_TRAP_FROG		(1 << 16)
+#define EX_TRAP_GIBBERISH	(1 << 17)
+#define EX_TRAP_TELEPORT	(1 << 18)
 
 #define NUM_EXIT_FLAGS 19
 
