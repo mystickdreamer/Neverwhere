@@ -1497,7 +1497,7 @@ struct room_direction_data {
 
 	char *keyword; /* for open/close			*/
 
-	cl_sint16 exit_info; /* Exit info			*/
+	cl_sint32 exit_info; /* Exit info			*/
 	obj_vnum key; /* Key's number (-1 for no key)		*/
 	room_rnum to_room; /* Where direction leads (NOWHERE)	*/
 	int dclock; /* DC to pick the lock			*/
