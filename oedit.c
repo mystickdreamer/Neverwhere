@@ -306,6 +306,18 @@ void oedit_disp_container_flags_menu(struct descriptor_data *d) {
 		"@g2@n) PICKPROOF\r\n"
 		"@g3@n) CLOSED\r\n"
 		"@g4@n) LOCKED\r\n"
+		"@g5@n) fire"
+		"@g6@n) crossbow bolt"
+		"@g7@n) poison dart"
+		"@g8@n) sleeping gas"
+		"@g9@n) explosion"
+		"@g10@n) acid"
+		"@g11@n) razer"
+		"@g12@n) shock"
+		"@g13@n) mana"
+		"@g14@n) frog"
+		"@g15@n) gibberish"
+		"@g16@n) teleporter"
 		"Container flags: @c%s@n\r\n"
 		"Enter flag, 0 to quit : ",
 		bits);
@@ -903,7 +915,7 @@ void oedit_disp_menu(struct descriptor_data *d) {
 		GET_OBJ_VAL(obj, 11), GET_OBJ_VAL(obj, 12), GET_OBJ_VAL(obj, 13),
 		GET_OBJ_VAL(obj, 14), GET_OBJ_VAL(obj, 15), GET_OBJ_EXTRA(obj) ? "Set." : "Not Set.",
 		GET_OBJ_LEVEL(obj), material_names[(int) GET_OBJ_MATERIAL(obj)],
-		ebitbuf, OLC_SCRIPT(d) ? "Set." : "Not Set.", trap_names[(int) GET_OBJ_TRAP(obj)], 
+		ebitbuf, OLC_SCRIPT(d) ? "Set." : "Not Set.", trap_names[(int) GET_OBJ_TRAP(obj)],
 		GET_OBJ_TRAP_DC(obj), GET_OBJ_LOCK_DC(obj), size_names[GET_OBJ_SIZE(obj)]
 		);
 	OLC_MODE(d) = OEDIT_MAIN_MENU;
@@ -1272,7 +1284,7 @@ void oedit_parse(struct descriptor_data *d, char *arg) {
 		case OEDIT_TRAP_DC:
 			GET_OBJ_TRAP_DC(OLC_OBJ(d)) = MAX(atoi(arg), 0);
 			break;
-			case OEDIT_LOCK_DC:
+		case OEDIT_LOCK_DC:
 			GET_OBJ_LOCK_DC(OLC_OBJ(d)) = MAX(atoi(arg), 0);
 			break;
 
