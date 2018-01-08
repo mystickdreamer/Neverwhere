@@ -644,16 +644,19 @@ typedef unsigned int ush_int;
 
 #define TRAP_UNDEFINED		0
 #define TRAP_FIRE		1
-#define TRAP_POISON_DART	2
-#define TRAP_SLEEPING_GAS	3
-#define TRAP_EXPLOSION		4
-#define TRAP_ACID		5
-#define TRAP_RAZER		6
-#define TRAP_SHOCK		7
-#define TRAP_MANA		8
-#define TRAP_TELEPORTER		9
+#define TRAP_CROSSBOW_BOLT	2
+#define TRAP_POISON_DART	3
+#define TRAP_SLEEPING_GAS	4
+#define TRAP_EXPLOSION		5
+#define TRAP_ACID		6
+#define TRAP_RAZER		7
+#define TRAP_SHOCK		8
+#define TRAP_MANA		9
+#define TRAP_FROG		10
+#define TRAP_GIBBERISH		11
+#define TRAP_TELEPORTER		12
 
-#define NUM_TRAPS		10
+#define NUM_TRAPS		13
 
 
 /* object-related defines ********************************************/
@@ -1605,6 +1608,12 @@ struct memorize_node {
 	struct memorize_node *next; /* link to the next node */
 };
 
+struct skill_node {
+	int timer; /* ticks till done */
+	int skill; /* skill number */
+	struct skill_node *next; /*link to the next node */
+};
+
 struct innate_node {
 	int timer;
 	int spellnum;
@@ -1789,6 +1798,8 @@ struct char_data {
 
 	struct memorize_node *memorized;
 	struct innate_node *innate;
+	
+	struct skill_node *skilled;
 
 	struct char_data *fighting; /* Opponent				*/
 	struct char_data *hunting; /* Char hunted by this char		*/
@@ -1807,10 +1818,10 @@ struct char_data {
 	/* One bitvector array per CFEAT_ type	*/
 	int school_feats[SFEAT_MAX + 1]; /* One bitvector array per CFEAT_ type	*/
 
-	int skills[SKILL_TABLE_SIZE + 1];/* array of skills/spells/arts/etc	*/
-	int skillmods[SKILL_TABLE_SIZE + 1];/* array of skill mods			*/
+	int skills[SKILL_TABLE_SIZE + 1]; /* array of skills/spells/arts/etc	*/
+	int skillmods[SKILL_TABLE_SIZE + 1]; /* array of skill mods			*/
 	int skillxp[SKILL_TABLE_SIZE + 1]; // Skill xp listing
-	
+
 	cl_sint8 skillclass[SKILL_TABLE_SIZE + 1]; /* array of class/cross class skills */
 
 	int alignment; /* +-1000 for alignment good vs. evil	*/
@@ -1848,7 +1859,8 @@ struct char_data {
 	cl_sint16 spellfail; /* Total spell failure %                 */
 	cl_sint16 armorcheck; /* Total armorcheck penalty with proficiency forgiveness */
 	cl_sint16 armorcheckall; /* Total armorcheck penalty regardless of proficiency */
-	
+	TIMER *first_timer;
+	TIMER *last_timer;
 
 
 
