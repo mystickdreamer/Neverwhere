@@ -1859,8 +1859,8 @@ struct char_data {
 	cl_sint16 spellfail; /* Total spell failure %                 */
 	cl_sint16 armorcheck; /* Total armorcheck penalty with proficiency forgiveness */
 	cl_sint16 armorcheckall; /* Total armorcheck penalty regardless of proficiency */
-	TIMER *first_timer;
-	TIMER *last_timer;
+//	TIMER *first_timer;
+//	TIMER *last_timer;
 
 
 
