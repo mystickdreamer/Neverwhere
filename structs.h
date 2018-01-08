@@ -842,8 +842,23 @@ typedef unsigned int ush_int;
 #define CONT_PICKPROOF      (1 << 1)	/* Container is pickproof	*/
 #define CONT_CLOSED         (1 << 2)	/* Container is closed		*/
 #define CONT_LOCKED         (1 << 3)	/* Container is locked		*/
+#define CONT_TRAPPED		(1 << 4) // The container is trapped
+#define CONT_TRAPRESET		(1 << 5)
+#define CONT_TRAP_FIRE		(1 << 6)
+#define CONT_TRAP_CROSSBOLT	(1 << 7)
+#define CONT_TRAP_POISNDART	(1 << 8)
+#define CONT_TRAP_SLEEP		(1 << 9)
+#define CONT_TRAP_EXPLOD	(1 << 10)
+#define CONT_TRAP_ACID		(1 << 11)
+#define CONT_TRAP_RAZOR		(1 << 12)
+#define CONT_TRAP_SHOCK		(1 << 13)
+#define CONT_TRAP_MANA		(1 << 14)
+#define CONT_TRAP_FROG		(1 << 15)
+#define CONT_TRAP_GIBBERISH	(1 << 16)
+#define CONT_TRAP_TELEPORT	(1 << 17)
 
-#define NUM_CONT_FLAGS 4
+
+#define NUM_CONT_FLAGS 18
 
 /* Some different kind of liquids for use in values of drink containers */
 #define LIQ_WATER      0
