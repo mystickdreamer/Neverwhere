@@ -302,15 +302,15 @@ void oedit_disp_container_flags_menu(struct descriptor_data *d) {
 
 	sprintbit(GET_OBJ_VAL(OLC_OBJ(d), 1), container_bits, bits, sizeof (bits));
 	write_to_output(d,
-		"@g1@n) CLOSEABLE\r\n"
-		"@g2@n) PICKPROOF\r\n"
-		"@g3@n) CLOSED\r\n"
-		"@g4@n) LOCKED\r\n"
-		"@g5@n) fire\r\n"
-		"@g6@n) crossbow bolt\r\n"
-		"@g7@n) poison dart\r\n"
-		"@g8@n) sleeping gas\r\n"
-		"@g9@n) explosion\r\n"
+		" @g1@n) CLOSEABLE\r\n"
+		" @g2@n) PICKPROOF\r\n"
+		" @g3@n) CLOSED\r\n"
+		" @g4@n) LOCKED\r\n"
+		" @g5@n) fire\r\n"
+		" @g6@n) crossbow bolt\r\n"
+		" @g7@n) poison dart\r\n"
+		" @g8@n) sleeping gas\r\n"
+		" @g9@n) explosion\r\n"
 		"@g10@n) acid\r\n"
 		"@g11@n) razer\r\n"
 		"@g12@n) shock\r\n"
@@ -1340,7 +1340,7 @@ void oedit_parse(struct descriptor_data *d, char *arg) {
 				case ITEM_PORTAL:
 					/* Needs some special handling since we are dealing with flag values
 					 * here. */
-					if (number < 0 || number > 4)
+					if (number < 0 || number > NUM_TRAPS)
 						oedit_disp_container_flags_menu(d);
 					else if (number != 0) {
 						TOGGLE_BIT(GET_OBJ_VAL(OLC_OBJ(d), 1), 1 << (number - 1));
