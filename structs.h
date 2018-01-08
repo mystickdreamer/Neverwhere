@@ -164,7 +164,7 @@ typedef unsigned int ush_int;
 #define EX_TRAP_CROSSBOLT	(1 << 8)
 #define EX_TRAP_POISNDART	(1 << 9)
 #define EX_TRAP_SLEEP		(1 << 10)
-#define EX_TRAP_EXPLOD	(1 << 11)
+#define EX_TRAP_EXPLOD		(1 << 11)
 #define EX_TRAP_ACID		(1 << 12)
 #define EX_TRAP_RAZOR		(1 << 13)
 #define EX_TRAP_SHOCK		(1 << 14)
