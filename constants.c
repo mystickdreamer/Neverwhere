@@ -718,6 +718,7 @@ const char *drinks[NUM_LIQ_TYPES + 1] = {
 const char *trap_names[NUM_TRAPS + 1] = {
 	"undefined",
 	"fire",
+	"crossbow bolt",
 	"poison dart",
 	"sleeping gas",
 	"explosion",
@@ -725,6 +726,8 @@ const char *trap_names[NUM_TRAPS + 1] = {
 	"razer",
 	"shock",
 	"mana",
+	"frog",
+	"gibberish",
 	"teleporter",
 	"\n"
 };
