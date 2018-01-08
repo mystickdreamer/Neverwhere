@@ -1,12 +1,12 @@
 /* ************************************************************************
-*   File: utils.h                                       Part of CircleMUD *
-*  Usage: header file: utility macros and prototypes of utility funcs     *
-*                                                                         *
-*  All rights reserved.  See license.doc for complete information.        *
-*                                                                         *
-*  Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University *
-*  CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.               *
-************************************************************************ */
+ *   File: utils.h                                       Part of CircleMUD *
+ *  Usage: header file: utility macros and prototypes of utility funcs     *
+ *                                                                         *
+ *  All rights reserved.  See license.doc for complete information.        *
+ *                                                                         *
+ *  Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University *
+ *  CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.               *
+ ************************************************************************ */
 
 
 /* external declarations and prototypes **********************************/
@@ -20,24 +20,24 @@ extern FILE *logfile;
 #define READ_SIZE	256
 
 /* public functions in utils.c */
-void	basic_mud_log(const char *format, ...) __attribute__ ((format (printf, 1, 2)));
-void	basic_mud_vlog(const char *format, va_list args);
-int	touch(const char *path);
-void	mudlog(int type, int level, int file, const char *str, ...) __attribute__ ((format (printf, 4, 5)));
-void	log_death_trap(struct char_data *ch);
-int	rand_number(int from, int to);
-int	dice(int number, int size);
-size_t	sprintbit(bitvector_t vektor, const char *names[], char *result, size_t reslen);
-size_t	sprinttype(int type, const char *names[], char *result, size_t reslen);
+void basic_mud_log(const char *format, ...) __attribute__((format(printf, 1, 2)));
+void basic_mud_vlog(const char *format, va_list args);
+int touch(const char *path);
+void mudlog(int type, int level, int file, const char *str, ...) __attribute__((format(printf, 4, 5)));
+void log_death_trap(struct char_data *ch);
+int rand_number(int from, int to);
+int dice(int number, int size);
+size_t sprintbit(bitvector_t vektor, const char *names[], char *result, size_t reslen);
+size_t sprinttype(int type, const char *names[], char *result, size_t reslen);
 void sprintbitarray(int bitvector[], const char *names[], int maxar, char *result);
-int	get_line(FILE *fl, char *buf);
-int	get_filename(char *filename, size_t fbufsize, int mode, const char *orig_name);
-time_t	mud_time_to_secs(struct time_info_data *now);
+int get_line(FILE *fl, char *buf);
+int get_filename(char *filename, size_t fbufsize, int mode, const char *orig_name);
+time_t mud_time_to_secs(struct time_info_data *now);
 struct time_info_data *age(struct char_data *ch);
-int	num_pc_in_room(struct room_data *room);
-void    core_dump_real(const char *who, int line);
-int	room_is_dark(room_rnum room);
-int     count_color_chars(char *string);
+int num_pc_in_room(struct room_data *room);
+void core_dump_real(const char *who, int line);
+int room_is_dark(room_rnum room);
+int count_color_chars(char *string);
 
 #define core_dump()		core_dump_real(__FILE__, __LINE__)
 
@@ -46,10 +46,10 @@ int     count_color_chars(char *string);
  * will be defined by sysdep.h if a strcasecmp or stricmp exists.
  */
 #ifndef str_cmp
-int	str_cmp(const char *arg1, const char *arg2);
+int str_cmp(const char *arg1, const char *arg2);
 #endif
 #ifndef strn_cmp
-int	strn_cmp(const char *arg1, const char *arg2, int n);
+int strn_cmp(const char *arg1, const char *arg2, int n);
 #endif
 
 /* random functions in random.c */
@@ -70,55 +70,55 @@ int MIN(int a, int b);
 char *CAP(char *txt);
 
 /* Followers */
-int	num_followers_charmed(struct char_data *ch);
-void	die_follower(struct char_data *ch);
-void	add_follower(struct char_data *ch, struct char_data *leader);
-void	stop_follower(struct char_data *ch);
-bool	circle_follow(struct char_data *ch, struct char_data *victim);
+int num_followers_charmed(struct char_data *ch);
+void die_follower(struct char_data *ch);
+void add_follower(struct char_data *ch, struct char_data *leader);
+void stop_follower(struct char_data *ch);
+bool circle_follow(struct char_data *ch, struct char_data *victim);
 
 /* in act.informative.c */
-void	look_at_room(room_rnum target_room, struct char_data *ch, int mode);
-void	add_history(struct char_data *ch, char *msg, int type);
+void look_at_room(room_rnum target_room, struct char_data *ch, int mode);
+void add_history(struct char_data *ch, char *msg, int type);
 
 /* in act.movement.c */
-int	do_simple_move(struct char_data *ch, int dir, int following);
-int	perform_move(struct char_data *ch, int dir, int following);
+int do_simple_move(struct char_data *ch, int dir, int following);
+int perform_move(struct char_data *ch, int dir, int following);
 
 /* in act.item.c */
-int	max_carry_weight(struct char_data *ch);
+int max_carry_weight(struct char_data *ch);
 
 /* in limits.c */
-int	mana_gain(struct char_data *ch);
-int	hit_gain(struct char_data *ch);
-int	move_gain(struct char_data *ch);
-int	ki_gain(struct char_data *ch);
-void	advance_level(struct char_data *ch, int whichclass);
-void	set_title(struct char_data *ch, char *title);
-void	gain_exp(struct char_data *ch, int gain);
-void	gain_exp_regardless(struct char_data *ch, int gain);
-void	learn_from_success(struct char_data *ch, char *argument, int dc);
-void	learn_from_failure(struct char_data *ch, char *argument);
-void	gain_condition(struct char_data *ch, int condition, int value);
-void	check_idling(struct char_data *ch);
-void	point_update(void);
-void	update_pos(struct char_data *victim);
+int mana_gain(struct char_data *ch);
+int hit_gain(struct char_data *ch);
+int move_gain(struct char_data *ch);
+int ki_gain(struct char_data *ch);
+void advance_level(struct char_data *ch, int whichclass);
+void set_title(struct char_data *ch, char *title);
+void gain_exp(struct char_data *ch, int gain);
+void gain_exp_regardless(struct char_data *ch, int gain);
+void learn_from_success(struct char_data *ch, char *argument, int dc);
+void learn_from_failure(struct char_data *ch, char *argument);
+void gain_condition(struct char_data *ch, int condition, int value);
+void check_idling(struct char_data *ch);
+void point_update(void);
+void update_pos(struct char_data *victim);
 
 
 /* in class.c */
-char *  class_desc_str(struct char_data *ch, int howlong, int wantthe);
-int     total_skill_levels(struct char_data *ch, int skill);
-int     class_ok_general(struct char_data *ch, int whichclass);
-int     class_ok_prestige(struct char_data *ch, int whichclass);
-sbyte  ability_mod_value(int abil);
-sbyte  dex_mod_capped(const struct char_data *ch);
-int	saving_throw_lookup(int save_lev, int chclass, int savetype, int level);
-int	base_hit(int hit_type, int chclass, int level);
-int	highest_skill_value(int level, int type);
-int     calc_penalty_exp(struct char_data *ch, int gain);
-int	raise_class_only(struct char_data *ch, int cl, int v);
+char * class_desc_str(struct char_data *ch, int howlong, int wantthe);
+int total_skill_levels(struct char_data *ch, int skill);
+int class_ok_general(struct char_data *ch, int whichclass);
+int class_ok_prestige(struct char_data *ch, int whichclass);
+sbyte ability_mod_value(int abil);
+sbyte dex_mod_capped(const struct char_data *ch);
+int saving_throw_lookup(int save_lev, int chclass, int savetype, int level);
+int base_hit(int hit_type, int chclass, int level);
+int highest_skill_value(int level, int type);
+int calc_penalty_exp(struct char_data *ch, int gain);
+int raise_class_only(struct char_data *ch, int cl, int v);
 
 /* in races.c */
-int	get_size(struct char_data *ch);
+int get_size(struct char_data *ch);
 int get_size_bonus(int sz);
 int wield_type(int chsize, const struct obj_data *weap);
 
@@ -238,7 +238,7 @@ int wield_type(int chsize, const struct obj_data *weap);
 
 #define Q_FIELD(x)  ((int) (x) / 32)
 #define Q_BIT(x)    (1 << ((x) % 32))
- 
+
 #define IS_SET_AR(var, bit)       ((var)[Q_FIELD(bit)] & Q_BIT(bit))
 #define SET_BIT_AR(var, bit)      ((var)[Q_FIELD(bit)] |= Q_BIT(bit))
 #define REMOVE_BIT_AR(var, bit)   ((var)[Q_FIELD(bit)] &= ~Q_BIT(bit))
@@ -464,12 +464,12 @@ int wield_type(int chsize, const struct obj_data *weap);
 
 /* STRENGTH_APPLY_INDEX is no longer needed with the death of GET_ADD */
 /* #define STRENGTH_APPLY_INDEX(ch) \
-        ( ((GET_ADD(ch) ==0) || (GET_STR(ch) != 18)) ? GET_STR(ch) :\
-          (GET_ADD(ch) <= 50) ? 26 :( \
-          (GET_ADD(ch) <= 75) ? 27 :( \
-          (GET_ADD(ch) <= 90) ? 28 :( \
-          (GET_ADD(ch) <= 99) ? 29 :  30 ) ) )                   \
-        ) */
+	( ((GET_ADD(ch) ==0) || (GET_STR(ch) != 18)) ? GET_STR(ch) :\
+	  (GET_ADD(ch) <= 50) ? 26 :( \
+	  (GET_ADD(ch) <= 75) ? 27 :( \
+	  (GET_ADD(ch) <= 90) ? 28 :( \
+	  (GET_ADD(ch) <= 99) ? 29 :  30 ) ) )                   \
+	) */
 
 #define CAN_CARRY_W(ch) (max_carry_weight(ch))
 #define CAN_CARRY_N(ch) (5 + (GET_DEX(ch) >> 1) + (GET_LEVEL(ch) >> 1))
@@ -844,7 +844,7 @@ int wield_type(int chsize, const struct obj_data *weap);
 #define CONFIG_MAP_SIZE        config_info.play.map_size
 #define CONFIG_MINIMAP_SIZE    config_info.play.minimap_size
 
-  /** Crash Saves **/
+/** Crash Saves **/
 #define CONFIG_FREE_RENT        config_info.csd.free_rent
 #define CONFIG_MAX_OBJ_SAVE     config_info.csd.max_obj_save
 #define CONFIG_MIN_RENT_COST    config_info.csd.min_rent_cost
@@ -853,7 +853,7 @@ int wield_type(int chsize, const struct obj_data *weap);
 #define CONFIG_CRASH_TIMEOUT    config_info.csd.crash_file_timeout
 #define CONFIG_RENT_TIMEOUT     config_info.csd.rent_file_timeout
 
-  /** Room Numbers **/
+/** Room Numbers **/
 #define CONFIG_MORTAL_START     config_info.room_nums.mortal_start_room
 #define CONFIG_IMMORTAL_START   config_info.room_nums.immort_start_room
 #define CONFIG_FROZEN_START     config_info.room_nums.frozen_start_room
@@ -861,7 +861,7 @@ int wield_type(int chsize, const struct obj_data *weap);
 #define CONFIG_DON_ROOM_2       config_info.room_nums.donation_room_2
 #define CONFIG_DON_ROOM_3       config_info.room_nums.donation_room_3
 
-  /** Game Operation **/
+/** Game Operation **/
 #define CONFIG_DFLT_PORT        config_info.operation.DFLT_PORT
 #define CONFIG_DFLT_IP          config_info.operation.DFLT_IP
 #define CONFIG_MAX_PLAYING      config_info.operation.max_playing
@@ -877,15 +877,15 @@ int wield_type(int chsize, const struct obj_data *weap);
 #define CONFIG_WELC_MESSG       config_info.operation.WELC_MESSG
 #define CONFIG_START_MESSG      config_info.operation.START_MESSG
 
-  /** Autowiz **/
+/** Autowiz **/
 #define CONFIG_USE_AUTOWIZ      config_info.autowiz.use_autowiz
 #define CONFIG_MIN_WIZLIST_LEV  config_info.autowiz.min_wizlist_lev
 
-  /** Character Advancement **/
+/** Character Advancement **/
 #define CONFIG_ALLOW_MULTICLASS	config_info.advance.allow_multiclass
 #define CONFIG_ALLOW_PRESTIGE	config_info.advance.allow_prestige
 
-  /** For tick system **/
+/** For tick system **/
 #define CONFIG_PULSE_VIOLENCE	config_info.ticks.pulse_violence
 #define CONFIG_PULSE_MOBILE	config_info.ticks.pulse_mobile
 #define CONFIG_PULSE_ZONE	config_info.ticks.pulse_zone
@@ -896,7 +896,7 @@ int wield_type(int chsize, const struct obj_data *weap);
 #define CONFIG_PULSE_TIMESAVE	config_info.ticks.pulse_timesave
 #define CONFIG_PULSE_CURRENT	config_info.ticks.pulse_current
 
-  /** Character Creation Method **/
+/** Character Creation Method **/
 #define CONFIG_CREATION_METHOD	config_info.creation.method
 
 #define GET_SPELLMEM(ch, i)	((ch->player_specials->spellmem[i]))
@@ -937,15 +937,15 @@ int wield_type(int chsize, const struct obj_data *weap);
 #include <dirent.h>
 
 struct xap_dir {
-  int total, current;
-  struct dirent **namelist;
+	int total, current;
+	struct dirent **namelist;
 };
 
 #elif defined(CIRCLE_WINDOWS)
 
 struct xap_dir {
-  int total,current;
-  char **namelist;
+	int total, current;
+	char **namelist;
 };
 
 #endif
@@ -967,7 +967,7 @@ void admin_set(struct char_data *ch, int value);
 #define MOB_LOADROOM(ch)      ((ch)->hometown)  /*hometown not used for mobs*/
 #define OBJ_LOADROOM(obj)     ((obj)->room_loaded)
 
-int     levenshtein_distance(char *s1, char *s2);
+int levenshtein_distance(char *s1, char *s2);
 #define GET_MURDER(ch)          CHECK_PLAYER_SPECIAL((ch), ((ch)->player_specials->murder))
 char *strfrmt(char *str, int w, int h, int justify, int hpad, int vpad);
 char *strpaste(char *str1, char *str2, char *joiner);
