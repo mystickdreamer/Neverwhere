@@ -340,7 +340,7 @@ void redit_disp_exit_menu(struct descriptor_data *d) {
 		"@g7@n) DC Lock		: @c%d\r\n"
 		"@g8@n) DC Hide     		: @c%d\r\n"
 		"@g9@n) DC Skill		: @c%s\r\n"
-		"@g10@n) DC Trap		: @c%d\r\n"
+		"@gT@n) DC Trap		: @c%d\r\n"
 		"@gA@n) DC Move		: @c%d\r\n"
 		"@gB@n) Skill Fail Save Type		: @c%d\r\n"
 		"@gC@n) DC Skill Save		: @c%d\r\n"
@@ -723,7 +723,8 @@ void redit_parse(struct descriptor_data *d, char *arg) {
 					OLC_MODE(d) = REDIT_EXIT_DCSKILL;
 					write_to_output(d, "Enter skill to be checked to pass through exit : ");
 					return;
-				case '10':
+				case 't':
+				case 'T':
 					OLC_MODE(d) = REDIT_EXIT_TRAP_DC;
 					write_to_output(d, "What is the trap DC? ");
 					break;
