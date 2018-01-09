@@ -535,21 +535,6 @@ void oedit_disp_material_menu(struct descriptor_data *d) {
 	write_to_output(d, "\r\n@nEnter material type : ");
 }
 
-/* Trap type. */
-void oedit_disp_trap_menu(struct descriptor_data *d) {
-	int counter, columns = 0;
-
-	clear_screen(d);
-
-	for (counter = 1; counter < NUM_TRAPS; counter++) {
-		write_to_output(d, "@g%2d@n) %-20.20s%s", counter,
-			trap_names[counter],
-			!(++columns % 3) ? "\r\n" : "");
-	}
-	write_to_output(d, "\r\n@gEnter trap type @n:\r\n"
-		"@y0 @nto quit@n ");
-}
-
 /* Object value #1 */
 void oedit_disp_val1_menu(struct descriptor_data *d) {
 	int counter, columns = 0;
@@ -900,9 +885,8 @@ void oedit_disp_menu(struct descriptor_data *d) {
 		"@gN@n) Material    : @c%s@n\r\n"
 		"@gP@n) Perm Affects: @c%s@n\r\n"
 		"@gS@n) Script      : @c%s@n\r\n"
-		"@gT@n) Trap        : @c%s@n\r\n"
-		"@gU@n) Trap DC	   :  @c%d@n\r\n"
-		"@gV@n) Lock DC     : @c%d@n\r\n"
+		"@gT@n) Trap DC	   :  @c%d@n\r\n"
+		"@gU@n) Lock DC     : @c%d@n\r\n"
 		"@gW@n) Copy object\r\n"
 		"@gX@n) Delete object\r\n"
 		"@gZ@n) Size        : @c%s@n\r\n"
@@ -917,8 +901,8 @@ void oedit_disp_menu(struct descriptor_data *d) {
 		GET_OBJ_VAL(obj, 11), GET_OBJ_VAL(obj, 12), GET_OBJ_VAL(obj, 13),
 		GET_OBJ_VAL(obj, 14), GET_OBJ_VAL(obj, 15), GET_OBJ_EXTRA(obj) ? "Set." : "Not Set.",
 		GET_OBJ_LEVEL(obj), material_names[(int) GET_OBJ_MATERIAL(obj)],
-		ebitbuf, OLC_SCRIPT(d) ? "Set." : "Not Set.", trap_names[(int) GET_OBJ_TRAP(obj)],
-		GET_OBJ_TRAP_DC(obj), GET_OBJ_LOCK_DC(obj), size_names[GET_OBJ_SIZE(obj)]
+		ebitbuf, OLC_SCRIPT(d) ? "Set." : "Not Set.",GET_OBJ_TRAP_DC(obj), 
+		GET_OBJ_LOCK_DC(obj), size_names[GET_OBJ_SIZE(obj)]
 		);
 	OLC_MODE(d) = OEDIT_MAIN_MENU;
 }
@@ -1146,19 +1130,13 @@ void oedit_parse(struct descriptor_data *d, char *arg) {
 					return;
 				case 't':
 				case 'T':
-					OLC_MODE(d) = OEDIT_TRAP;
-					oedit_disp_trap_menu(d);
-					break;
-				case 'u':
-				case 'U':
 					write_to_output(d, "What is the trap DC? ");
 					OLC_MODE(d) = OEDIT_TRAP_DC;
 					break;
-				case 'v':
-				case 'V':
+				case 'u':
+				case 'U':
 					write_to_output(d, "What is the lock DC? ");
 					OLC_MODE(d) = OEDIT_LOCK_DC;
-					break;
 					break;
 				case 'w':
 				case 'W':
@@ -1280,9 +1258,6 @@ void oedit_parse(struct descriptor_data *d, char *arg) {
 			GET_OBJ_MATERIAL(OLC_OBJ(d)) = LIMIT(atoi(arg), 0, NUM_MATERIALS);
 			break;
 
-		case OEDIT_TRAP:
-			GET_OBJ_TRAP(OLC_OBJ(d)) = LIMIT(atoi(arg), 0, NUM_TRAPS);
-			break;
 		case OEDIT_TRAP_DC:
 			GET_OBJ_TRAP_DC(OLC_OBJ(d)) = MAX(atoi(arg), 0);
 			break;
