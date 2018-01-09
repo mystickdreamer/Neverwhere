@@ -260,6 +260,7 @@ struct oasis_olc_data {
 #define REDIT_EXIT_FAILROOM		24
 #define REDIT_EXIT_TOTALFAILROOM	25
 #define REDIT_COPY			26
+#define REDIT_EXIT_TRAP_DC		27
 
 /*
  * Submodes of ZEDIT connectedness.
