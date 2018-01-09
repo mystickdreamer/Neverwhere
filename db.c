@@ -1416,7 +1416,7 @@ void parse_room(FILE *fl, int virtual_nr)
 /* read direction data */
 void setup_dir(FILE *fl, int room, int dir)
 {
-  int t[11], retval;
+  int t[12], retval;
   char line[READ_SIZE], buf2[128];
 
   snprintf(buf2, sizeof(buf2), "room #%d, direction D%d", GET_ROOM_VNUM(room)+1, dir);
@@ -1429,7 +1429,7 @@ void setup_dir(FILE *fl, int room, int dir)
     log("SYSERR: Format error, %s", buf2);
     exit(1);
   }
-  if (((retval = sscanf(line, " %d %d %d %d %d %d %d %d %d %d %d", t, t + 1, t + 2, t + 3, t + 4, t + 5, t + 6, t + 7, t + 8, t + 9, t + 10 )) == 3) && (bitwarning == TRUE)) {
+  if (((retval = sscanf(line, " %d %d %d %d %d %d %d %d %d %d %d %d", t, t + 1, t + 2, t + 3, t + 4, t + 5, t + 6, t + 7, t + 8, t + 9, t + 10, t + 11 )) == 3) && (bitwarning == TRUE)) {
     log("SYSERR: Format error, %s", buf2);
     exit(1);
   } else if (bitwarning == FALSE) {
@@ -1453,6 +1453,7 @@ void setup_dir(FILE *fl, int room, int dir)
     world[room].dir_option[dir]->dclock = 20;
     world[room].dir_option[dir]->dchide = 20;
     world[room].dir_option[dir]->dcskill = 0;
+    world[room].dir_option[dir]->dctrap = 0;
     world[room].dir_option[dir]->dcmove = 0;
     world[room].dir_option[dir]->failsavetype = 0;
     world[room].dir_option[dir]->dcfailsave = 0;
@@ -1466,6 +1467,7 @@ void setup_dir(FILE *fl, int room, int dir)
     world[room].dir_option[dir]->dclock = t[3];
     world[room].dir_option[dir]->dchide = t[4];
     world[room].dir_option[dir]->dcskill = 0;
+    world[room].dir_option[dir]->dctrap = t[11];
     world[room].dir_option[dir]->dcmove = 0;
     world[room].dir_option[dir]->failsavetype = 0;
     world[room].dir_option[dir]->dcfailsave = 0;
@@ -1479,6 +1481,7 @@ void setup_dir(FILE *fl, int room, int dir)
     world[room].dir_option[dir]->dclock = t[3];
     world[room].dir_option[dir]->dchide = t[4];
     world[room].dir_option[dir]->dcskill = t[5];
+    world[room].dir_option[dir]->dctrap = t[11];
     world[room].dir_option[dir]->dcmove = t[6];
     world[room].dir_option[dir]->failsavetype = 0;
     world[room].dir_option[dir]->dcfailsave = 0;
@@ -1492,6 +1495,7 @@ void setup_dir(FILE *fl, int room, int dir)
     world[room].dir_option[dir]->dclock = t[3];
     world[room].dir_option[dir]->dchide = t[4];
     world[room].dir_option[dir]->dcskill = t[5];
+    world[room].dir_option[dir]->dctrap = t[11];
     world[room].dir_option[dir]->dcmove = t[6];
     world[room].dir_option[dir]->failsavetype = t[7];
     world[room].dir_option[dir]->dcfailsave = t[8];
