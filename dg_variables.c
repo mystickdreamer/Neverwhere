@@ -1003,7 +1003,7 @@ in the vault (vnum: 453) now and then. you can just use
 							if (GET_WIS(c) < 3) GET_WIS(c) = 3;
 						}
 						snprintf(str, slen, "%d", GET_WIS(c));
-					} else if (!str_cmp(field, "wait")) {
+					} else if (!str_cmp(field, "wait")) { // Usage: nop %actor.wait(1)%   adds a 1 second wait to the character
 						if (subfield && *subfield) {
 							int addition = atoi(subfield);
 							WAIT_STATE(c, addition * (PULSE_VIOLENCE / 2)); // by default violence is 2 seconds
