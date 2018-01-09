@@ -724,7 +724,7 @@ void redit_parse(struct descriptor_data *d, char *arg) {
 					write_to_output(d, "Enter skill to be checked to pass through exit : ");
 					return;
 				case '10':
-					OLC_MODE(d) = REDIT_TRAP_DC;
+					OLC_MODE(d) = REDIT_EXIT_TRAP_DC;
 					write_to_output(d, "What is the trap DC? ");
 					break;
 				case 'a':
@@ -916,7 +916,7 @@ void redit_parse(struct descriptor_data *d, char *arg) {
 				OLC_EXIT(d)->dcskill = number;
 			redit_disp_exit_menu(d);
 			return;
-		case REDIT_TRAP_DC:
+		case REDIT_EXIT_TRAP_DC:
 			number = atoi(arg);
 			if (number < 0)
 				OLC_EXIT(d)->dctrap = NOTHING;
