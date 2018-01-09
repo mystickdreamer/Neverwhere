@@ -727,7 +727,7 @@ void redit_parse(struct descriptor_data *d, char *arg) {
 				case 'T':
 					OLC_MODE(d) = REDIT_EXIT_TRAP_DC;
 					write_to_output(d, "What is the trap DC? ");
-					break;
+					return;
 				case 'a':
 				case 'A':
 					OLC_MODE(d) = REDIT_EXIT_DCMOVE;
