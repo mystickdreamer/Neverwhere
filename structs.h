@@ -1508,6 +1508,7 @@ struct room_direction_data {
 	int dcfailsave; /* DC to save against on fail		*/
 	int failroom; /* Room # to put char in when fail > 5  */
 	int totalfailroom; /* Room # if char fails save < 5	*/
+	int dctrap; //DC for trap in exit
 };
 
 /* ================== Memory Structure for room ======================= */
