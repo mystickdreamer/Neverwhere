@@ -340,6 +340,7 @@ void redit_disp_exit_menu(struct descriptor_data *d) {
 		"@g7@n) DC Lock		: @c%d\r\n"
 		"@g8@n) DC Hide     		: @c%d\r\n"
 		"@g9@n) DC Skill		: @c%s\r\n"
+		"@g10@n) DC Trap		: @c%d\r\n"
 		"@gA@n) DC Move		: @c%d\r\n"
 		"@gB@n) Skill Fail Save Type		: @c%d\r\n"
 		"@gC@n) DC Skill Save		: @c%d\r\n"
@@ -353,7 +354,7 @@ void redit_disp_exit_menu(struct descriptor_data *d) {
 		OLC_EXIT(d)->key != NOTHING ? OLC_EXIT(d)->key : -1,
 		door_buf, OLC_EXIT(d)->dclock, OLC_EXIT(d)->dchide,
 		OLC_EXIT(d)->dcskill != 0 ? spell_info[OLC_EXIT(d)->dcskill].name : "<NONE>",
-		OLC_EXIT(d)->dcmove, OLC_EXIT(d)->failsavetype,
+		OLC_EXIT(d)->dctrap, OLC_EXIT(d)->dcmove, OLC_EXIT(d)->failsavetype,
 		OLC_EXIT(d)->dcfailsave, OLC_EXIT(d)->failroom,
 		OLC_EXIT(d)->totalfailroom
 		);
