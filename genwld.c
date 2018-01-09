@@ -362,11 +362,11 @@ int save_rooms(zone_rnum zone_num)
 	  fprintf(sf,	"D%d\n"
 			"%s~\n"
 			"%s~\n"
-			"%d %d %d %d %d %d %d %d %d %d %d\n", j, buf, buf1, dflag,
+			"%d %d %d %d %d %d %d %d %d %d %d $d\n", j, buf, buf1, dflag,
 		R_EXIT(room, j)->key != NOTHING ? R_EXIT(room, j)->key : -1,
 		R_EXIT(room, j)->to_room != NOWHERE ? world[R_EXIT(room, j)->to_room].number : -1, 
 		R_EXIT(room, j)->dclock, R_EXIT(room, j)->dchide,
-		R_EXIT(room, j)->dcskill, R_EXIT(room, j)->dcmove,
+		R_EXIT(room, j)->dcskill, R_EXIT(room, j)->dctrap, R_EXIT(room, j)->dcmove,
 		R_EXIT(room, j)->failsavetype, R_EXIT(room, j)->dcfailsave,
 		R_EXIT(room, j)->failroom, R_EXIT(room, j)->totalfailroom);
 
