@@ -1006,7 +1006,7 @@ in the vault (vnum: 453) now and then. you can just use
 					} else if (!str_cmp(field, "wait")) { // Usage: nop %actor.wait(1)%   adds a 1 second wait to the character
 						if (subfield && *subfield) {
 							int addition = atoi(subfield);
-							WAIT_STATE(c, addition * (RL_SEC)); // by default violence is 2 seconds
+							WAIT_STATE(c, addition * (PULSE_VIOLENCE / 2)); // by default violence is 2 seconds
 						}
 						snprintf(str, slen, "%d", GET_WAIT_STATE(c));
 					}
