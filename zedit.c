@@ -1016,6 +1016,7 @@ void zedit_parse(struct descriptor_data *d, char *arg) {
 				return;
 			}
 			switch (OLC_CMD(d).command) {
+				case '1':
 				case 'M':
 					if ((pos = real_mobile(atoi(arg))) != NOBODY) {
 						OLC_CMD(d).arg1 = pos;
