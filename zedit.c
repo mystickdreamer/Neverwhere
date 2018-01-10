@@ -219,6 +219,7 @@ void zedit_setup(struct descriptor_data *d, int room_num) {
 	/* Add all entries in zone_table that relate to this room. */
 	while (ZCMD(OLC_ZNUM(d), subcmd).command != 'S') {
 		switch (ZCMD(OLC_ZNUM(d), subcmd).command) {
+			case 'A':
 			case 'M':
 			case 'O':
 			case 'T':
