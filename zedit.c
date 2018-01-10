@@ -434,7 +434,7 @@ void zedit_disp_menu(struct descriptor_data *d) {
 		write_to_output(d, "@n%d - @y", counter++);
 		switch (MYCMD.command) {
 			case 'A':
-				write_to_output(d, "%sSet door trap %s@y as %s."
+				write_to_output(d, "%sSet door trap %s@y as %s.",
 					MYCMD.if_flag ? " then " : "",
 					dirs[MYCMD.arg2],
 					MYCMD.arg3 ? 
