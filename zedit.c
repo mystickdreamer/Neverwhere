@@ -437,7 +437,7 @@ void zedit_disp_menu(struct descriptor_data *d) {
 				write_to_output(d, "%sSet door trap %s@y as %s.",
 					MYCMD.if_flag ? " then " : "",
 					dirs[MYCMD.arg2],
-					MYCMD.arg3 ? 
+					MYCMD.arg3 ?
 					((((MYCMD.arg3 == 1) ? "cross bolt" :
 					((MYCMD.arg3 == 2)) ? "poison dart" :
 					(MYCMD.arg3 == 3)) ? "sleeping gas" :
@@ -553,7 +553,7 @@ void zedit_disp_comtype(struct descriptor_data *d) {
 		"@gM@n) Load Mobile to room             @gO@n) Load Object to room\r\n"
 		"@gE@n) Equip mobile with object        @gG@n) Give an object to a mobile\r\n"
 		"@gP@n) Put object in another object    @gD@n) Open/Close/Lock a Door\r\n"
-		"@gR@n) Remove an object from the room\r\n"
+		"@gR@n) Remove an object from the room  @gA@n) Set trap type on door\r\n"
 		"@gT@n) Assign a trigger                @gV@n) Set a global variable\r\n"
 		"\r\n"
 		"What sort of command will this be? : "
@@ -609,6 +609,12 @@ void zedit_disp_arg2(struct descriptor_data *d) {
 	int i;
 
 	switch (OLC_CMD(d).command) {
+		case 'A':
+			for (i = 0; *dirs[i] != '\n'; i++) {
+				write_to_output(d, "%d) Exit %s.\r\n", i, dirs[i]);
+			}
+			write_to_output(d, "Enter exit number for door : ");
+			break;
 		case 'M':
 		case 'O':
 		case 'E':
@@ -652,6 +658,22 @@ void zedit_disp_arg3(struct descriptor_data *d) {
 	write_to_output(d, "\r\n");
 
 	switch (OLC_CMD(d).command) {
+		case 'A':
+			write_to_output(d,
+				"0)  Fire Trap\r\n"
+				"1)  Crossbow Bolt Trap\r\n"
+				"2)  Poison Dart Trap\r\n"
+				"3)  Sleeping Gas Trap\r\n"
+				"4)  Explosion Trap\r\n"
+				"5)  Acid Trap\r\n"
+				"6)  Razer Trap\r\n"
+				"7)  Shock Trap\r\n"
+				"8)  Mana Trap\r\n"
+				"9)  Frog Trap\r\n"
+				"10) Gibberish Trap\r\n"
+				"11) Teleporter Trap\r\n"
+				"Enter Trap type of the door : ");
+			break;
 		case 'E':
 			while (*equipment_types[i] != '\n') {
 				write_to_output(d, "%2d) %26.26s", i, equipment_types[i]);
@@ -701,6 +723,9 @@ void zedit_disp_arg4(struct descriptor_data *d) {
 	write_to_output(d, "\r\n");
 
 	switch (OLC_CMD(d).command) {
+		case 'A':
+			write_to_output(d, "Enter trap DC");
+			break;
 		case 'M':
 		case 'O':
 			write_to_output(d, "Input the max allowed to load from this room (Enter == 0(ignore)) : ");
@@ -1034,6 +1059,16 @@ void zedit_parse(struct descriptor_data *d, char *arg) {
 				return;
 			}
 			switch (OLC_CMD(d).command) {
+				case 'A':
+					pos = atoi(arg);
+					/* Count directions. */
+					if (pos < 0 || pos > NUM_OF_DIRS)
+						write_to_output(d, "Try again : ");
+					else {
+						OLC_CMD(d).arg2 = pos;
+						zedit_disp_arg3(d);
+					}
+					break;
 				case 'M':
 				case 'O':
 					OLC_CMD(d).arg2 = MIN(MAX_DUPLICATES, atoi(arg));
@@ -1097,6 +1132,15 @@ void zedit_parse(struct descriptor_data *d, char *arg) {
 				return;
 			}
 			switch (OLC_CMD(d).command) {
+				case 'A':
+					pos = atoi(arg);
+					if (pos < 0 || pos > 11)
+						write_to_output(d, "Try again : ");
+					else {
+						OLC_CMD(d).arg3 = pos;
+						zedit_disp_arg4(d);
+					}
+					break;
 				case 'E':
 					pos = atoi(arg);
 					/* Count number of wear positions.  We could use NUM_WEARS, this is
@@ -1151,6 +1195,15 @@ void zedit_parse(struct descriptor_data *d, char *arg) {
 				return;
 			}
 			switch (OLC_CMD(d).command) {
+				case 'A':
+					pos = atoi(arg);
+					if (pos < 0 || pos > 1000)
+						write_to_output(d, "Try again : ");
+					else {
+						OLC_CMD(d).arg4 = pos;
+						zedit_disp_menu(d);
+					}
+					break;
 				case 'M':
 				case 'O':
 					OLC_CMD(d).arg4 = MIN(MAX_FROM_ROOM, atoi(arg));
