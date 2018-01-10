@@ -437,7 +437,8 @@ void zedit_disp_menu(struct descriptor_data *d) {
 				write_to_output(d, "%sSet door trap %s@y as %s."
 					MYCMD.if_flag ? " then " : "",
 					dirs[MYCMD.arg2],
-					MYCMD.arg3 ? ((((MYCMD.arg3 == 1) ? "cross bolt" :
+					MYCMD.arg3 ? 
+					((((MYCMD.arg3 == 1) ? "cross bolt" :
 					((MYCMD.arg3 == 2)) ? "poison dart" :
 					(MYCMD.arg3 == 3)) ? "sleeping gas" :
 					((MYCMD.arg3 == 4) ? "explosion" :
@@ -447,7 +448,7 @@ void zedit_disp_menu(struct descriptor_data *d) {
 					((MYCMD.arg3 == 8) ? "mana" :
 					(MYCMD.arg3 == 9)) ? "frog" :
 					((MYCMD.arg3 == 10) ? "gibberish" :
-					"teleporter")) : "fire");
+					"teleporter"))) : "fire");
 				break;
 			case 'M':
 				write_to_output(d, "%sLoad %s@y [@c%d@y], Max : %d, MaxR %d, Chance %d",
