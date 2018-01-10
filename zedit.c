@@ -570,6 +570,7 @@ void zedit_disp_arg1(struct descriptor_data *d) {
 	write_to_output(d, "\r\n");
 
 	switch (OLC_CMD(d).command) {
+		case '1':
 		case 'M':
 			write_to_output(d, "Input mob's vnum : ");
 			OLC_MODE(d) = ZEDIT_ARG1;
