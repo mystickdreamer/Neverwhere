@@ -219,7 +219,7 @@ void zedit_setup(struct descriptor_data *d, int room_num) {
 	/* Add all entries in zone_table that relate to this room. */
 	while (ZCMD(OLC_ZNUM(d), subcmd).command != 'S') {
 		switch (ZCMD(OLC_ZNUM(d), subcmd).command) {
-			case 'A':
+			case '1':
 			case 'M':
 			case 'O':
 			case 'T':
@@ -434,7 +434,7 @@ void zedit_disp_menu(struct descriptor_data *d) {
 		/* Translate what the command means. */
 		write_to_output(d, "@n%d - @y", counter++);
 		switch (MYCMD.command) {
-			case 'A':
+			case '1':
 				write_to_output(d, "%sSet door trap %s@y as %s.",
 					MYCMD.if_flag ? " then " : "",
 					dirs[MYCMD.arg2],
@@ -554,7 +554,7 @@ void zedit_disp_comtype(struct descriptor_data *d) {
 		"@gM@n) Load Mobile to room             @gO@n) Load Object to room\r\n"
 		"@gE@n) Equip mobile with object        @gG@n) Give an object to a mobile\r\n"
 		"@gP@n) Put object in another object    @gD@n) Open/Close/Lock a Door\r\n"
-		"@gR@n) Remove an object from the room  @gA@n) Set trap type on door\r\n"
+		"@gR@n) Remove an object from the room  @g1@n) Set trap type on door\r\n"
 		"@gT@n) Assign a trigger                @gV@n) Set a global variable\r\n"
 		"\r\n"
 		"What sort of command will this be? : "
@@ -610,7 +610,7 @@ void zedit_disp_arg2(struct descriptor_data *d) {
 	int i;
 
 	switch (OLC_CMD(d).command) {
-		case 'A':
+		case '1':
 			for (i = 0; *dirs[i] != '\n'; i++) {
 				write_to_output(d, "%d) Exit %s.\r\n", i, dirs[i]);
 			}
@@ -659,7 +659,7 @@ void zedit_disp_arg3(struct descriptor_data *d) {
 	write_to_output(d, "\r\n");
 
 	switch (OLC_CMD(d).command) {
-		case 'A':
+		case '1':
 			write_to_output(d,
 				"0)  Fire Trap\r\n"
 				"1)  Crossbow Bolt Trap\r\n"
@@ -724,7 +724,7 @@ void zedit_disp_arg4(struct descriptor_data *d) {
 	write_to_output(d, "\r\n");
 
 	switch (OLC_CMD(d).command) {
-		case 'A':
+		case '1':
 			write_to_output(d, "Enter trap DC");
 			break;
 		case 'M':
@@ -1060,7 +1060,7 @@ void zedit_parse(struct descriptor_data *d, char *arg) {
 				return;
 			}
 			switch (OLC_CMD(d).command) {
-				case 'A':
+				case '1':
 					pos = atoi(arg);
 					/* Count directions. */
 					if (pos < 0 || pos > NUM_OF_DIRS)
@@ -1133,7 +1133,7 @@ void zedit_parse(struct descriptor_data *d, char *arg) {
 				return;
 			}
 			switch (OLC_CMD(d).command) {
-				case 'A':
+				case '1':
 					pos = atoi(arg);
 					if (pos < 0 || pos > 11)
 						write_to_output(d, "Try again : ");
@@ -1196,7 +1196,7 @@ void zedit_parse(struct descriptor_data *d, char *arg) {
 				return;
 			}
 			switch (OLC_CMD(d).command) {
-				case 'A':
+				case '1':
 					pos = atoi(arg);
 					if (pos < 0 || pos > 1000)
 						write_to_output(d, "Try again : ");
